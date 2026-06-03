@@ -1,186 +1,121 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0055)file:///C:/Users/nnakatsuka_mota/Downloads/login_2.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ログイン画面 | あんしん決済 Smart版</title>
-<link rel="stylesheet" href="../assets/common.css">
+<link rel="stylesheet" href="file:///C:/Users/nnakatsuka_mota/assets/common.css">
+<style>
+/* ===== login画面 専用（ulloログインフォームを踏襲） ===== */
+.lg-stage{background:#eef0f3;padding:40px 24px 56px;min-height:100vh;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;align-items:flex-start;}
+.lg-col{width:420px;max-width:100%;}
+.lg-badge{font-size:12px;font-weight:700;color:#888;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;}
+.lg-badge .tag{color:#fff;padding:4px 12px;border-radius:3px;font-size:11px;}
+.lg-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.10);border:1px solid #e3e6ea;}
+.lg-head{padding:26px 28px 22px;text-align:center;}
+.lg-logo{font-size:30px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.lg-sub{font-size:12px;margin-top:8px;opacity:.9;}
+.lg-body{padding:30px 32px 34px;}
+.lg-h1{font-size:18px;font-weight:700;margin-bottom:22px;text-align:center;color:#222;}
+.lg-field{margin-bottom:16px;}
+.lg-field label{font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;}
+.lg-field input{width:100%;border:1px solid #ccc;border-radius:5px;padding:13px 14px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+.lg-field input:focus{outline:none;border-color:#888;}
+.lg-btn{width:100%;color:#fff;border:none;border-radius:6px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;}
+.lg-links{margin-top:20px;text-align:center;display:flex;flex-direction:column;gap:10px;}
+.lg-links a{font-size:13px;color:#1E56A0;text-decoration:underline;}
+</style>
 </head>
 <body>
 <div class="mock-backbar">
-  <a href="../index.html">← 画面一覧へ戻る</a>
+  <a href="file:///C:/Users/nnakatsuka_mota/index.html">← 画面一覧へ戻る</a>
   <span class="sid">login</span><span class="nm">ログイン画面</span>
 </div>
 <div class="screen active" id="screen-login">
-  <div class="step-desc-bar">
-    <span class="step-desc-num">ログイン</span>
-    <span class="step-desc-title">ログイン画面 — CS／CL／MOTA 共通UIUX（可変部分を並列表示）</span>
-    <span class="step-desc-actor">アクター：全アクター</span>
-  </div>
 
-  <div style="background:#fff8e1;border-bottom:1px solid #ffd54f;padding:10px 28px;font-size:12px;color:#856404;line-height:1.7;">
-    <strong>📌 本画面の見方：</strong>3アクター（CS／CL／MOTA）のログイン画面は同一のUIUXを採用。実装時は1画面で、アクセス元のURLやサブドメインに応じて表示が切り替わります。本モックでは可変部分を3カラム並列表示しています。<strong>【v61】PC化対応</strong>：フォーム幅・余白・タイポを拡大しPC向けに最適化。
-  </div>
+  <div class="lg-stage">
 
-  <div style="background:#e8eaf0;padding:48px 28px;min-height:100vh;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;align-items:flex-start;">
-
-    <!-- CS版ログイン -->
-    <div style="width:460px;max-width:100%;">
-      <div style="font-size:12px;font-weight:700;color:#888;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;">
-        <span style="background:#1E56A0;color:white;padding:4px 12px;border-radius:3px;font-size:11px;">CS（売主）</span>
-        <span>PC版（v61）</span>
-      </div>
-      <div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.12);">
-        <!-- ヘッダ：CSはMOTA売主用ロゴ -->
-        <div style="background:#1E56A0;padding:40px 32px;text-align:center;">
-          <div style="color:white;font-size:32px;font-weight:900;letter-spacing:-1px;">MöTA</div>
-          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:6px;">あんしん決済 — 売主専用</div>
+    <!-- ===== ユーザーマイページ（CS／売主） ===== -->
+    <div class="lg-col">
+      <div class="lg-badge"><span class="tag" style="background:#E60012;">ユーザー（売主）</span><span>ullo ユーザーマイページ準拠</span></div>
+      <div class="lg-card">
+        <div class="lg-head" style="background:#E60012;">
+          <div class="lg-logo" style="color:#fff;">MOTA</div>
+          <div class="lg-sub" style="color:#fff;">車買取 ユーザーマイページ</div>
         </div>
-        <div style="padding:40px 40px 44px;">
-          <div style="font-size:22px;font-weight:700;margin-bottom:8px;">ログイン</div>
-          <div style="font-size:13px;color:#666;margin-bottom:28px;line-height:1.8;">MOTAから届いたSMSの認証コードでログインしてください。</div>
-
-          <div style="margin-bottom:20px;">
-            <label style="font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;">電話番号</label>
-            <input type="tel" placeholder="090XXXXXXXX" style="width:100%;border:1px solid #ccc;border-radius:5px;padding:14px 16px;font-size:15px;font-family:inherit;box-sizing:border-box;" value="090-1234-5678">
-            <div style="font-size:11px;color:#888;margin-top:5px;">買取申込時に登録した電話番号</div>
+        <div class="lg-body">
+          <div class="lg-h1">ログイン</div>
+          <div class="lg-field">
+            <label>メールアドレス</label>
+            <input type="email" placeholder="example@mota.jp">
           </div>
-
-          <button style="width:100%;background:white;color:#1E56A0;border:1.5px solid #1E56A0;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:22px;">SMS認証コードを送信</button>
-
-          <div style="margin-bottom:26px;">
-            <label style="font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;">認証コード（6桁）</label>
-            <input type="text" placeholder="" style="width:100%;border:2px solid #1E56A0;border-radius:5px;padding:16px;font-size:22px;letter-spacing:8px;text-align:center;font-family:inherit;box-sizing:border-box;font-weight:700;">
+          <div class="lg-field">
+            <label>パスワード</label>
+            <input type="password" placeholder="">
           </div>
-
-          <button onclick="showScreen('cs-mypage-status',null)" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">ログイン → マイページへ</button>
+          <button class="lg-btn" style="background:#E60012;" onclick="showScreen(&#39;no-action-cs&#39;,null)">ログイン</button>
+          <div class="lg-links">
+            <a href="file:///C:/Users/nnakatsuka_mota/Downloads/login_2.html#">パスワードを忘れた方はこちら</a>
+            <a href="https://autoc-one.jp/ullo/help/inquiry/" target="_blank" rel="noopener">お問合せ</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- CL版ログイン -->
-    <div style="width:460px;max-width:100%;">
-      <div style="font-size:12px;font-weight:700;color:#888;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;">
-        <span style="background:#c0392b;color:white;padding:4px 12px;border-radius:3px;font-size:11px;">CL（買取店）</span>
-        <span>PC版（v61）</span>
-      </div>
-      <div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.12);">
-        <!-- ヘッダ：CLは管理画面ロゴ -->
-        <div style="background:#1a1a1a;padding:40px 32px;text-align:center;">
-          <div style="color:white;font-size:32px;font-weight:900;letter-spacing:-1px;">MöTA <span style="font-size:18px;font-weight:400;color:#bbb;">あんしん決済</span></div>
-          <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:6px;">買取店管理画面</div>
+    <!-- ===== 加盟店マイページ（CL／買取店）｜ヘッダー黒 ===== -->
+    <div class="lg-col">
+      <div class="lg-badge"><span class="tag" style="background:#1a1a1a;">加盟店（買取店）</span><span>ullo 加盟店マイページ準拠</span></div>
+      <div class="lg-card">
+        <div class="lg-head" style="background:#1a1a1a;">
+          <div class="lg-logo" style="color:#fff;">MOTA</div>
+          <div class="lg-sub" style="color:#cfcfcf;">車買取 加盟店マイページ</div>
         </div>
-        <div style="padding:40px 40px 44px;">
-          <div style="font-size:22px;font-weight:700;margin-bottom:8px;">ログイン</div>
-          <div style="font-size:13px;color:#666;margin-bottom:28px;line-height:1.8;">買取店IDとパスワードでログインしてください。</div>
-
-          <div style="margin-bottom:18px;">
-            <label style="font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;">買取店ID</label>
-            <input type="text" placeholder="例：C001234" style="width:100%;border:1px solid #ccc;border-radius:5px;padding:14px 16px;font-size:15px;font-family:inherit;box-sizing:border-box;">
+        <div class="lg-body">
+          <div class="lg-h1">ログイン</div>
+          <div class="lg-field">
+            <label>メールアドレス</label>
+            <input type="email" placeholder="shop@example.co.jp">
           </div>
-
-          <div style="margin-bottom:18px;">
-            <label style="font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;">パスワード</label>
-            <input type="password" placeholder="" style="width:100%;border:1px solid #ccc;border-radius:5px;padding:14px 16px;font-size:15px;font-family:inherit;box-sizing:border-box;">
+          <div class="lg-field">
+            <label>パスワード</label>
+            <input type="password" placeholder="">
           </div>
-
-          <div style="margin-bottom:26px;font-size:12px;display:flex;align-items:center;justify-content:space-between;">
-            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#555;">
-              <input type="checkbox" style="width:14px;height:14px;cursor:pointer;">
-              <span>ログイン状態を保持する</span>
-            </label>
-            <a href="#" style="color:#1E56A0;text-decoration:underline;">パスワードを忘れた方</a>
+          <button class="lg-btn" style="background:#1a1a1a;" onclick="showScreen(&#39;prop-list-new&#39;,null)">ログイン</button>
+          <div class="lg-links">
+            <a href="file:///C:/Users/nnakatsuka_mota/Downloads/login_2.html#">パスワードを忘れた方はこちら</a>
+            <a href="https://autoc-one.jp/ullo/help/inquiry/" target="_blank" rel="noopener">お問合せ</a>
           </div>
-
-          <button onclick="showScreen('s01',null)" style="width:100%;background:#c0392b;color:white;border:none;border-radius:6px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">ログイン → 成約申告へ</button>
         </div>
       </div>
     </div>
 
-    <!-- MOTA版ログイン -->
-    <div style="width:460px;max-width:100%;">
-      <div style="font-size:12px;font-weight:700;color:#888;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;">
-        <span style="background:#1a1a1a;color:white;padding:4px 12px;border-radius:3px;font-size:11px;">MOTA（運営）</span>
-        <span>PC版（v61）</span>
-      </div>
-      <div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.12);">
-        <!-- ヘッダ：MOTA管理画面 -->
-        <div style="background:#1a1a1a;padding:40px 32px;text-align:center;">
-          <div style="color:white;font-size:32px;font-weight:900;letter-spacing:-1px;">MöTA <span style="font-size:18px;font-weight:400;color:#bbb;">あんしん決済</span></div>
-          <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:6px;">運営管理画面（内部用）</div>
+    <!-- ===== 運営管理画面（MOTA）｜ヘッダー緑 ===== -->
+    <div class="lg-col">
+      <div class="lg-badge"><span class="tag" style="background:#1B8040;">運営（MOTA）</span><span>あんしん決済 運営管理</span></div>
+      <div class="lg-card">
+        <div class="lg-head" style="background:#1B8040;">
+          <div class="lg-logo" style="color:#fff;">MOTA</div>
+          <div class="lg-sub" style="color:#e6f3ea;">あんしん決済 運営管理画面</div>
         </div>
-        <div style="padding:40px 40px 44px;">
-          <div style="font-size:22px;font-weight:700;margin-bottom:8px;">ログイン</div>
-          <div style="font-size:13px;color:#666;margin-bottom:28px;line-height:1.8;">運営アカウントでログインしてください。</div>
-
-          <div style="margin-bottom:18px;">
-            <label style="font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;">メールアドレス</label>
-            <input type="email" placeholder="staff@mota.inc" style="width:100%;border:1px solid #ccc;border-radius:5px;padding:14px 16px;font-size:15px;font-family:inherit;box-sizing:border-box;">
+        <div class="lg-body">
+          <div class="lg-h1">ログイン</div>
+          <div class="lg-field">
+            <label>メールアドレス</label>
+            <input type="email" placeholder="staff@mota.inc">
           </div>
-
-          <div style="margin-bottom:18px;">
-            <label style="font-size:12px;color:#555;font-weight:700;display:block;margin-bottom:6px;">パスワード</label>
-            <input type="password" placeholder="" style="width:100%;border:1px solid #ccc;border-radius:5px;padding:14px 16px;font-size:15px;font-family:inherit;box-sizing:border-box;">
+          <div class="lg-field">
+            <label>パスワード</label>
+            <input type="password" placeholder="">
           </div>
-
-          <div style="margin-bottom:26px;font-size:12px;display:flex;align-items:center;justify-content:space-between;">
-            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#555;">
-              <input type="checkbox" style="width:14px;height:14px;cursor:pointer;">
-              <span>ログイン状態を保持する</span>
-            </label>
-            <a href="#" style="color:#1E56A0;text-decoration:underline;">パスワードを忘れた方</a>
-          </div>
-
-          <button onclick="showScreen('prop-list-new',null)" style="width:100%;background:#1a1a1a;color:white;border:none;border-radius:6px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">ログイン → 成約一覧へ</button>
+          <button class="lg-btn" style="background:#1B8040;" onclick="showScreen(&#39;prop-list-new&#39;,null)">ログイン</button>
         </div>
       </div>
     </div>
+
   </div>
 
-  <!-- 可変部分まとめ表 -->
-  <div style="background:white;padding:24px 28px;border-top:1px solid #e0e0e0;">
-    <div style="font-size:14px;font-weight:700;margin-bottom:12px;">📊 アクター別の可変部分一覧</div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:800px;">
-        <thead>
-          <tr style="background:#1a1a1a;color:white;">
-            <th style="padding:10px 14px;border:1px solid #333;text-align:left;font-weight:700;">可変要素</th>
-            <th style="padding:10px 14px;border:1px solid #333;text-align:left;font-weight:700;background:#1E56A0;">CS（売主）</th>
-            <th style="padding:10px 14px;border:1px solid #333;text-align:left;font-weight:700;background:#c0392b;">CL（買取店）</th>
-            <th style="padding:10px 14px;border:1px solid #333;text-align:left;font-weight:700;">MOTA（運営）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">画面サイズ</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">PC（v61でPC化）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">PC（v61でPC化）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">PC（v61でPC化）</td></tr>
-          <tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">ヘッダ色</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">青（#1E56A0）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">黒（#1a1a1a）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">黒（#1a1a1a）</td></tr>
-          <tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">ヘッダ表記</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">あんしん決済 — 売主専用</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">買取店管理画面</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">運営管理画面（内部用）</td></tr>
-          <tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">認証方式</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">電話番号＋SMS認証コード</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">買取店ID＋パスワード</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">メールアドレス＋パスワード</td></tr>
-          <tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">ボタンの色</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">青（CS系）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">赤（CL系）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">黒（MOTA系）</td></tr>
-          <tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">ログイン後の遷移先</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">CSマイページ（cs-mypage-status）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">CL買取店成約申告（s01・既存サービス）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">物件一覧（prop-list）に直接遷移</td></tr>
-          <tr><td style="padding:9px 14px;border:1px solid #e0e0e0;background:#f7f7f7;font-weight:700;">アクセスURL想定</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">SMS内リンク／cs.mota.inc</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">cl.mota.inc（または既存CLログイン）</td><td style="padding:9px 14px;border:1px solid #e0e0e0;">admin.mota.inc</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="design-note" style="margin-top:20px;">
-      <strong>📌 設計メモ（ログイン画面・v61 PC化）</strong>
-      ・<strong>【v61】PC化対応</strong>：フォーム幅 340px → 460px、ヘッダpadding拡大、入力欄/ボタンのサイズアップ、タイポも大きめに調整<br>
-      ・MOTA版の遷移先を `prop-list`（旧）→ `prop-list-new`（v56新案）に変更<br>
-      ・CL/MOTA版に「ログイン状態を保持する」チェックボックスを追加<br>
-      ・<strong>【v57新規】</strong>3アクターを同一画面コンポーネントで実装可能。アクセス元のサブドメインまたはURLパスで識別<br>
-      ・<strong>共通UIUX</strong>：縦長フォーム＋認証情報入力＋ログインボタンの構造<br>
-      ・<strong>可変部分</strong>：ヘッダ色・認証方式・ボタン色・ログイン後遷移先（上表参照）<br>
-      ・<strong>CS</strong>：あんしん決済利用案件の発生時にSMSで通知＋ログインURLを送る運用<br>
-      ・<strong>CL</strong>：既存CLマイページのアカウントを流用、または別途あんしん決済管理画面の専用アカウントを発行<br>
-      ・<strong>MOTA</strong>：運営スタッフ用。ログイン後は成約一覧へ直接遷移（中間のトップ画面なし）
-    </div>
-  </div>
-
-  <div class="app-footer">
-    <div class="links"><span>会社概要</span><span>利用規約</span></div>
-    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
-  </div>
 </div><!-- /screen-login -->
-<script src="../assets/common.js"></script>
-</body>
-</html>
+<script src="file:///C:/Users/nnakatsuka_mota/assets/common.js"></script>
+
+
+</body></html>
