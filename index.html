@@ -7,74 +7,60 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Noto Sans JP',sans-serif;background:#f4f5f7;color:#1f2430;font-size:14px;-webkit-font-smoothing:antialiased;}
+body{font-family:'Noto Sans JP',sans-serif;background:#e7eaf1;background-image:linear-gradient(180deg,#e9ecf3 0%,#dfe3ec 100%);background-attachment:fixed;color:#1f2430;font-size:14px;-webkit-font-smoothing:antialiased;}
 a{color:inherit;}
-.page{max-width:1240px;margin:0 auto;padding:30px 22px 70px;}
-
-/* ヒーロー */
-.hero{background:#fff;border:1px solid #e7e9ee;border-radius:16px;padding:26px 30px;margin-bottom:26px;position:relative;overflow:hidden;}
+.page{max-width:none;margin:0;padding:28px 30px 72px;}
+.hero{background:linear-gradient(135deg,#ffffff 0%,#eef2fa 100%);border:1px solid #d7dbe6;border-radius:16px;padding:26px 30px;margin-bottom:26px;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(30,45,90,.06);}
 .hero::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#1E56A0,#1B8040,#c0392b);}
 .hero h1{font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}
-.hero p{font-size:12.5px;color:#7a8190;line-height:1.8;}
-.hero .ver{display:inline-block;background:#eef1f6;color:#5b6270;font-size:11px;font-weight:700;border-radius:20px;padding:3px 12px;margin-left:8px;vertical-align:middle;}
-
-/* 凡例 */
-.legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid #eef0f3;font-size:11.5px;color:#6b7280;}
+.hero p{font-size:12.5px;color:#6a7280;line-height:1.8;}
+.hero .ver{display:inline-block;background:#e3e8f2;color:#46506a;font-size:11px;font-weight:700;border-radius:20px;padding:3px 12px;margin-left:8px;vertical-align:middle;}
+.legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid #e2e6ef;font-size:11.5px;color:#5b6270;}
 .legend .item{display:flex;align-items:center;gap:6px;}
 .legend .dot.on{background:#1E56A0;}
-.legend .alabel{font-size:10px;}
-
-/* セクション */
 .section{margin-bottom:30px;}
 .section-title{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
 .section-title .bar{width:5px;height:18px;border-radius:3px;}
 .section-title h2{font-size:15px;font-weight:800;letter-spacing:.2px;}
-.section-title .sub{font-size:11px;color:#9aa0ac;font-weight:500;}
-
-/* テーブル */
-.tablewrap{background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:auto;box-shadow:0 1px 2px rgba(20,30,60,.04);}
-.tablewrap{border-top:3px solid var(--accent,#1E56A0);}
-table.matrix{border-collapse:collapse;width:100%;min-width:780px;}
-table.matrix th,table.matrix td{border-bottom:1px solid #eef0f3;border-right:1px solid #f1f2f5;padding:10px 12px;text-align:center;vertical-align:middle;}
+.section-title .sub{font-size:11px;color:#7f8696;font-weight:500;}
+.tablewrap{background:#fff;border:1px solid #d7dbe6;border-radius:14px;overflow:auto;box-shadow:0 4px 16px rgba(30,45,90,.07);border-top:3px solid var(--accent,#1E56A0);}
+table.matrix{border-collapse:collapse;width:100%;table-layout:auto;}
+table.matrix th,table.matrix td{border-bottom:1px solid #eef0f3;border-right:1px solid #f1f2f5;padding:10px 10px;text-align:center;vertical-align:middle;white-space:normal;word-break:break-word;}
 table.matrix tr:last-child td,table.matrix tr:last-child th{border-bottom:none;}
-.rowhead{background:#fafbfc;color:#6b7280;font-size:11px;font-weight:700;text-align:left;white-space:nowrap;position:sticky;left:0;z-index:2;border-right:1px solid #e7e9ee;}
-.stepcol{background:#fafbfc;}
+.rowhead{background:#f7f8fb;color:#5b6270;font-size:11px;font-weight:700;text-align:left;white-space:nowrap;width:118px;position:sticky;left:0;z-index:2;border-right:1px solid #e2e6ef;}
+.stepcol{background:#f7f8fb;}
 .stephdr{display:inline-block;font-size:11px;font-weight:800;color:var(--accent,#1E56A0);letter-spacing:.3px;}
-.grouphdr{background:#f6f8fb;font-size:11.5px;font-weight:800;color:#3a4252;border-right:1px solid #e7e9ee;}
-.namecell{min-width:120px;}
-.scr-link{display:inline-block;font-size:12.5px;font-weight:700;color:#1f2430;text-decoration:none;line-height:1.5;border-bottom:2px solid transparent;transition:.12s;}
-.scr-link:hover{color:#1E56A0;border-bottom-color:#1E56A0;}
-.scr-nolink{font-size:12.5px;color:#aeb4be;font-weight:500;}
-.idchip{font-size:10.5px;color:#6b7280;background:#f1f3f7;border-radius:4px;padding:2px 7px;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap;}
+.grouphdr{background:#eef2f8;font-size:11.5px;font-weight:800;color:#36405a;border-right:1px solid #e2e6ef;}
+.namecell{min-width:90px;}
+.scr-link{display:inline-block;font-size:12.5px;font-weight:700;color:#1E56A0;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;line-height:1.55;transition:.12s;}
+.scr-link:hover{color:#103e7a;background:#eef4fc;border-radius:4px;}
+.scr-nolink{font-size:12px;color:#aeb4be;font-weight:500;}
+.idchip{display:inline-block;font-size:10px;color:#6b7280;background:#f1f3f7;border-radius:4px;padding:2px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;}
 .arow td,.arow th{background:#fff;}
 .dot{display:inline-block;width:11px;height:11px;border-radius:50%;}
 .dot.on{box-shadow:0 0 0 3px rgba(0,0,0,.04);}
 .arow:nth-child(3) .dot.on{background:#1E56A0;}
 .arow:nth-child(4) .dot.on{background:#c0392b;}
 .arow:nth-child(5) .dot.on{background:#1B8040;}
-.dash{color:#d0d4db;font-weight:700;}
+.dash{color:#cfd3db;font-weight:700;}
+.dot-link{display:inline-flex;align-items:center;gap:5px;text-decoration:none;cursor:pointer;border:1px solid #cfe0d6;background:#f1f8f3;border-radius:20px;padding:3px 10px;}
+.dot-link:hover{background:#e2f1e8;border-color:#1B8040;}
+.dot-link .lkarrow{font-size:10.5px;font-weight:800;color:#1B8040;text-decoration:underline;text-underline-offset:2px;}
 .alabel{display:inline-block;font-size:10px;font-weight:800;color:#fff;border-radius:4px;padding:2px 8px;}
-.alabel.cs{background:#1E56A0;}
-.alabel.cl{background:#c0392b;}
-.alabel.mota{background:#1B8040;}
+.alabel.cs{background:#1E56A0;} .alabel.cl{background:#c0392b;} .alabel.mota{background:#1B8040;}
 .ex{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:12px;font-weight:800;}
-.ex-o{background:#e7f4ec;color:#1B8040;}
-.ex-x{background:#f0f1f3;color:#aab0ba;}
-.ex-q{background:#fdf3e0;color:#b8860b;}
-
-/* その他 */
+.ex-o{background:#e7f4ec;color:#1B8040;} .ex-x{background:#eef0f3;color:#aab0ba;} .ex-q{background:#fdf3e0;color:#b8860b;}
 .others{display:flex;flex-wrap:wrap;gap:10px;}
-.other-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:10px 14px;text-decoration:none;transition:.12s;box-shadow:0 1px 2px rgba(20,30,60,.03);}
-.other-chip:hover{border-color:#1E56A0;box-shadow:0 3px 10px rgba(30,86,160,.10);transform:translateY(-1px);}
-.oc-name{font-size:12.5px;font-weight:700;color:#1f2430;}
+.other-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #d7dbe6;border-radius:10px;padding:10px 14px;text-decoration:none;transition:.12s;box-shadow:0 2px 8px rgba(30,45,90,.05);}
+.other-chip:hover{border-color:#1E56A0;box-shadow:0 5px 14px rgba(30,86,160,.12);transform:translateY(-1px);}
+.oc-name{font-size:12.5px;font-weight:700;color:#1E56A0;text-decoration:underline;text-underline-offset:3px;}
 </style>
 </head>
 <body>
 <div class="page">
-
   <div class="hero">
     <h1>あんしん決済 Smart版｜画面マップ<span class="ver">v61 / 分割版</span></h1>
-    <p>STEP・横断要素・例外フローで画面を整理。画面名をクリックすると各画面へ移動します。<br>
+    <p>STEP・横断要素・例外フローで画面を整理。<b>青い下線のテキストはリンク</b>です（クリックで各画面へ）。<br>
        編集は <code class="idchip">screens/&lt;画面ID&gt;.html</code> を直接。</p>
     <div class="legend">
       <span class="item"><span class="dot on"></span>該当アクター</span>
@@ -90,64 +76,23 @@ table.matrix tr:last-child td,table.matrix tr:last-child th{border-bottom:none;}
 
   <div class="section">
     <div class="section-title"><span class="bar" style="background:#1E56A0;"></span><h2>メインフロー</h2><span class="sub">STEP① 〜 STEP⑦</span></div>
-    <div class="tablewrap" style="--accent:#1E56A0;">
-<table class="matrix">
-<thead><tr><th class="rowhead">区分</th><th class="stepcol"><span class="stephdr">STEP①</span></th><th class="stepcol"><span class="stephdr">STEP②</span></th><th class="stepcol"><span class="stephdr">STEP③</span></th><th class="stepcol"><span class="stephdr">STEP③※</span></th><th class="stepcol"><span class="stephdr">STEP④</span></th><th class="stepcol"><span class="stephdr">STEP⑤</span></th><th class="stepcol"><span class="stephdr">STEP⑤※</span></th><th class="stepcol"><span class="stephdr">STEP⑤※</span></th><th class="stepcol"><span class="stephdr">STEP⑥</span></th><th class="stepcol"><span class="stephdr">STEP⑦</span></th></tr></thead>
-<tbody>
-<tr><th class="rowhead">画面名・機能名</th><td class="namecell"><a class="scr-link" href="screens/s02.html">買主：成約情報登録</a></td><td class="namecell"><a class="scr-link" href="screens/s03.html">売主：成約情報承認</a></td><td class="namecell"><a class="scr-link" href="screens/s05.html">売主：入金</a></td><td class="namecell"><a class="scr-link" href="screens/s05-cs-oikin.html">追い金入金</a></td><td class="namecell"><span class="scr-nolink">入金確認</span></td><td class="namecell"><a class="scr-link" href="screens/s09.html">買主：車両確認</a></td><td class="namecell"><a class="scr-link" href="screens/s09-gengaku.html">買主：減額申請</a></td><td class="namecell"><a class="scr-link" href="screens/s03-gengaku.html">売主：減額承認</a></td><td class="namecell"><span class="scr-nolink">買主：送金</span></td><td class="namecell"><span class="scr-nolink">完了</span></td></tr>
-<tr><th class="rowhead">画面ID</th><td><code class="idchip">s02</code></td><td><code class="idchip">s03</code></td><td><code class="idchip">s05</code></td><td><code class="idchip">s05-cs-oikin</code></td><td><code class="idchip">payment-mgmt 入金履歴</code></td><td><code class="idchip">s09</code></td><td><code class="idchip">s09-gengaku</code></td><td><code class="idchip">s03-gengaku</code></td><td><code class="idchip">payment-mgmt 送金対応</code></td><td><code class="idchip">payment-mgmt 送金履歴</code></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel cs">CS</span></th><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel cl">CL</span></th><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel mota">MOTA</span></th><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td></tr>
-<tr><th class="rowhead">画面有無</th><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-x">×</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-x">×</span></td><td><span class="ex ex-x">×</span></td></tr>
-</tbody>
-</table>
-</div>
+    <div class="tablewrap" style="--accent:#1E56A0;"><table class="matrix"><thead><tr><th class="rowhead">区分</th><th class="stepcol"><span class="stephdr">STEP①</span></th><th class="stepcol"><span class="stephdr">STEP②</span></th><th class="stepcol"><span class="stephdr">STEP③</span></th><th class="stepcol"><span class="stephdr">STEP③※</span></th><th class="stepcol"><span class="stephdr">STEP④</span></th><th class="stepcol"><span class="stephdr">STEP⑤</span></th><th class="stepcol"><span class="stephdr">STEP⑤※</span></th><th class="stepcol"><span class="stephdr">STEP⑤※</span></th><th class="stepcol"><span class="stephdr">STEP⑥</span></th><th class="stepcol"><span class="stephdr">STEP⑦</span></th></tr></thead><tbody><tr><th class="rowhead">画面名・機能名</th><td class="namecell"><a class="scr-link" href="screens/s02.html">買主：成約情報登録</a></td><td class="namecell"><a class="scr-link" href="screens/s03.html">売主：成約情報承認</a></td><td class="namecell"><a class="scr-link" href="screens/s05.html">売主：入金</a></td><td class="namecell"><a class="scr-link" href="screens/s05-cs-oikin.html">追い金入金</a></td><td class="namecell"><span class="scr-nolink">入金確認</span></td><td class="namecell"><a class="scr-link" href="screens/s09.html">買主：車両確認</a></td><td class="namecell"><a class="scr-link" href="screens/s09-gengaku.html">買主：減額申請</a></td><td class="namecell"><a class="scr-link" href="screens/s03-gengaku.html">売主：減額承認</a></td><td class="namecell"><span class="scr-nolink">買主：送金</span></td><td class="namecell"><span class="scr-nolink">完了</span></td></tr><tr><th class="rowhead">画面ID</th><td><code class="idchip">s02</code></td><td><code class="idchip">s03</code></td><td><code class="idchip">s05</code></td><td><code class="idchip">s05-cs-oikin</code></td><td><code class="idchip">payment-mgmt 入金履歴</code></td><td><code class="idchip">s09</code></td><td><code class="idchip">s09-gengaku</code></td><td><code class="idchip">s03-gengaku</code></td><td><code class="idchip">payment-mgmt 送金対応</code></td><td><code class="idchip">payment-mgmt 送金履歴</code></td></tr><tr class="arow"><th class="rowhead"><span class="alabel cs">CS</span></th><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr><tr class="arow"><th class="rowhead"><span class="alabel cl">CL</span></th><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr><tr class="arow"><th class="rowhead"><span class="alabel mota">MOTA</span></th><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td></tr><tr><th class="rowhead">画面有無</th><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-x">×</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-x">×</span></td><td><span class="ex ex-x">×</span></td></tr></tbody></table></div>
   </div>
 
   <div class="section">
     <div class="section-title"><span class="bar" style="background:#1B8040;"></span><h2>横断要素</h2><span class="sub">ログイン／基本情報／共通パーツ／物件／MOTA運営</span></div>
-    <div class="tablewrap" style="--accent:#1B8040;">
-<table class="matrix">
-<thead>
-<tr><th class="rowhead">区分</th><th class="grouphdr" colspan="1">ログイン</th><th class="grouphdr" colspan="1">基本情報</th><th class="grouphdr" colspan="2">共通パーツ</th><th class="grouphdr" colspan="2">物件</th><th class="grouphdr" colspan="2">MOTA運営</th></tr>
-</thead>
-<tbody>
-<tr><th class="rowhead">画面名・機能名</th><td class="namecell"><a class="scr-link" href="screens/login.html">ログイン画面</a></td><td class="namecell"><a class="scr-link" href="screens/cl-basic-info.html">CL基本情報</a></td><td class="namecell"><span class="scr-nolink">ヘッダー</span></td><td class="namecell"><span class="scr-nolink">フッター</span></td><td class="namecell"><a class="scr-link" href="screens/prop-list-new.html">物件一覧</a></td><td class="namecell"><a class="scr-link" href="screens/prop-detail-cl.html">物件詳細</a></td><td class="namecell"><a class="scr-link" href="screens/payment-mgmt.html">入金/送金一覧</a></td><td class="namecell"><a class="scr-link" href="screens/payment-mgmt.html">データ発行（前月分預り金・仕訳）</a></td></tr>
-<tr><th class="rowhead">画面ID</th><td><code class="idchip">login</code></td><td><code class="idchip">cl-basic-info</code></td><td><code class="idchip">共通</code></td><td><code class="idchip">共通</code></td><td><code class="idchip">prop-list</code></td><td><code class="idchip">prop-detail-cl</code></td><td><code class="idchip">payment-mgmt</code></td><td><code class="idchip">payment-mgmt データ発行タブ</code></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel cs">CS</span></th><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel cl">CL</span></th><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel mota">MOTA</span></th><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td></tr>
-<tr><th class="rowhead">画面有無</th><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td></tr>
-</tbody>
-</table>
-</div>
+    <div class="tablewrap" style="--accent:#1B8040;"><table class="matrix"><thead><tr><th class="rowhead">区分</th><th class="grouphdr" colspan="1">ログイン</th><th class="grouphdr" colspan="1">基本情報</th><th class="grouphdr" colspan="2">共通パーツ</th><th class="grouphdr" colspan="2">物件</th><th class="grouphdr" colspan="2">MOTA運営</th></tr></thead><tbody><tr><th class="rowhead">画面名・機能名</th><td class="namecell"><a class="scr-link" href="screens/login.html">ログイン画面</a></td><td class="namecell"><a class="scr-link" href="screens/cl-basic-info.html">CL基本情報</a></td><td class="namecell"><span class="scr-nolink">ヘッダー</span></td><td class="namecell"><span class="scr-nolink">フッター</span></td><td class="namecell"><a class="scr-link" href="screens/prop-list-new.html">物件一覧</a></td><td class="namecell"><a class="scr-link" href="screens/prop-detail-cl.html">物件詳細</a></td><td class="namecell"><a class="scr-link" href="screens/payment-mgmt.html">入金/送金一覧</a></td><td class="namecell"><a class="scr-link" href="screens/payment-mgmt.html">データ発行（前月分預り金・仕訳）</a></td></tr><tr><th class="rowhead">画面ID</th><td><code class="idchip">login</code></td><td><code class="idchip">cl-basic-info</code></td><td><code class="idchip">共通</code></td><td><code class="idchip">共通</code></td><td><code class="idchip">prop-list</code></td><td><code class="idchip">prop-detail-cl</code></td><td><code class="idchip">payment-mgmt</code></td><td><code class="idchip">payment-mgmt データ発行タブ</code></td></tr><tr class="arow"><th class="rowhead"><span class="alabel cs">CS</span></th><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr><tr class="arow"><th class="rowhead"><span class="alabel cl">CL</span></th><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr><tr class="arow"><th class="rowhead"><span class="alabel mota">MOTA</span></th><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><a class="dot-link" href="screens/prop-detail.html" title="開く"><span class="dot on"></span><span class="lkarrow">開く ↗</span></a></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td></tr><tr><th class="rowhead">画面有無</th><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td></tr></tbody></table></div>
   </div>
 
   <div class="section">
     <div class="section-title"><span class="bar" style="background:#c0392b;"></span><h2>例外フロー・待機画面・基本情報</h2><span class="sub">メインフロー外</span></div>
-    <div class="tablewrap" style="--accent:#c0392b;">
-<table class="matrix">
-<thead>
-<tr><th class="rowhead">区分</th><th class="grouphdr" colspan="2">例外フロー</th><th class="grouphdr" colspan="2">待機画面</th><th class="grouphdr" colspan="1">基本情報</th></tr>
-</thead>
-<tbody>
-<tr><th class="rowhead">画面名・機能名</th><td class="namecell"><a class="scr-link" href="screens/s09-cancel.html">キャンセル申請</a></td><td class="namecell"><a class="scr-link" href="screens/s03-cancel.html">キャンセル承認</a></td><td class="namecell"><a class="scr-link" href="screens/no-action-cs.html">CS待機画面</a></td><td class="namecell"><a class="scr-link" href="screens/no-action-cl.html">CL待機画面</a></td><td class="namecell"><a class="scr-link" href="screens/cs-settings.html">CS基本情報</a></td></tr>
-<tr><th class="rowhead">画面ID</th><td><code class="idchip">s09-cancel</code></td><td><code class="idchip">s03-cancel</code></td><td><code class="idchip">no-action-cs</code></td><td><code class="idchip">no-action-cl</code></td><td><code class="idchip">cs-settings</code></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel cs">CS</span></th><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel cl">CL</span></th><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td></tr>
-<tr class="arow"><th class="rowhead"><span class="alabel mota">MOTA</span></th><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr>
-<tr><th class="rowhead">画面有無</th><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-q">？</span></td><td><span class="ex ex-o">○</span></td></tr>
-</tbody>
-</table>
-</div>
+    <div class="tablewrap" style="--accent:#c0392b;"><table class="matrix"><thead><tr><th class="rowhead">区分</th><th class="grouphdr" colspan="2">例外フロー</th><th class="grouphdr" colspan="2">待機画面</th><th class="grouphdr" colspan="1">基本情報</th></tr></thead><tbody><tr><th class="rowhead">画面名・機能名</th><td class="namecell"><a class="scr-link" href="screens/s09-cancel.html">キャンセル申請</a></td><td class="namecell"><a class="scr-link" href="screens/s03-cancel.html">キャンセル承認</a></td><td class="namecell"><a class="scr-link" href="screens/no-action-cs.html">CS待機画面</a></td><td class="namecell"><a class="scr-link" href="screens/no-action-cl.html">CL待機画面</a></td><td class="namecell"><a class="scr-link" href="screens/cl-koza-link.html">CS基本情報</a></td></tr><tr><th class="rowhead">画面ID</th><td><code class="idchip">s09-cancel</code></td><td><code class="idchip">s03-cancel</code></td><td><code class="idchip">no-action-cs</code></td><td><code class="idchip">no-action-cl</code></td><td><code class="idchip">cl-koza-link</code></td></tr><tr class="arow"><th class="rowhead"><span class="alabel cs">CS</span></th><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td></tr><tr class="arow"><th class="rowhead"><span class="alabel cl">CL</span></th><td><span class="dot on"></span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td><td><span class="dot on"></span></td><td><span class="dash">−</span></td></tr><tr class="arow"><th class="rowhead"><span class="alabel mota">MOTA</span></th><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td><td><span class="dash">−</span></td></tr><tr><th class="rowhead">画面有無</th><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-o">○</span></td><td><span class="ex ex-q">？</span></td><td><span class="ex ex-o">○</span></td></tr></tbody></table></div>
   </div>
 
   <div class="section">
     <div class="section-title"><span class="bar" style="background:#8a91a0;"></span><h2>その他の画面</h2><span class="sub">マトリクス外（参考）</span></div>
-    <div class="others"><a class="other-chip" href="screens/s01.html"><span class="oc-name">買取店 成約申告（既存CLマイページ｜スコープ外）</span><code class="idchip">s01</code></a><a class="other-chip" href="screens/s03c.html"><span class="oc-name">売主 成約確認 完了</span><code class="idchip">s03c</code></a><a class="other-chip" href="screens/prop-detail.html"><span class="oc-name">物件詳細（MOTA）</span><code class="idchip">prop-detail</code></a><a class="other-chip" href="screens/cl-koza-link.html"><span class="oc-name">口座連携（CL）</span><code class="idchip">cl-koza-link</code></a><a class="other-chip" href="screens/summary.html"><span class="oc-name">利用実績サマリ</span><code class="idchip">summary</code></a></div>
+    <div class="others"><a class="other-chip" href="screens/summary.html"><span class="oc-name">利用実績サマリ</span><code class="idchip">summary</code></a><a class="other-chip" href="screens/cs-settings.html"><span class="oc-name">CS各種設定</span><code class="idchip">cs-settings</code></a></div>
   </div>
-
 </div>
 </body>
 </html>
