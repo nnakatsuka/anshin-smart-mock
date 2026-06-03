@@ -21,98 +21,121 @@
   <div style="background:#fff3e0;border-bottom:1px solid #ffb74d;padding:6px 28px;font-size:11px;color:#7a3e0d;">
     <strong>例外フロー｜発動可能STEP：⑤（受領連絡）｜発動者：買取店｜1取引につき最大1回（確定後は再発動不可）｜確定時はSTEP⑥送金が二重送金（売主送金＋買取店返金）に切替</strong>
   </div>
+
+  <!-- ヘッダー（基本情報画面と同デザイン：ロゴ＋右側に物件一覧へ） -->
   <div class="app-header">
     <div style="display:flex;align-items:center;gap:24px;height:100%;">
       <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
     </div>
-    <div class="menu">
-      <div class="menu-item active" onclick="showScreen('prop-list-new',null)">成約</div>
-      <div class="menu-item" onclick="showScreen('cl-basic-info',null)">各種設定</div>
-      <div class="menu-item" onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div>
-    </div>
     <div class="right-tools">
-      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
-      <button class="logout-btn">ログアウト</button>
+      <a href="prop-list-new.html" style="color:#fff;font-size:13px;font-weight:700;text-decoration:none;border:1px solid #555;border-radius:3px;padding:7px 16px;">物件一覧へ →</a>
     </div>
   </div>
-  <div class="payment-body">
-    <div style="font-size:18px;font-weight:700;margin-bottom:6px;">買取金額を減額する</div>
-    <div style="font-size:12px;color:#888;margin-bottom:20px;">車両の状態に問題があり、売主と減額再合意した場合に使用してください。</div>
 
-    <!-- v61：2カラム化（左：情報＋入力、右：注意＋アクション） -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+  <!-- タイトル帯（基本情報画面と同デザイン） -->
+  <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
+    <div class="pc-container">
+      <div style="font-size:11px;color:#888;margin-bottom:6px;">減額申請</div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">買取金額を減額する</div>
+      <div style="font-size:12px;color:#888;margin-bottom:20px;">車両の状態に問題があり、売主と減額再合意した場合に使用してください。</div>
 
-      <!-- 左：対象物件＋減額情報入力 -->
-      <div>
-        <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:14px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e0e0e0;">対象物件</div>
-          <div style="display:grid;grid-template-columns:120px 1fr;gap:0;border:1px solid #e0e0e0;">
-            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">査定番号</div>
-            <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">2119387</div>
-            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">売主名</div>
-            <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">菅原 綾香</div>
-            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">車両名</div>
-            <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">トヨタ ヴォクシー ZS</div>
-            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">契約書</div>
-            <div style="padding:9px 14px;font-size:12px;"><span style="color:#1E56A0;text-decoration:underline;cursor:pointer;">契約書PDF.pdf</span></div>
+      <!-- 2カラム（左：情報＋入力、右：注意＋アクション） -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+
+        <!-- 左：対象物件＋減額情報入力＋ローン残債 -->
+        <div>
+          <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:14px;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e0e0e0;">対象物件</div>
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:0;border:1px solid #e0e0e0;">
+              <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">査定番号</div>
+              <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">2119387</div>
+              <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">売主名</div>
+              <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">菅原 綾香</div>
+              <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">車両名</div>
+              <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">トヨタ ヴォクシー ZS</div>
+              <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">契約書</div>
+              <div style="padding:9px 14px;font-size:12px;"><span style="color:#1E56A0;text-decoration:underline;cursor:pointer;">契約書PDF.pdf</span></div>
+            </div>
           </div>
-        </div>
 
-        <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e0e0e0;">減額内容の入力</div>
+          <!-- 減額内容の入力 -->
+          <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:14px;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;">減額内容の入力</div>
+            <div style="font-size:12px;color:#666;margin-bottom:16px;">減額後の金額を入力ください。</div>
 
-          <div class="info-grid"><div class="ig-label">減額前の金額</div><div class="ig-val" style="font-size:15px;font-weight:700;color:#1a1a1a;">¥1,500,000</div></div>
-          <div class="info-grid">
-            <div class="ig-label">減額後の金額 <span style="color:#c0392b;">*</span></div>
-            <div class="ig-val">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:15px;font-weight:700;">¥</span>
-                <input type="number" id="gengaku-after" value="" placeholder="例：1300000" oninput="calcGengaku()" style="width:160px;border:1px solid #ccc;border-radius:2px;padding:7px 10px;font-size:15px;font-weight:700;font-family:inherit;">
-                <span style="font-size:13px;color:#555;">円</span>
+            <div class="info-grid"><div class="ig-label">減額前の金額</div><div class="ig-val" style="font-size:15px;font-weight:700;color:#1a1a1a;">¥1,500,000</div></div>
+            <div class="info-grid">
+              <div class="ig-label">減額後の金額 <span style="color:#c0392b;">*</span></div>
+              <div class="ig-val">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:15px;font-weight:700;">¥</span>
+                  <input type="number" value="" placeholder="例：1300000" style="width:160px;border:1px solid #ccc;border-radius:2px;padding:7px 10px;font-size:15px;font-weight:700;font-family:inherit;">
+                  <span style="font-size:13px;color:#555;">円</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div style="font-size:12px;font-weight:700;margin-bottom:6px;color:#555;">減額後の契約書 <span style="color:#c0392b;">*</span></div>
+              <div style="border:2px dashed #ccc;border-radius:4px;padding:18px;text-align:center;background:#fafafa;cursor:pointer;">
+                <div style="font-size:24px;margin-bottom:4px;">📎</div>
+                <div style="font-size:12px;color:#555;">クリックまたはドラッグ＆ドロップ</div>
+                <div style="font-size:10px;color:#aaa;">PDF / JPG / PNG（最大10MB）</div>
               </div>
             </div>
           </div>
-          <div class="info-grid">
-            <div class="ig-label">減額した金額</div>
-            <div class="ig-val" id="gengaku-diff" style="font-size:15px;font-weight:700;color:#c0392b;">— 入力後に自動算出 —</div>
-          </div>
 
-          <div style="margin-top:16px;">
-            <div style="font-size:12px;font-weight:700;margin-bottom:6px;color:#555;">減額後の巻き直した契約書 <span style="color:#c0392b;">*</span></div>
-            <div style="border:2px dashed #ccc;border-radius:4px;padding:18px;text-align:center;background:#fafafa;cursor:pointer;">
-              <div style="font-size:24px;margin-bottom:4px;">📎</div>
-              <div style="font-size:12px;color:#555;">クリックまたはドラッグ＆ドロップ</div>
-              <div style="font-size:10px;color:#aaa;">PDF / JPG / PNG（最大10MB）</div>
+          <!-- ローン残債の確認（新規） -->
+          <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;">ローン残債の確認</div>
+            <div style="font-size:12px;color:#666;margin-bottom:16px;">ローン残債に変更がある場合のみ、下記、入力ください。</div>
+
+            <div class="info-grid">
+              <div class="ig-label">ローン残債 再確認日</div>
+              <div class="ig-val"><input type="date" style="border:1px solid #ccc;border-radius:2px;padding:7px 10px;font-size:13px;font-family:inherit;"></div>
+            </div>
+            <div class="info-grid">
+              <div class="ig-label">ローン残債 有効期限</div>
+              <div class="ig-val"><input type="date" style="border:1px solid #ccc;border-radius:2px;padding:7px 10px;font-size:13px;font-family:inherit;"></div>
+            </div>
+            <div class="info-grid">
+              <div class="ig-label">ローン残債金額</div>
+              <div class="ig-val">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:15px;font-weight:700;">¥</span>
+                  <input type="number" value="" placeholder="例：800000" style="width:160px;border:1px solid #ccc;border-radius:2px;padding:7px 10px;font-size:15px;font-weight:700;font-family:inherit;">
+                  <span style="font-size:13px;color:#555;">円</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- 右：注意事項＋送信アクション -->
-      <div>
-        <div style="background:#fce4ec;border:2px solid #c0392b;border-radius:4px;padding:16px 20px;margin-bottom:14px;">
-          <div style="font-size:13px;font-weight:700;color:#c0392b;margin-bottom:8px;">⚠️ 減額申請の注意事項</div>
-          <div style="font-size:12px;color:#c0392b;line-height:1.9;">
-            ・減額申請後は取り消しができません。<br>
-            ・必ず売主との合意を得た上で申請してください。
+        <!-- 右：注意事項＋送信アクション -->
+        <div>
+          <div style="background:#fce4ec;border:2px solid #c0392b;border-radius:4px;padding:16px 20px;margin-bottom:14px;">
+            <div style="font-size:13px;font-weight:700;color:#c0392b;margin-bottom:8px;">⚠️ 減額申請の注意事項</div>
+            <div style="font-size:12px;color:#c0392b;line-height:1.9;">
+              ・減額申請後は取り消しができません。<br>
+              ・必ず売主との合意を得た上で申請してください。
+            </div>
+          </div>
+
+          <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:16px 20px;margin-bottom:14px;">
+            <div style="font-size:13px;font-weight:700;color:#856404;margin-bottom:10px;">📋 減額申請後の流れ</div>
+            <div style="display:flex;flex-direction:column;gap:8px;font-size:11px;color:#555;">
+              <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#e67e22;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">① 申請</span><span>減額申請ボタンを押下すると、減額依頼の確認依頼を売主へ自動送信します。</span></div>
+              <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#e67e22;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">② 確認</span><span>売主が確認画面で同意／非同意を回答します。非同意の場合はMOTA事務局が協議します。</span></div>
+              <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#e67e22;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">③ OK</span><span>売主が同意した場合、減額後の金額で送金処理に進みます。</span></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <button onclick="if(confirm('減額申請を送信します。\n\n⚠️ 申請後は取り消しできません。\n必ず売主との合意を得た上で申請してください。\n\nよろしいですか？'))alert('減額申請を送信しました。MOTAが売主への確認依頼を行います。')" style="background:#e67e22;color:white;border:none;border-radius:4px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">減額申請</button>
           </div>
         </div>
 
-        <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:16px 20px;margin-bottom:14px;">
-          <div style="font-size:13px;font-weight:700;color:#856404;margin-bottom:10px;">📋 減額申請後の流れ</div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:11px;color:#555;">
-            <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#e67e22;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">① 申請</span><span>減額申請ボタンを押下すると、減額依頼の確認依頼を売主へ自動送信します。</span></div>
-            <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#e67e22;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">② 確認</span><span>売主が確認画面で同意／非同意を回答します。非同意の場合はMOTA事務局が協議します。</span></div>
-            <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#e67e22;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">③ OK</span><span>売主が同意した場合、減額後の金額で送金処理に進みます。</span></div>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <button onclick="if(confirm('減額申請を送信します。\n\n⚠️ 申請後は取り消しできません。\n必ず売主との合意を得た上で申請してください。\n\nよろしいですか？'))alert('減額申請を送信しました。MOTAが売主への確認依頼を行います。')" style="background:#e67e22;color:white;border:none;border-radius:4px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">減額申請を送る</button>
-          <button onclick="showScreen('s09',null)" style="background:white;color:#333;border:1px solid #bbb;border-radius:3px;padding:10px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">← 戻る</button>
-        </div>
       </div>
-
     </div>
   </div>
 
