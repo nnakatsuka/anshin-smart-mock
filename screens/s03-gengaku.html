@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>減額依頼確認 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">s03-gengaku</span><span class="nm">減額依頼確認</span>
+</div>
+<div class="screen active" id="screen-s03-gengaku">
+  <div class="step-desc-bar" style="background:#1E56A0;">
+    <span class="step-desc-num" style="background:#e67e22;color:white;">例:減額</span>
+    <span class="step-desc-title">減額依頼確認 — 買取店からの減額提案を売主が確認・同意</span>
+    <span class="step-desc-actor">アクター：売主（CS）</span>
+  </div>
+  <div style="background:#fff3e0;border-bottom:1px solid #ffb74d;padding:6px 28px;font-size:11px;color:#7a3e0d;">
+    <strong>例外フロー｜発動可能STEP：⑤｜CL発動の減額提案にCSが同意</strong>
+  </div>
+  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
+    <strong>【v59 PC化】</strong>1200px統一・共通ヘッダー適用
+  </div>
+
+  <div class="app-header cs">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('no-action-cs',null)">MöTA</span>
+      <span style="color:rgba(255,255,255,0.85);font-size:12px;">あんしん決済 — 売主専用</span>
+    </div>
+    <div class="menu"><div class="menu-item active">各種設定</div><div class="menu-item " onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div></div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+
+  <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
+    <div class="pc-container">
+      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">⚠ 減額依頼の確認</div>
+      <div style="font-size:12px;color:#888;margin-bottom:20px;">買取店から減額の提案が届いています。内容をご確認のうえ、同意または辞退を選択してください。</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+
+        <!-- 左：減額内容 -->
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e67e22;color:#e67e22;">減額内容</div>
+
+          <div style="display:grid;grid-template-columns:140px 1fr;gap:10px 14px;font-size:13px;line-height:1.8;margin-bottom:18px;">
+            <div style="color:#888;font-weight:700;">査定番号</div><div style="font-weight:700;">2119480</div>
+            <div style="color:#888;font-weight:700;">車両名</div><div>トヨタ シエンタ</div>
+            <div style="color:#888;font-weight:700;">買取店</div><div>ｳｨｰｶｰｽﾞ</div>
+            <div style="color:#888;font-weight:700;">当初買取金額</div><div>¥1,200,000</div>
+            <div style="color:#888;font-weight:700;">減額額</div><div style="color:#c0392b;font-weight:700;font-size:16px;">−¥200,000</div>
+            <div style="color:#888;font-weight:700;">減額後の金額</div><div style="font-weight:700;font-size:16px;">¥1,000,000</div>
+          </div>
+
+          <div style="background:#fafafa;border-left:3px solid #e67e22;padding:12px 14px;font-size:11px;color:#555;line-height:1.7;">
+            <div style="font-weight:700;color:#7a3e0d;margin-bottom:4px;">📝 買取店からのコメント</div>
+            車両確認時にエアコン不調と内装の傷を確認しました。<br>修理費の見積もりに基づき減額をご相談させていただきます。
+          </div>
+        </div>
+
+        <!-- 右：判定 -->
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">ご返答</div>
+
+          <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:6px;padding:10px 12px;font-size:11px;color:#856404;margin-bottom:14px;line-height:1.7;">
+            ⚠️ 減額に同意される場合、減額後の金額で送金処理が進みます。同意しない場合は買取店との再交渉、またはキャンセルとなります。
+          </div>
+
+          <!-- v61：ラジオ→ボタンに変更 -->
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:6px;">
+            <button onclick="if(confirm('減額（¥1,000,000）に同意します。よろしいですか？'))alert('減額に同意しました。減額後の金額で送金処理に進みます。')" style="background:#1D6B35;color:white;border:none;border-radius:6px;padding:16px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">✓ 減額に同意する（¥1,000,000で取引）</button>
+            <button onclick="if(confirm('減額に同意しません。取引キャンセルに進みます。よろしいですか？'))alert('同意しない旨を送信しました。')" style="background:white;color:#c0392b;border:2px solid #c0392b;border-radius:6px;padding:14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✕ 同意しない（取引キャンセル）</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-note">
+        <strong>📌 設計メモ（CS減額確認・v59 PC化）</strong>
+        ・<strong>【v59】PC化</strong>：1200px幅・2カラム（左=減額内容、右=判定）<br>
+        ・同意時は減額後金額で送金処理へ進行／不同意時はキャンセルフローへ
+      </div>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>

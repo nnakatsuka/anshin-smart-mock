@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物件一覧 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">prop-list-new</span><span class="nm">物件一覧</span>
+</div>
+<div class="screen active" id="screen-prop-list-new">
+  <div class="step-desc-bar">
+    <span class="step-desc-num">一覧 新</span>
+    <span class="step-desc-title">物件一覧（新案）— マトリクス型・絞り込み画面内表示・STEP横並び</span>
+    <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（MOTA）</span>
+  </div>
+
+  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
+    <strong>【v56新規】</strong>既存「物件一覧」とは別タブで併存。マトリクス型テーブル／STEPヘッダ番号のみ／絞り込みデフォルト表示／表示切替バッジで「全て・通常進行中・キャンセル一覧・取引完了履歴」を切替。
+  </div>
+
+  <div class="app-header mota">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済 管理画面</span></span>
+    </div>
+    <div class="menu">
+      <div class="menu-item active" onclick="showScreen('prop-list-new',null)">成約</div>
+      <div class="menu-item">オペレータ</div>
+      <div class="menu-item" onclick="showScreen('payment-mgmt',null)">入金/送金</div>
+    </div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+  <div style="background:#f0f0ee;padding:16px 28px;min-height:100vh;">
+    <div style="font-size:20px;font-weight:700;margin-bottom:14px;">物件一覧</div>
+
+    <!-- 表示切替バッジ -->
+    <div style="background:white;padding:14px 18px;border-radius:6px;margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <span style="font-size:11px;color:#888;font-weight:700;">表示切替：</span>
+      <button onclick="plnFilter('all')" id="pln-f-all" style="background:#1a1a1a;color:white;border:1px solid #1a1a1a;border-radius:20px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">すべて</button>
+      <button onclick="plnFilter('progress')" id="pln-f-progress" style="background:white;color:#1a1a1a;border:1px solid #ccc;border-radius:20px;padding:6px 16px;font-size:12px;cursor:pointer;font-family:inherit;">通常進行中</button>
+      <button onclick="plnFilter('cancel')" id="pln-f-cancel" style="background:white;color:#e67e22;border:1px solid #e67e22;border-radius:20px;padding:6px 16px;font-size:12px;cursor:pointer;font-family:inherit;">⚠ キャンセル一覧</button>
+      <button onclick="plnFilter('complete')" id="pln-f-complete" style="background:white;color:#1D6B35;border:1px solid #1D6B35;border-radius:20px;padding:6px 16px;font-size:12px;cursor:pointer;font-family:inherit;">✓ 取引完了履歴</button>
+    </div>
+
+    <!-- 絞り込みUI（画面内デフォ表示） -->
+    <div style="background:white;padding:14px 18px;border-radius:6px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span style="font-size:11px;color:#888;font-weight:700;">絞り込み：</span>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:10px;color:#666;">サービス区分</label>
+        <select style="border:1px solid #ccc;border-radius:3px;padding:5px 10px;font-size:12px;font-family:inherit;background:white;">
+          <option>すべて</option><option>車買取</option><option>サポート</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:10px;color:#666;">買取店</label>
+        <select style="border:1px solid #ccc;border-radius:3px;padding:5px 10px;font-size:12px;font-family:inherit;background:white;">
+          <option>すべて</option><option>株式会社One For All</option><option>ﾈｸｽﾃｰｼﾞ</option><option>ｳｨｰｶｰｽﾞ</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:10px;color:#666;">担当者</label>
+        <select style="border:1px solid #ccc;border-radius:3px;padding:5px 10px;font-size:12px;font-family:inherit;background:white;">
+          <option>すべて</option><option>内堀 けんじ</option><option>山田 太郎</option><option>佐藤 花子</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:10px;color:#666;">期限</label>
+        <select style="border:1px solid #ccc;border-radius:3px;padding:5px 10px;font-size:12px;font-family:inherit;background:white;">
+          <option>すべて</option><option>期限超過のみ</option><option>3日以内</option><option>7日以内</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:10px;color:#666;">現在STEP</label>
+        <select style="border:1px solid #ccc;border-radius:3px;padding:5px 10px;font-size:12px;font-family:inherit;background:white;">
+          <option>すべて</option><option>① 成約情報登録</option><option>② 売主確認</option><option>③ 入金</option><option>④ 入金確認</option><option>⑤ 受領連絡</option><option>⑥ 送金</option><option>⑦ 完了</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- マトリクステーブル -->
+    <div style="background:white;border-radius:6px;overflow:auto;border:1px solid #e0e0e0;">
+      <table style="width:100%;border-collapse:collapse;min-width:1100px;">
+        <thead>
+          <tr style="background:#1a1a1a;color:white;font-size:11px;font-weight:700;">
+            <th style="padding:10px 12px;border-right:1px solid #333;text-align:left;white-space:nowrap;">査定番号</th>
+            <th style="padding:10px 12px;border-right:1px solid #333;text-align:left;">車両名</th>
+            <th style="padding:10px 12px;border-right:1px solid #333;text-align:left;">買取店</th>
+            <th style="padding:10px 12px;border-right:1px solid #333;text-align:left;">担当者</th>
+            <th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="① 【買取店】成約情報登録">①</th><th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="② 【売主】成約情報確認">②</th><th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="③ 【買取店】入金">③</th><th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="④ 【MOTA】入金確認">④</th><th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="⑤ 【買取店】受領連絡">⑤</th><th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="⑥ 【MOTA】送金">⑥</th><th style="padding:10px 6px;border-right:1px solid #ddd;text-align:center;cursor:help;" title="⑦ 完了">⑦</th>
+            <th style="padding:10px 12px;border-right:1px solid #333;text-align:center;">期限</th>
+            <th style="padding:10px 12px;text-align:center;">詳細</th>
+          </tr>
+        </thead>
+        <tbody id="pln-tbody">
+        <tr class="plr-row plr-progress" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2119467</strong> <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">車買取</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ホンダ フィット</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">株式会社One For All</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">内堀 けんじ</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">●</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#1a1a1a;">2026/04/29</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        <tr class="plr-row plr-progress" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2119500</strong> <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">車買取</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">スバル ｲﾝﾌﾟﾚｯｻ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ﾈｸｽﾃｰｼﾞ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">山田 太郎</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">●</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#1a1a1a;">2026/05/15</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        <tr class="plr-row plr-progress" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2119480</strong> <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">車買取</span><span style="display:inline-block;background:#fff3e0;color:#e67e22;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:6px;">⚠ 減額</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">トヨタ シエンタ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ｳｨｰｶｰｽﾞ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">佐藤 花子</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#e67e22;font-weight:700;">⚠</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#1a1a1a;">2026/05/01</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        <tr class="plr-row plr-complete" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2118123</strong> <span style="background:#1E56A0;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">サポート</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">日産 ブルーバード</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ｳｨｰｶｰｽﾞ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">佐藤 花子</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#1D6B35;font-weight:700;">完了</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        <tr class="plr-row plr-cancel" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2117890</strong> <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">車買取</span><span style="display:inline-block;background:#fce4ec;color:#c0392b;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:6px;">🚫 取消</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">トヨタ シエンタ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ﾜﾝﾌｫｰｵｰﾙ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">田中 一郎</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#e67e22;font-weight:700;">🚫</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#c0392b;font-weight:700;">取消</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        <tr class="plr-row plr-progress" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2119501</strong> <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">車買取</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ホンダ N-BOX</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">ﾈｸｽﾃｰｼﾞ</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">山田 太郎</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">●</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#1a1a1a;">2026/05/10</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        <tr class="plr-row plr-progress" style="border-bottom:1px solid #e8e8e8;font-size:12px;">
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">
+            <strong>2119502</strong> <span style="background:#1E56A0;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;margin-left:3px;">サポート</span>
+          </td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">マツダ CX-5</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">Test Dealership</td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;">—</td>
+          <td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#1D6B35;font-weight:700;">✓</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td><td style="text-align:center;padding:8px 6px;border-right:1px solid #f0f0f0;"><span style="color:#ccc;">—</span></td>
+          <td style="padding:10px 12px;border-right:1px solid #f0f0f0;text-align:center;"><span style="color:#c0392b;font-weight:700;background:#fce4ec;padding:2px 6px;border-radius:3px;">期限超過</span></td>
+          <td style="padding:10px 12px;text-align:center;">
+            <button onclick="showScreen('prop-detail',null)" style="background:white;border:1px solid #1a1a1a;color:#1a1a1a;border-radius:3px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">詳細 →</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 凡例 -->
+    <div style="background:#fafafa;padding:12px 18px;border-radius:6px;margin-top:12px;font-size:11px;color:#555;line-height:1.8;">
+      <strong style="color:#1a1a1a;">📖 凡例：</strong>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:4px;">
+        <span><span style="color:#1D6B35;font-weight:700;">✓</span> 完了</span>
+        <span><span style="background:#c0392b;color:white;border-radius:50%;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;">●</span> 現在進行中</span>
+        <span><span style="color:#e67e22;font-weight:700;">🚫</span> キャンセル発生</span>
+        <span><span style="color:#e67e22;font-weight:700;">⚠</span> 減額発生</span>
+        <span><span style="color:#ccc;">—</span> 未着手</span>
+      </div>
+      <div style="margin-top:8px;color:#888;">
+        STEPヘッダ: ①成約情報登録 / ②売主確認 / ③入金 / ④入金確認 / ⑤受領連絡 / ⑥送金 / ⑦完了（番号にホバーで詳細表示）
+      </div>
+    </div>
+
+    <div class="design-note" style="margin-top:18px;padding:14px 18px;background:#fffef0;border-left:4px solid #fbc02d;">
+      <strong>📌 設計メモ（物件一覧 新案）</strong>
+      ・<strong>【v56新規】</strong>既存の物件一覧（prop-list）はそのまま保持し、本画面は別タブとして併存<br>
+      ・<strong>マトリクス型</strong>：1物件1行で表示。STEP①〜⑦をカラムで並べ、各セルで進捗状態を可視化<br>
+      ・<strong>STEPヘッダ</strong>は番号のみ（①〜⑦）。ホバーで詳細名表示。下部凡例に正式名称を併記<br>
+      ・<strong>表示切替バッジ</strong>：すべて／通常進行中／キャンセル一覧／取引完了履歴（クリックで同画面内フィルタ、別画面遷移しない）<br>
+      ・<strong>絞り込みUI</strong>はポップアップ非使用。サービス区分／買取店／担当者／期限／現在STEP の5軸を常時表示<br>
+      ・<strong>状態タグ</strong>（⚠減額・🚫取消）は査定番号セル横にバッジ表示<br>
+      ・期限と詳細は別カラム。期限超過時は赤背景で強調
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+</div><!-- /screen-prop-list-new -->
+<script src="../assets/common.js"></script>
+</body>
+</html>

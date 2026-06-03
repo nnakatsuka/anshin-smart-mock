@@ -1,0 +1,278 @@
+/* あんしん決済 Smart版 共通スタイル（元 v61 single-file から抽出） */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:#f0f2f5;color:#1a1a1a;font-size:14px;}
+
+/* ===== 共通幅 ===== */
+.pc-container{max-width:1200px;margin:0 auto;}
+
+/* ===== 共通ヘッダー（PC統一） ===== */
+.app-header{background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:54px;}
+.app-header .logo{color:white;font-size:18px;font-weight:900;letter-spacing:-0.5px;cursor:pointer;}
+.app-header .menu{display:flex;gap:0;align-items:stretch;height:100%;}
+.app-header .menu-item{color:#888;font-size:13px;padding:0 22px;display:flex;align-items:center;cursor:pointer;border-bottom:3px solid transparent;}
+.app-header .menu-item:hover{color:white;}
+.app-header .menu-item.active{color:white;font-weight:700;border-bottom-color:#c0392b;}
+.app-header .right-tools{display:flex;align-items:center;gap:10px;}
+.app-header .logout-btn{border:1px solid #555;background:transparent;color:white;padding:6px 16px;border-radius:3px;font-size:12px;cursor:pointer;font-family:inherit;}
+.app-header .hamburger-btn{border:1px solid #555;background:transparent;color:white;width:34px;height:30px;border-radius:3px;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0;font-family:inherit;}
+.app-header .hamburger-btn span{display:block;width:16px;height:2px;background:white;border-radius:1px;}
+
+/* CS向けヘッダー（青系） */
+.app-header.cs{background:#1E56A0;}
+.app-header.cs .menu-item.active{border-bottom-color:#fff;}
+/* MOTA向けヘッダー（黒系・赤アクセント、CL用と同色だが menu-item.active のアクセントを区別） */
+.app-header.mota .menu-item.active{border-bottom-color:#c0392b;}
+
+/* ===== 共通フッター ===== */
+.app-footer{background:#1a1a1a;color:rgba(255,255,255,0.6);padding:18px 28px;font-size:11px;text-align:center;border-top:1px solid #333;}
+.app-footer .links{display:inline-flex;gap:22px;}
+.app-footer .links span{color:rgba(255,255,255,0.6);}
+.app-footer .copyright{margin-top:6px;color:rgba(255,255,255,0.35);font-size:10px;}
+
+/* ===== トースト通知 ===== */
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-100px);background:#1D6B35;color:white;padding:12px 28px;border-radius:6px;font-size:13px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:10000;opacity:0;transition:all 0.3s;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+/* ===== ナビゲーション ===== */
+.page-nav{position:sticky;top:0;z-index:100;background:#1a1a1a;box-shadow:0 2px 8px rgba(0,0,0,0.4);}
+.nav-tab{display:inline-flex;flex-direction:column;justify-content:center;padding:6px 10px 6px 9px;font-size:10px;font-weight:700;cursor:pointer;color:rgba(255,255,255,0.45);transition:all 0.15s;white-space:nowrap;position:relative;border-left:3px solid transparent;border-bottom:2px solid transparent;}
+.nav-tab.active{color:white;background:rgba(255,255,255,0.10);border-bottom-color:transparent;}
+.nav-tab:hover{color:white;background:rgba(255,255,255,0.06);}
+/* CLマイページ：オレンジ */
+.nav-cl{border-left-color:#f39c12 !important;background:rgba(243,156,18,0.07);}
+.nav-cl:hover{background:rgba(243,156,18,0.14) !important;}
+.nav-cl.active{background:rgba(243,156,18,0.20) !important;border-bottom-color:transparent !important;}
+/* あんしん決済管理画面：赤 */
+.nav-anshin{border-left-color:#e74c3c !important;background:rgba(231,76,60,0.07);}
+.nav-anshin:hover{background:rgba(231,76,60,0.14) !important;}
+.nav-anshin.active{background:rgba(231,76,60,0.20) !important;border-bottom-color:transparent !important;}
+/* あんしん決済管理画面（売主）：スカイブルー */
+.nav-seller{border-left-color:#3498db !important;background:rgba(52,152,219,0.07);}
+.nav-seller:hover{background:rgba(52,152,219,0.14) !important;}
+.nav-seller.active{background:rgba(52,152,219,0.20) !important;border-bottom-color:transparent !important;}
+/* MOTA + CL 両方ログインが含まれる画面：赤＋黄 2色グラデーション */
+.nav-multi-mota-cl{position:relative;border-left-color:transparent !important;background:rgba(231,76,60,0.07);}
+.nav-multi-mota-cl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom, #e74c3c 0%, #e74c3c 50%, #f39c12 50%, #f39c12 100%);}
+.nav-multi-mota-cl:hover{background:rgba(231,76,60,0.14) !important;}
+.nav-multi-mota-cl.active{background:rgba(231,76,60,0.20) !important;border-bottom-color:transparent !important;}
+.nav-multi-mota-cl.active .nav-step-num{color:#e74c3c;}
+/* 凡例ラベル */
+.nav-legend{display:flex;align-items:center;gap:10px;padding:4px 14px;background:#111;border-bottom:1px solid #333;}
+.nav-legend-item{display:flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,0.55);}
+.nav-legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.nav-sub{font-size:8px;font-weight:400;opacity:0.55;display:block;margin-top:1px;max-width:160px;overflow:hidden;text-overflow:ellipsis;}
+.nav-step-num{display:inline-block;background:#c0392b;color:white;border-radius:2px;font-size:8px;font-weight:900;padding:1px 4px;margin-right:3px;}
+.nav-tab.active .nav-step-num{background:white;color:#c0392b;}
+.nav-cl.active .nav-step-num{color:#f39c12;}
+.nav-anshin.active .nav-step-num{color:#e74c3c;}
+.nav-seller.active .nav-step-num{color:#3498db;}
+
+.screen{display:none;}
+.screen.active{display:block;zoom:0.78;}
+
+/* ===== 共通ヘッダー ===== */
+.mota-header{background:#111;color:white;display:flex;align-items:center;justify-content:space-between;padding:10px 32px;}
+.mota-logo{font-size:20px;font-weight:900;letter-spacing:-1px;}
+.mota-header-right{font-size:12px;color:#aaa;}
+.mota-gnav{background:#111;display:flex;border-bottom:1px solid #333;}
+.mota-gnav-item{padding:13px 36px;font-size:14px;color:#999;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;}
+.mota-gnav-item.active{color:white;border-bottom-color:#c0392b;font-weight:700;}
+
+/* ===== 共通：ステップバー ===== */
+.step-bar-wrap{background:white;border-bottom:1px solid #e0e0e0;padding:14px 24px;overflow:hidden;}
+.step-bar{display:flex;align-items:center;gap:0;width:100%;}
+.sb-item{display:flex;align-items:center;flex:1;}
+.sb-box{flex:1;padding:6px 4px;text-align:center;font-size:9px;font-weight:700;background:#f5f5f5;color:#999;border:1px solid #e0e0e0;position:relative;clip-path:polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);}
+.sb-box.done{background:#e0e0e0;color:#666;border-color:#d0d0d0;}
+.sb-box.current{background:#1a1a1a;color:white;border-color:#1a1a1a;}
+.sb-num{display:block;font-size:9px;font-weight:400;opacity:0.7;margin-bottom:1px;}
+
+/* ===== 管理画面共通 ===== */
+.admin-wrap{max-width:1080px;margin:0 auto;padding:24px 28px;}
+.admin-page-title{font-size:18px;font-weight:700;margin-bottom:20px;}
+.section-title{font-size:14px;font-weight:700;margin:24px 0 10px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;}
+.info-grid{display:grid;grid-template-columns:180px 1fr;border:1px solid #e0e0e0;margin-bottom:2px;}
+.ig-label{padding:11px 14px;background:#f7f7f7;font-size:12px;color:#555;font-weight:500;border-right:1px solid #e0e0e0;}
+.ig-val{padding:11px 14px;font-size:13px;}
+.ig-val input,.ig-val select{width:100%;border:1px solid #ccc;border-radius:2px;padding:7px 10px;font-size:13px;font-family:inherit;background:white;}
+.ig-val input[style*="max-width"]{width:auto;}
+.btn-primary{background:#1a1a1a;color:white;border:none;border-radius:3px;padding:10px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.btn-secondary{background:white;color:#333;border:1px solid #bbb;border-radius:3px;padding:10px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.btn-green{background:#1D6B35;color:white;border:none;border-radius:3px;padding:10px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.btn-red{background:#c0392b;color:white;border:none;border-radius:3px;padding:10px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.btn-row{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;}
+.tag{display:inline-block;padding:3px 10px;border-radius:2px;font-size:11px;font-weight:700;}
+.tag-red{background:#c0392b;color:white;}
+.tag-green{background:#1D6B35;color:white;}
+.tag-gray{background:#999;color:white;}
+.tag-blue{background:#1E56A0;color:white;}
+.tag-orange{background:#e67e22;color:white;}
+.tag-yellow{background:#f39c12;color:white;}
+.alert-box{border-radius:4px;padding:12px 16px;font-size:13px;line-height:1.8;margin-bottom:16px;}
+.alert-info{background:#e8f4fd;border:1px solid #bee3f8;color:#1E56A0;}
+.alert-warn{background:#fff8e1;border:1px solid #ffd54f;color:#856404;}
+.alert-success{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;}
+.checklist{background:#f7f7f7;border:1px solid #e0e0e0;border-radius:4px;padding:14px 16px;margin-bottom:12px;}
+.checklist-title{font-size:12px;font-weight:700;color:#555;margin-bottom:8px;}
+.check-item{display:flex;align-items:center;gap:8px;font-size:13px;padding:4px 0;}
+.check-item input{width:16px;height:16px;accent-color:#1D6B35;}
+
+/* ===== CLマイページ ===== */
+.mota-tabs{background:white;display:flex;border-bottom:1px solid #e0e0e0;padding:0 32px;}
+.mota-tab-item{padding:12px 0;margin-right:36px;font-size:13px;color:#999;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.mota-tab-item.active{color:#c0392b;border-bottom-color:#c0392b;font-weight:700;}
+.mota-body{max-width:1060px;margin:0 auto;padding:24px 32px;}
+.mota-page-title{font-size:20px;font-weight:700;margin-bottom:20px;}
+.v-card{background:white;border:1px solid #e0e0e0;margin-bottom:8px;}
+.v-card-main{padding:12px 16px;display:flex;align-items:flex-start;gap:10px;}
+.v-badge{background:#c0392b;color:white;font-size:11px;font-weight:700;padding:3px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.v-info{flex:1;}
+.v-name{font-size:15px;font-weight:700;margin-bottom:2px;}
+.v-year{font-size:12px;color:#666;}
+.v-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.v-price{font-size:13px;font-weight:700;}
+.seiyaku-btn{background:#1D6B35;color:white;border:none;border-radius:3px;padding:8px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.v-meta{padding:0 16px 8px;font-size:11px;color:#888;}
+.v-memo{margin:0 16px 12px;border:1px solid #ececec;padding:7px 10px;font-size:12px;color:#bbb;background:#fafafa;display:flex;align-items:center;justify-content:space-between;}
+.v-memo-btn{font-size:11px;color:#1E56A0;border:1px solid #1E56A0;background:white;padding:3px 8px;border-radius:2px;cursor:pointer;}
+.anshin-badge{background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;margin-left:8px;}
+
+/* ===== CS向けフォーム共通 ===== */
+.cs-outer{background:white;min-height:100vh;}
+.cs-wrap{max-width:780px;margin:0 auto;padding:36px 20px 60px;}
+.cs-page-title{font-size:22px;font-weight:700;margin-bottom:8px;}
+.cs-caution{color:#cc0000;font-size:13px;line-height:1.8;margin-bottom:28px;}
+.cs-sec-title{font-size:15px;font-weight:700;margin:28px 0 10px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;}
+.cs-table{width:100%;border-collapse:collapse;}
+.cs-table tr{border:1px solid #e0e0e0;}
+.cs-table th{width:220px;padding:13px 16px;background:#f7f7f7;font-weight:500;font-size:13px;text-align:left;vertical-align:top;border-right:1px solid #e0e0e0;}
+.cs-table td{padding:10px 16px;vertical-align:top;}
+.cs-input{width:100%;border:1px solid #ccc;border-radius:2px;padding:9px 12px;font-size:14px;font-family:inherit;background:white;}
+.cs-hint{font-size:11px;color:#888;margin-top:4px;line-height:1.6;}
+.confirm-info-box{background:#f8fafd;border:1px solid #d0dcf0;border-radius:4px;padding:16px 20px;margin-bottom:8px;}
+.cib-label{font-size:12px;font-weight:700;color:#1E56A0;margin-bottom:10px;}
+.cib-table{width:100%;border-collapse:collapse;}
+.cib-table tr{border-bottom:1px solid #e4ecf5;}
+.cib-table tr:last-child{border-bottom:none;}
+.cib-table th{padding:9px 12px;text-align:left;font-size:12px;color:#666;font-weight:500;width:200px;background:#f0f4fb;}
+.cib-table td{padding:9px 12px;font-size:14px;font-weight:600;color:#1a1a1a;}
+.cib-amount{font-size:17px;font-weight:700;color:#1D6B35;}
+.cib-doc{display:inline-flex;align-items:center;gap:5px;color:#1E56A0;font-size:13px;border:1px solid #1E56A0;padding:4px 12px;border-radius:2px;cursor:pointer;}
+.confirm-action-area{margin-top:16px;border-top:1px solid #dce6f5;padding-top:14px;}
+.confirm-action-label{font-size:13px;font-weight:700;color:#333;margin-bottom:10px;}
+.confirm-btn-group{display:flex;gap:10px;}
+.btn-confirm-ok{flex:1;padding:11px;border-radius:4px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;border:2px solid #1D6B35;background:#1D6B35;color:white;}
+.btn-confirm-ng{flex:1;padding:11px;border-radius:4px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;border:2px solid #dc2626;background:white;color:#dc2626;}
+.cs-submit-area{text-align:right;margin-top:32px;padding-top:20px;border-top:1px solid #e0e0e0;}
+.cs-submit{background:#1a1a1a;color:white;border:none;border-radius:4px;padding:12px 52px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+
+/* ===== 送信完了 ===== */
+.complete-outer{background:white;min-height:100vh;}
+.complete-wrap{max-width:600px;margin:0 auto;padding:60px 20px;text-align:center;}
+.complete-icon{font-size:54px;margin-bottom:14px;}
+.complete-title{font-size:22px;font-weight:700;margin-bottom:8px;}
+.complete-body{font-size:13px;color:#555;line-height:1.9;margin-bottom:32px;}
+
+/* ===== SMS ===== */
+.sms-outer{background:#f0f2f5;min-height:100vh;padding:20px;}
+.sms-wrap{max-width:380px;margin:0 auto;}
+.sms-header{background:#1a1a1a;color:white;padding:12px 16px;border-radius:8px 8px 0 0;font-size:13px;font-weight:700;}
+.sms-body{background:white;border-radius:0 0 8px 8px;padding:16px;}
+.sms-bubble{background:#e8e8e8;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.8;color:#1a1a1a;max-width:85%;margin-bottom:8px;}
+.sms-bubble-right{background:#34C759;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.8;color:white;max-width:85%;margin-bottom:8px;margin-left:auto;}
+
+/* ===== あんしん決済管理画面 ===== */
+.payment-header{background:#111;color:white;display:flex;align-items:center;justify-content:space-between;padding:10px 28px;}
+.payment-logo{font-size:16px;font-weight:900;letter-spacing:-0.5px;color:white;}
+.payment-logo span{color:#c0392b;}
+.payment-gnav{background:#222;display:flex;border-bottom:1px solid #444;}
+.payment-gnav-item{padding:12px 24px;font-size:13px;color:#999;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;}
+.payment-gnav-item.active{color:white;border-bottom-color:#c0392b;font-weight:700;}
+.payment-body{max-width:1080px;margin:0 auto;padding:24px 28px;}
+
+/* ===== 物件リスト ===== */
+.property-table{width:100%;border-collapse:collapse;background:white;border:1px solid #e0e0e0;}
+.property-table th{padding:10px 12px;background:#f5f5f5;font-size:11px;color:#555;font-weight:700;border-bottom:2px solid #e0e0e0;white-space:nowrap;}
+.property-table td{padding:10px 12px;font-size:12px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+.property-table tr:hover td{background:#fafafa;}
+
+/* ===== STEP①リスト カラム幅統一 ===== */
+.cl-col-check{width:16px;flex-shrink:0;}
+.cl-col-id{width:60px;flex-shrink:0;}
+.cl-col-badge{width:44px;flex-shrink:0;display:flex;align-items:center;}
+.cl-col-name{width:150px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;}
+.cl-col-customer{width:70px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;}
+.cl-col-year{width:52px;flex-shrink:0;}
+.cl-col-km{width:60px;flex-shrink:0;}
+.cl-col-area{width:150px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;}
+.cl-col-price{width:52px;flex-shrink:0;}
+.cl-col-repair{width:42px;flex-shrink:0;font-size:11px;color:#888;}
+.cl-col-photo{width:42px;flex-shrink:0;font-size:11px;color:#888;}
+.cl-col-change{width:48px;flex-shrink:0;}
+.cl-col-deadline{width:36px;flex-shrink:0;text-align:right;}
+.status-pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;}
+.status-1{background:#fff3cd;color:#856404;border:1px solid #ffc107;}
+.status-2{background:#e8f4fd;color:#1E56A0;border:1px solid #bee3f8;}
+.status-3{background:#e8f5e9;color:#1D6B35;border:1px solid #a5d6a7;}
+.status-4{background:#fce4ec;color:#c0392b;border:1px solid #f48fb1;}
+.status-5{background:#f3e5f5;color:#7b1fa2;border:1px solid #ce93d8;}
+.status-6{background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;}
+.status-7{background:#e8eaf6;color:#3949ab;border:1px solid #9fa8da;}
+.link-blue{color:#1E56A0;text-decoration:none;font-weight:500;cursor:pointer;}
+.link-blue:hover{text-decoration:underline;}
+
+/* ===== 論点タグ ===== */
+.issue-tag{display:inline-block;background:#fff3cd;border:1px solid #ffc107;color:#856404;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;margin-left:6px;vertical-align:middle;}
+.design-note{font-size:11px;color:#999;background:#f5f5f5;border-radius:4px;padding:12px 14px;text-align:left;line-height:1.7;margin-top:16px;}
+.design-note strong{color:#555;display:block;margin-bottom:4px;}
+
+/* ===== ステップ説明バー ===== */
+.step-desc-bar{background:#1a1a1a;color:white;padding:12px 28px;display:flex;align-items:center;gap:16px;}
+.step-desc-num{background:#c0392b;color:white;font-size:11px;font-weight:900;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.step-desc-title{font-size:14px;font-weight:700;}
+.step-desc-actor{font-size:11px;color:#aaa;margin-left:auto;}
+
+/* ===== 引渡し確認 ===== */
+.handover-box{background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:16px;}
+.handover-title{font-size:15px;font-weight:700;margin-bottom:12px;}
+.handover-list{list-style:none;}
+.handover-list li{padding:6px 0;font-size:13px;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:8px;}
+.handover-list li::before{content:'□';font-size:16px;color:#aaa;}
+.handover-list li.checked::before{content:'✅';font-size:14px;}
+
+/* ===== 受取連絡（キャンセル・減額） ===== */
+.action-card{background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:12px;}
+.action-card-title{font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.action-card-body{font-size:13px;color:#555;line-height:1.8;}
+
+/* ===== 送金完了 ===== */
+.transfer-complete{text-align:center;padding:48px 20px;}
+.tc-icon{font-size:60px;margin-bottom:16px;}
+.tc-title{font-size:24px;font-weight:700;margin-bottom:8px;}
+.tc-amount{font-size:36px;font-weight:900;color:#1D6B35;margin-bottom:8px;}
+.tc-body{font-size:13px;color:#666;line-height:1.9;}
+
+/* ===== 請求書プレビュー ===== */
+.invoice-box{background:white;border:1px solid #ccc;border-radius:4px;padding:32px;max-width:640px;margin:0 auto;}
+.invoice-title{font-size:22px;font-weight:700;text-align:center;margin-bottom:4px;}
+.invoice-sub{font-size:12px;color:#666;text-align:center;margin-bottom:24px;}
+.invoice-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;font-size:12px;}
+.invoice-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.invoice-table th{background:#1a1a1a;color:white;padding:8px 12px;font-size:12px;text-align:left;}
+.invoice-table td{padding:10px 12px;font-size:13px;border-bottom:1px solid #e0e0e0;}
+.invoice-total{text-align:right;font-size:16px;font-weight:700;color:#1a1a1a;}
+.pay-method{background:#f0f4ff;border:1px solid #c5d3f0;border-radius:4px;padding:14px 16px;margin-top:16px;font-size:12px;}
+
+/* ===== 入金確認 ===== */
+.amount-confirm-box{background:#e8f5e9;border:2px solid #1D6B35;border-radius:6px;padding:20px 24px;text-align:center;margin-bottom:20px;}
+.acb-label{font-size:12px;color:#1D6B35;font-weight:700;margin-bottom:4px;}
+.acb-amount{font-size:32px;font-weight:900;color:#1D6B35;}
+.acb-note{font-size:11px;color:#555;margin-top:4px;}
+
+/* ===== 分割版 追加: 各画面ページ上部の戻りバー ===== */
+.mock-backbar{position:sticky;top:0;z-index:20000;background:#0d0d0d;border-bottom:1px solid #2a2a2a;display:flex;align-items:center;gap:14px;padding:8px 16px;font-family:'Noto Sans JP',sans-serif;}
+.mock-backbar a{color:#fff;text-decoration:none;font-size:12px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid #333;border-radius:4px;padding:5px 12px;}
+.mock-backbar a:hover{background:rgba(255,255,255,.2);}
+.mock-backbar .sid{color:#888;font-size:11px;letter-spacing:.5px;}
+.mock-backbar .nm{color:#ddd;font-size:12px;font-weight:700;}

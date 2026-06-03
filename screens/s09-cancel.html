@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャンセル申請 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">s09-cancel</span><span class="nm">キャンセル申請</span>
+</div>
+<div class="screen active" id="screen-s09-cancel">
+  <div class="step-desc-bar" style="background:#7a3e0d;">
+    <span class="step-desc-num" style="background:#e67e22;color:#fff;">⚠ 例外</span>
+    <span class="step-desc-title">キャンセル申請 — 取引をキャンセルする（キャンセル依頼を送信）</span>
+    <span style="background:#e67e22;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（買取店）</span>
+    <span class="step-desc-actor">アクター：買取店</span>
+  </div>
+  <div style="background:#fff3e0;border-bottom:1px solid #ffb74d;padding:6px 28px;font-size:11px;color:#7a3e0d;">
+    <strong>例外フロー｜発動可能STEP：②〜⑤｜発動者：買取店 or 売主（CS側もキャンセル申請可・STEP⑥送金開始後は不可）｜CS不承認時はMOTA運用エスカレーション</strong>
+  </div>
+  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;line-height:1.7;">
+    <strong>【v56注記】CS版キャンセル申請画面も本画面とUIUX同一。CS版の可変部分：</strong>
+    アクター「売主」／説明文「買取店との合意の上、依頼してください。依頼後、買取店側に確認依頼が届き、確認完了後にキャンセルが完了します。」／確認依頼の遷移先「CL確認画面（s03-cancelと同UIUX、可変部分はCL→CS方向に置換）」
+  </div>
+  <div class="app-header">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
+    </div>
+    <div class="menu">
+      <div class="menu-item active" onclick="showScreen('prop-list-new',null)">成約</div>
+      <div class="menu-item" onclick="showScreen('cl-basic-info',null)">各種設定</div>
+      <div class="menu-item" onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div>
+    </div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+  <div class="payment-body">
+    <div style="font-size:18px;font-weight:700;margin-bottom:6px;">取引をキャンセルする</div>
+    <div style="font-size:12px;color:#888;margin-bottom:20px;">売主との合意の上、取引のキャンセルを依頼する場合に使用してください。</div>
+
+    <!-- v61：2カラム化（左：情報、右：注意＋アクション） -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+
+      <!-- 左：対象物件 -->
+      <div>
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;">
+          <div style="font-size:14px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e0e0e0;">対象物件</div>
+          <div style="display:grid;grid-template-columns:120px 1fr;gap:0;border:1px solid #e0e0e0;">
+            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">査定番号</div>
+            <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">2119387</div>
+            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">売主名</div>
+            <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">菅原 綾香</div>
+            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">車両名</div>
+            <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">トヨタ ヴォクシー ZS</div>
+            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">買取金額</div>
+            <div style="padding:9px 14px;font-size:13px;font-weight:700;border-bottom:1px solid #e0e0e0;">¥1,500,000</div>
+            <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">契約書</div>
+            <div style="padding:9px 14px;font-size:12px;"><span style="color:#1E56A0;text-decoration:underline;cursor:pointer;">契約書PDF.pdf</span></div>
+          </div>
+
+          <!-- キャンセル理由（v61追加：実画面に必要なので入力欄を残す） -->
+          <div style="margin-top:16px;">
+            <label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:6px;">キャンセル理由 <span style="color:#c0392b;">*</span></label>
+            <textarea rows="4" placeholder="例：車両確認時に申告内容と異なる傷および修復歴が判明したため" style="width:100%;border:1px solid #ccc;border-radius:3px;padding:8px 10px;font-size:12px;font-family:inherit;box-sizing:border-box;resize:vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右：注意事項＋送信アクション -->
+      <div>
+        <div style="background:#fce4ec;border:2px solid #c0392b;border-radius:4px;padding:16px 20px;margin-bottom:14px;">
+          <div style="font-size:13px;font-weight:700;color:#c0392b;margin-bottom:8px;">⚠️ キャンセル申請の注意事項</div>
+          <div style="font-size:12px;color:#c0392b;line-height:1.9;">
+            ・キャンセル申請後は取り消しができません。<br>
+            ・必ず売主との合意を得た上で申請してください。
+          </div>
+        </div>
+
+        <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:16px 20px;margin-bottom:14px;">
+          <div style="font-size:13px;font-weight:700;color:#856404;margin-bottom:10px;">📋 キャンセル申請後の流れ</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:11px;color:#555;">
+            <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#c0392b;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">① 申請</span><span>キャンセル申請ボタンを押下すると、キャンセル依頼の確認依頼を売主へ自動送信します。</span></div>
+            <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#c0392b;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">② 確認</span><span>売主が確認画面で同意／非同意を回答します。非同意の場合はMOTA事務局が協議します。</span></div>
+            <div style="display:flex;gap:8px;align-items:flex-start;"><span style="background:#c0392b;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;width:60px;text-align:center;box-sizing:border-box;">③ OK</span><span>売主が同意した場合、キャンセルが完了します。</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <button onclick="if(confirm('キャンセル申請を送信します。\n\n⚠️ 申請後は取り消しできません。\n必ず売主との合意を得た上で申請してください。\n\nよろしいですか？'))alert('キャンセル申請を送信しました。MOTAが売主への確認依頼を行います。')" style="background:#c0392b;color:white;border:none;border-radius:4px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">キャンセル依頼を送る</button>
+          <button onclick="showScreen('s09',null)" style="background:white;color:#333;border:1px solid #bbb;border-radius:3px;padding:10px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">← 戻る</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>

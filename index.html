@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あんしん決済 Smart版｜画面イメージ v61（分割版）</title>
+<link rel="stylesheet" href="assets/common.css">
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ==========================
+     v61 変更内容（2026/06/03 ヘッダー統一・UIフォーマット整理）
+     【全体】
+     ①キャンセルボタンを全画面から削除→ハンバーガーメニュー（≡）に集約。ハンバーガーは全画面の右上に設置（メニュー中身は今後実装）
+     ②CL系画面の「一覧へ戻る」ボタン削除→左上のMOTAロゴ押下で物件一覧へ遷移
+     ③実画面内容のみに整理：SMS通知プレビュー／リマインドスケジュール／MEMOブロックを削除
+     ④ヘッダーを3アクター（CS/CL/MOTA）でそれぞれ1種類に統一。「設定」→「各種設定」にリネーム
+     【s02 成約情報登録】
+     ⑤書類フォルダのアップロードを1個→3個に分割（売買契約書／車検証／譲渡証明書）
+     【s03 成約情報確認】
+     ⑥見出し「判定」→「確認」に変更
+     ⑦判定選択肢から「対象外」を削除（OK／差し戻しの2択に）
+     【s05 入金】
+     ⑧「振込完了」ボタンを追加
+     【s09 受領連絡】
+     ⑨減額（左）／キャンセル（右）に並べ替え
+     ⑩「受領連絡を送る」→「売主へ送金処理を進める」に文言変更し最大サイズ、減額・キャンセルは小さく
+     ⑪「1度送信すると取り消せません」の注意文を本文から削除→送金処理ボタンの確認ダイアログに移植
+     ⑫「物件詳細を見る」をCL系STEP画面（s02, s05, s09）共通で h1見出し右上に配置（CSは設置せず）
+     【cl-basic-info 基本情報】
+     ⑬入金方法設定：連携口座を全量並べ、各口座に「入金用」「返金用」のバッジを表示。変更は明確なボタンUIで（入金1口座・返金1口座の制約は維持）
+     【キャンセル／減額】
+     ⑭フォーマット統一：左に情報、右に返答の2カラム構成（s09-cancel, s09-gengaku, s03-cancel, s03-gengaku）
+     ⑮CSの減額同意／キャンセル同意のラジオボタン→各々ボタン化
+     【payment-mgmt 入金/送金】
+     ⑯査定番号でグルーピング表示：1物件1ブロックで入金・送金履歴をまとめて参照可能に
+     ⑰入金⇔送金で同じテーブル構成に統一（列構成）
+     ⑱査定番号を1番左、判定を1番右に配置
+     ⑲「送金対応」タブを削除
+     ⑳送金履歴の「CS通知」列を削除
+     【login ログイン画面】
+     ㉑ログイン画面をPC化：フォーム幅340px→460px、ヘッダ/入力欄/ボタンを拡大、CL/MOTA版に「ログイン状態を保持する」チェック追加、MOTA版の遷移先を prop-list → prop-list-new に変更
+
+     v60 変更内容（2026/06/03 仕様調整4点）
+     ①CS成約情報確認（s03）：判定UIを「2段階選択」に変更
+        1段階目：確認OK／差し戻し／対象外（3択ラジオ、対象外は維持）
+        2段階目：差し戻し選択時のみ表示。理由を選択（買取店登録情報の相違／その他＋自由記入）
+     ②CL基本情報（cl-basic-info）：通知先設定を3テーブル構成に再編
+        査定員・責任者・経理の各テーブルに「担当者名／SMS通知先（電話番号）／メール通知先アドレス／削除」を配置
+        通知ON/OFFカラムを廃止（旧notify-settingの仕様を継承しつつ各通知先テーブルに統合）
+     ③問い合わせ画面（screen-contact）削除＋ヘッダー「問い合わせ」リンクは外部遷移化
+        全アクター（CS／CL）のヘッダー「問い合わせ」クリック時にalert('外部の問い合わせフォームへ遷移します')を表示
+        ナビゲーションタブから「問い合わせ」を削除
+     ④CL基本情報の入金口座／返金口座を案件詳細内で変更可能に
+        「変更」ボタン押下でインライン展開→ullo連携で取得した口座リストからselect→ローディング→ペイジー対応チェック→結果表示
+        入金口座のみペイジー対応必須（非対応口座選択時は「更新できませんでした」表示）
+        返金口座はすべて選択可（更新失敗ケースなし。受取は銀行振込）
+        連携口座リストは「ullo連携で取得した口座」と明示
+
+     v59 変更内容（2026/06/03 残SP画面のPC化）
+     ①CS系画面（s03, s03c, s03-cancel, s03-gengaku, s05-cs-oikin, no-action-cs）をPC化
+     ②login画面のCS版を共通ヘッダー付きPCデザインに統一
+     ③横幅1200px統一、app-header cs を統一ヘッダーとして適用、フォームを2カラムグリッド化
+
+     v58 変更内容（2026/06/03 全体PC化・ヘッダー再編・画面整理）
+     ①全画面PCデザイン化（横幅1200px統一）
+     ②不要画面の削除：prop-list（既存カードリスト）／prop-history（取引完了履歴）／cs-mypage-status／notify-setting
+     ③ヘッダー再編：
+        - CS：設定／問い合わせ
+        - CL：成約／設定／問い合わせ
+        - MOTA：成約／オペレータ／入金/送金
+     ④CS設定画面（cs-koza-update→cs-settings）：お申込み情報＋口座情報・お支払い方法を1画面に統合、編集可能、トースト表示
+     ⑤CL基本情報画面（cl-basic-info）新規：通知先設定＋入金方法設定（連携口座を用途別に紐付け）を1画面に
+     ⑥問い合わせ画面（contact）新規：CS/CL共用
+     ⑦MOTA入金/送金の3タブをマトリクス型テーブルに変更（データ発行は現状維持）
+     ⑧フッター共通追加：会社概要／利用規約のテキストのみ（リンクなし）
+
+     v57 変更内容（2026/06/02 未実装機能の追加・ナビ再編）
+     ①ログイン画面を新規作成（1画面でCS/CL/MOTA可変部分を並列表示）
+     ②CL口座連携画面を新規作成（連携あり・複数口座管理可）
+     ③CS口座設定の仕様調整：ullo連携前提を撤廃 → 案件ごと1口座のみ登録の仕様へ全面書き換え
+     ④ナビメニューをアクター別にグループ化（CS／CL／MOTA／共通の4セクション）
+
+     v56 変更内容（2026/06/02 ステップ操作UI整理 + 入送金UI統一 + 物件一覧新案）
+     ①対応アクションなし時の待機画面（screen-no-action-cs / screen-no-action-cl）を新規作成
+        ※全STEPバリエーションを1画面内に可変部分として並列表示
+     ②キャンセル＋物件詳細ボタンを各STEPメイン要素外に配置
+        - s03（STEP②）: キャンセル
+        - s05（STEP③）: キャンセル + 物件詳細
+        - s09（STEP⑤）: 既存キャンセルに加え物件詳細追加
+        - 待機画面（CS/CL）にも同様
+     ③キャンセル発動可能STEPを ②〜⑤ に更新（s09-cancel / s03-cancel ヘッダ）
+        CS版/CL版の可変部分注記を併記（UIUX同一であることを明示）
+     ④入金/送金管理画面（payment-mgmt）の3タブUIを統一カード形式に
+        - 全量表示（展開機能なし）／絞り込みデフォルト表示
+        - 「全て展開」「全て折りたたみ」削除
+        - 「買主キックバック」削除、データ発行を4つ目タブとして分離
+        - データ発行：前月分預り金（売上発行/預り金発行）＋ 仕訳データ（期間指定）
+     ⑤物件詳細：MOTA版/CL版の項目を統一（MOTA版に合わせる）。手数料¥0固定表記。
+        MEMOはMOTAのみ。ステップバー直下に横長配置
+     ⑥物件一覧（新案）prop-list-new を別タブで追加（既存prop-list保持）
+        マトリクス型テーブル：STEP①〜⑦をカラム、各物件1行、進捗マーク表示
+        表示切替バッジ（全て/通常/キャンセル/完了）＋画面内絞り込み
+
+     v55 変更内容（2026/06/02 次フェーズ実施分）
+     ①STEP④（入金確認）可視化：物件詳細（CL・MOTA）／CSマイページにステータスチップを追加（業務責任ハンドオフを明示）
+     ②減額時の二重送金を物件詳細の入金／送金履歴に表現（売主送金＋買取店返金の2レコード並列表示）
+     ③口座情報選択画面（cs-koza-update）再構成：ullo連携口座リストから入金口座／返金口座を選択する画面へ。ペイジー可否バッジ付き
+     ④取引完了履歴（prop-history）内の物件カード・ミニタイムラインを9STEP→7STEP表記に統一
+
+     v54 変更内容（2026/06/02 議事録ベース 7STEP再編）
+     ①STEP構成を9→7STEPに再編
+        ①【買取店】成約情報登録 / ②【売主】成約情報確認 / ③【買取店】入金 / ④【MOTA】入金確認 / ⑤【買取店】受領連絡 / ⑥【MOTA】送金 / ⑦完了
+        ※旧⑥引渡連絡＋⑦受領連絡を統合（同一イベント）、旧⑤入金確認を業務責任ハンドオフSTEPとして④に再定義
+     ②戻り経路は2→1, 3→1のみ（画面内注記で明示）
+     ③減額時の二重送金（売主送金＋買取店返金）を物件詳細の入金/送金履歴に表示
+     ④口座情報はulloがマスター。あんしん決済側は入金口座/返金口座の選択UI（ペイジー可否判別含む）
+     ⑤例外フロー（減額・キャンセル）の発動可能STEP・発動者を各画面ヘッダに明示
+     ⑥通知先設定に「責任者」を追加（複数可）。STEP①で担当査定員と同じ仕様で選択可能
+     ⑦STEP④（入金確認）は専用画面なし。物件詳細・CSマイページのステータスチップで可視化
+
+     v43 変更内容（2026/05/27 GREEX MTG反映）
+     ①物件詳細（CL・MOTA版）: グローバルナビから「入金／送金」タブ削除。代わりに物件詳細内に「入金／送金履歴」ボックスを追加
+     ②物件詳細（CL・MOTA版）: 振込方法種別を入金区分別（買取店入金/売主入金/MOTA送金）に分けて表示
+     ③物件詳細（CL・MOTA版）: 売主情報に「売主メールアドレス」追加
+     ④成約情報登録: 通知先をドロップダウン選択式（登録済み候補から選択）に変更。通知先設定画面へのリンクは1か所に集約
+     ⑤成約情報確認（CS向けPC版・SP版）: 「メールアドレス」入力欄追加。電話番号・メアドそれぞれに利用用途の補足文を追加
+========================== -->
+<style>
+.mock-hero{background:#0d0d0d;color:#fff;padding:26px 20px 18px;font-family:'Noto Sans JP',sans-serif;}
+.mock-hero h1{font-size:18px;margin:0 0 4px;}
+.mock-hero p{font-size:12px;color:#9aa;margin:0;line-height:1.7;}
+.mock-hero .v{display:inline-block;background:#16a085;color:#fff;font-size:11px;font-weight:700;border-radius:4px;padding:2px 9px;margin-left:8px;vertical-align:middle;}
+</style>
+</head>
+<body>
+<div class="mock-hero">
+  <h1>あんしん決済 Smart版｜画面イメージ<span class="v">v61 / 分割版</span></h1>
+  <p>1画面 = 1ファイル構成。下のタブから各画面を開きます（別ページ遷移）。<br>
+     編集は <code>screens/&lt;画面ID&gt;.html</code> を直接。他画面に影響しません。</p>
+</div>
+<div class="page-nav">
+  <!-- 折りたたみトグルバー -->
+  <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:6px 14px;border-bottom:1px solid rgba(255,255,255,0.08);cursor:pointer;user-select:none;" onclick="toggleNav()">
+    <span style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;letter-spacing:0.5px;">📋 あんしん決済 Smart版｜画面イメージ v61</span>
+    <span id="nav-toggle-btn" style="font-size:11px;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.1);border-radius:3px;padding:2px 10px;font-weight:700;">▲ 閉じる</span>
+  </div>
+  <!-- タブエリア（折りたたみ対象） -->
+  <div id="nav-tabs-area" style="display:flex;flex-wrap:wrap;align-items:stretch;">
+
+  <!-- ============ 共通画面 ============ -->
+  <div style="width:100%;flex-basis:100%;background:#1a3a4a;padding:4px 14px;border-bottom:1px solid #2a4a5a;">
+    <span style="font-size:10px;font-weight:700;color:rgba(180,220,240,0.85);letter-spacing:0.5px;">🔐 共通画面</span>
+  </div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/login.html'"><span class="nav-step-num" style="background:#16a085;">LOGIN</span>ログイン画面<span class="nav-sub">CS／CL／MOTA 共通UIUX</span></div>
+
+  <!-- ============ CS（売主）向け画面 ============ -->
+  <div style="width:100%;flex-basis:100%;background:#1a2a4a;padding:4px 14px;border-top:1px solid #2a3a5a;border-bottom:1px solid #2a3a5a;">
+    <span style="font-size:10px;font-weight:700;color:rgba(180,200,240,0.85);letter-spacing:0.5px;">📱 CS（売主）　— ヘッダー：設定 ／ 問い合わせ</span>
+  </div>
+  <div class="nav-tab nav-seller" onclick="location.href='screens/s03.html'"><span class="nav-step-num">②</span>成約情報確認<span class="nav-sub">STEP②｜売主アクション</span></div>
+  <div class="nav-tab nav-seller" onclick="location.href='screens/cs-settings.html'"><span class="nav-step-num" style="background:#16a085;">設定</span>設定<span class="nav-sub">お申込み情報＋口座情報・お支払い方法｜v58</span></div>
+  <div class="nav-tab nav-seller" onclick="location.href='screens/s05-cs-oikin.html'"><span class="nav-step-num">③追</span>追い金入金<span class="nav-sub">STEP③｜ローン残債超過時</span></div>
+  <div class="nav-tab nav-seller" onclick="location.href='screens/no-action-cs.html'"><span class="nav-step-num" style="background:#16a085;">待機CS</span>待機画面 CS<span class="nav-sub">対応アクションなし時の表示</span></div>
+
+  <!-- ============ CL（買取店）向け画面 ============ -->
+  <div style="width:100%;flex-basis:100%;background:#4a1a1a;padding:4px 14px;border-top:1px solid #5a2828;border-bottom:1px solid #5a2828;">
+    <span style="font-size:10px;font-weight:700;color:rgba(240,200,200,0.85);letter-spacing:0.5px;">❤️ CL（買取店）　— ヘッダー：成約 ／ 設定 ／ 問い合わせ</span>
+  </div>
+  <div class="nav-tab nav-cl" onclick="location.href='screens/s01.html'"><span class="nav-step-num">①前</span>買取店 成約申告<span class="nav-sub">既存CLマイページ（スコープ外）</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/prop-list-new.html'"><span class="nav-step-num">一覧</span>物件一覧<span class="nav-sub">成約配下｜マトリクス型</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/prop-detail-cl.html'"><span class="nav-step-num">詳細CL</span>物件詳細（CL）<span class="nav-sub">成約配下｜完了後は履歴も兼ねる</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/s02.html'"><span class="nav-step-num">①</span>成約情報登録<span class="nav-sub">STEP①｜CLアクション</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/s05.html'"><span class="nav-step-num">③</span>入金<span class="nav-sub">STEP③｜CLアクション</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/s09.html'"><span class="nav-step-num">⑤</span>受領連絡<span class="nav-sub">STEP⑤｜CLアクション</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/no-action-cl.html'"><span class="nav-step-num" style="background:#16a085;">待機CL</span>待機画面 CL<span class="nav-sub">対応アクションなし時の表示</span></div>
+  <div class="nav-tab nav-cl" onclick="location.href='screens/cl-basic-info.html'"><span class="nav-step-num" style="background:#16a085;">基本情報</span>基本情報<span class="nav-sub">設定配下｜通知先＋入金方法｜v58新規</span></div>
+  <div class="nav-tab nav-cl" onclick="location.href='screens/cl-koza-link.html'"><span class="nav-step-num" style="background:#16a085;">CL口座</span>口座連携<span class="nav-sub">設定配下｜複数口座管理・外部連携</span></div>
+  <div class="nav-tab nav-cl" onclick="location.href='screens/summary.html'"><span class="nav-step-num" style="background:#1E56A0;">📊</span>利用実績サマリ<span class="nav-sub">月次集計・CSV出力</span></div>
+
+  <!-- ============ MOTA（運営）向け画面 ============ -->
+  <div style="width:100%;flex-basis:100%;background:#2a2a2a;padding:4px 14px;border-top:1px solid #3a3a3a;border-bottom:1px solid #3a3a3a;">
+    <span style="font-size:10px;font-weight:700;color:rgba(220,220,220,0.85);letter-spacing:0.5px;">⚙️ MOTA（運営）　— ヘッダー：成約 ／ オペレータ ／ 入金/送金</span>
+  </div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/prop-list-new.html'"><span class="nav-step-num">一覧</span>物件一覧（成約）<span class="nav-sub">成約配下｜マトリクス型</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/prop-detail.html'"><span class="nav-step-num">詳細MOTA</span>物件詳細（MOTA）<span class="nav-sub">成約配下｜MEMO・強制OK/NG付</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/payment-mgmt.html'"><span class="nav-step-num">入送金</span>入金／送金<span class="nav-sub">入金/送金配下｜3タブはテーブル形式（v58）＋データ発行</span></div>
+
+  <!-- ============ 例外フロー（共通） ============ -->
+  <div style="width:100%;flex-basis:100%;background:#2a1a1a;padding:4px 14px;border-top:1px solid #4a2828;border-bottom:1px solid #4a2828;">
+    <span style="font-size:10px;font-weight:700;color:rgba(255,200,200,0.85);letter-spacing:0.5px;">⚠ 例外フロー（メインフロー外）</span>
+  </div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/s09-gengaku.html'"><span class="nav-step-num" style="background:#e67e22;">例:減額</span>減額申請<span class="nav-sub">CL発動｜STEP⑤</span></div>
+  <div class="nav-tab nav-seller" onclick="location.href='screens/s03-gengaku.html'"><span class="nav-step-num" style="background:#e67e22;">例:減額確認</span>減額依頼確認<span class="nav-sub">CS同意｜STEP⑤</span></div>
+  <div class="nav-tab nav-anshin" onclick="location.href='screens/s09-cancel.html'"><span class="nav-step-num" style="background:#e67e22;">例:取消</span>キャンセル申請<span class="nav-sub">CL/CS発動｜STEP②〜⑤</span></div>
+  <div class="nav-tab nav-seller" onclick="location.href='screens/s03-cancel.html'"><span class="nav-step-num" style="background:#e67e22;">例:取消確認</span>キャンセル依頼確認<span class="nav-sub">CS/CL同意｜STEP②〜⑤</span></div>
+</div>
+<div class="nav-legend" style="width:100%;flex-basis:100%;">
+  <div class="nav-legend-item"><div class="nav-legend-dot" style="background:#3498db;"></div>📱 CS（売主）向け</div>
+  <div class="nav-legend-item"><div class="nav-legend-dot" style="background:#e74c3c;"></div>❤️ CL（買取店）／MOTA管理画面</div>
+  <div class="nav-legend-item"><div class="nav-legend-dot" style="background:#f39c12;"></div>🚗 CLマイページ（既存サービス・スコープ外）</div>
+  <div class="nav-legend-item"><div class="nav-legend-dot" style="background:#e67e22;"></div>⚠ 例外フロー</div>
+  <div class="nav-legend-item"><div class="nav-legend-dot" style="background:#16a085;"></div>🆕 v56-v60新規</div>
+</div>
+  </div><!-- /nav-tabs-area -->
+</div><!-- /page-nav -->
+<script src="assets/common.js"></script>
+</body>
+</html>

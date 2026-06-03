@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口座連携 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">cl-koza-link</span><span class="nm">口座連携</span>
+</div>
+<div class="screen active" id="screen-cl-koza-link">
+  <div class="step-desc-bar">
+    <span class="step-desc-num">CL設定</span>
+    <span class="step-desc-title">口座連携 — 買取店のあんしん決済利用口座管理（連携あり・複数口座可）</span>
+    <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（買取店）</span>
+    <span class="step-desc-actor">アクター：買取店（CL）</span>
+  </div>
+
+  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
+    <strong>【v57新規】</strong>買取店のあんしん決済で使う口座を管理。社内会計システムや外部口座管理サービスと連携可能。複数口座を登録し、案件ごとに切り替えて利用できる。
+  </div>
+
+  <!-- ヘッダ -->
+  <div class="app-header">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
+    </div>
+    <div class="menu">
+      <div class="menu-item" onclick="showScreen('prop-list-new',null)">成約</div>
+      <div class="menu-item active" onclick="showScreen('cl-basic-info',null)">各種設定</div>
+      <div class="menu-item" onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div>
+    </div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+  <div style="background:#f0f0ee;padding:18px 28px;min-height:100vh;">
+    <!-- パンくず -->
+    <div style="font-size:11px;color:#888;margin-bottom:8px;">設定 ＞ 口座連携</div>
+    <div style="font-size:20px;font-weight:700;margin-bottom:14px;">口座連携</div>
+
+    <!-- サマリ -->
+    <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:10px;color:#888;font-weight:700;margin-bottom:3px;">登録口座数</div>
+          <div style="font-size:20px;font-weight:700;">3件</div>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#888;font-weight:700;margin-bottom:3px;">デフォルト口座</div>
+          <div style="font-size:13px;font-weight:700;">三菱UFJ銀行 青山支店</div>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#888;font-weight:700;margin-bottom:3px;">連携元</div>
+          <div style="font-size:13px;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;">✓ 会計freee連携中</span></div>
+        </div>
+      </div>
+      <button style="background:#1a1a1a;color:white;border:none;border-radius:4px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">＋ 新規口座を追加</button>
+    </div>
+
+    <!-- 連携設定 -->
+    <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:16px 20px;margin-bottom:16px;">
+      <div style="font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;">🔗 外部サービス連携 <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;">v57</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <div style="border:1px solid #1D6B35;border-radius:4px;padding:14px;background:#f0f8f3;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-size:13px;font-weight:700;">会計freee</div>
+            <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;">✓ 連携中</span>
+          </div>
+          <div style="font-size:10px;color:#666;line-height:1.7;margin-bottom:10px;">登録した口座を自動同期。あんしん決済の入金履歴と仕訳が連携。</div>
+          <button style="width:100%;background:white;color:#1D6B35;border:1px solid #1D6B35;border-radius:3px;padding:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">連携設定を変更</button>
+        </div>
+        <div style="border:1px solid #e0e0e0;border-radius:4px;padding:14px;background:#fafafa;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-size:13px;font-weight:700;">マネーフォワード</div>
+            <span style="background:#888;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;">未連携</span>
+          </div>
+          <div style="font-size:10px;color:#666;line-height:1.7;margin-bottom:10px;">クラウド会計マネーフォワードと連携可能。</div>
+          <button style="width:100%;background:white;color:#1a1a1a;border:1px solid #ccc;border-radius:3px;padding:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">連携する</button>
+        </div>
+        <div style="border:1px solid #e0e0e0;border-radius:4px;padding:14px;background:#fafafa;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-size:13px;font-weight:700;">手動登録のみ</div>
+            <span style="background:#888;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;">既定</span>
+          </div>
+          <div style="font-size:10px;color:#666;line-height:1.7;margin-bottom:10px;">連携を行わず、手動で口座情報を登録・更新する。</div>
+          <button style="width:100%;background:white;color:#1a1a1a;border:1px solid #ccc;border-radius:3px;padding:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;font-style:italic;color:#aaa;cursor:not-allowed;" disabled>常に有効</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 登録済み口座一覧 -->
+    <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:16px 20px;">
+      <div style="font-size:14px;font-weight:700;margin-bottom:12px;">登録済み口座一覧</div>
+
+      <!-- 口座1（デフォルト） -->
+      <div style="border:2px solid #c0392b;border-radius:6px;padding:14px 18px;margin-bottom:12px;background:#fff8f8;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;">★ デフォルト</span>
+          <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;">freee連携</span>
+          <span style="font-size:15px;font-weight:700;">三菱UFJ銀行 青山支店</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:12px;color:#555;line-height:1.7;">
+          <div><span style="color:#888;font-weight:700;">口座種別：</span>普通預金</div>
+          <div><span style="color:#888;font-weight:700;">口座番号：</span>0438660</div>
+          <div><span style="color:#888;font-weight:700;">名義：</span>カ）ワンフォーオール</div>
+          <div><span style="color:#888;font-weight:700;">登録日：</span>2025年04月10日</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button style="background:white;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">編集</button>
+          <button style="background:white;color:#888;border:1px solid #ccc;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:not-allowed;font-family:inherit;" disabled>デフォルト解除（できません）</button>
+        </div>
+      </div>
+
+      <!-- 口座2 -->
+      <div style="border:1px solid #e0e0e0;border-radius:6px;padding:14px 18px;margin-bottom:12px;background:white;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;">freee連携</span>
+          <span style="font-size:15px;font-weight:700;">三井住友銀行 渋谷支店</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:12px;color:#555;line-height:1.7;">
+          <div><span style="color:#888;font-weight:700;">口座種別：</span>普通預金</div>
+          <div><span style="color:#888;font-weight:700;">口座番号：</span>1234567</div>
+          <div><span style="color:#888;font-weight:700;">名義：</span>カ）ワンフォーオール</div>
+          <div><span style="color:#888;font-weight:700;">登録日：</span>2025年09月12日</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button style="background:white;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">編集</button>
+          <button style="background:white;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">デフォルトに設定</button>
+          <button style="background:white;color:#c0392b;border:1px solid #c0392b;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">削除</button>
+        </div>
+      </div>
+
+      <!-- 口座3（手動登録） -->
+      <div style="border:1px solid #e0e0e0;border-radius:6px;padding:14px 18px;margin-bottom:12px;background:white;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <span style="background:#888;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;">手動登録</span>
+          <span style="font-size:15px;font-weight:700;">ゆうちょ銀行</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:12px;color:#555;line-height:1.7;">
+          <div><span style="color:#888;font-weight:700;">口座種別：</span>総合口座</div>
+          <div><span style="color:#888;font-weight:700;">記号：</span>10000</div>
+          <div><span style="color:#888;font-weight:700;">番号：</span>12345671</div>
+          <div><span style="color:#888;font-weight:700;">名義：</span>カ）ワンフォーオール</div>
+          <div><span style="color:#888;font-weight:700;">登録日：</span>2026年01月20日</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button style="background:white;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">編集</button>
+          <button style="background:white;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">デフォルトに設定</button>
+          <button style="background:white;color:#c0392b;border:1px solid #c0392b;border-radius:3px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">削除</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-note" style="margin-top:18px;">
+      <strong>📌 設計メモ（CL口座連携・v57新規）</strong>
+      ・<strong>【v57新規】</strong>買取店のあんしん決済利用口座を一元管理する設定画面<br>
+      ・<strong>連携機能</strong>：会計freee／マネーフォワード等の外部サービスと連携可。連携時は口座情報が自動同期され、入金履歴と仕訳が紐づく<br>
+      ・<strong>複数口座管理</strong>：1買取店で複数口座を登録可。デフォルト口座を1つ指定し、案件ごとに切り替えも可能<br>
+      ・<strong>CS口座設定との違い</strong>：CSは案件ごとに1口座のみ登録（ullo連携なし）。CLは複数口座管理＋外部連携あり<br>
+      ・<strong>削除制約</strong>：デフォルト口座は削除不可。先に別口座をデフォルト化する必要あり<br>
+      ・連携設定変更時の同期エラーは別途エラー通知画面で対応（未実装）
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+</div><!-- /screen-cl-koza-link -->
+<script src="../assets/common.js"></script>
+</body>
+</html>

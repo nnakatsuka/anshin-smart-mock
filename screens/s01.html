@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>買取店 成約申告 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">s01</span><span class="nm">買取店 成約申告</span>
+</div>
+<div class="screen active" id="screen-s01">
+  <div class="step-desc-bar">
+    <span class="step-desc-num">STEP ① 前</span>
+    <span class="step-desc-title">買取店 成約申告 — 買取マイページで成約ボタンを押下（STEP①へ遷移する起点）</span><span style="background:#1a1a1a;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">🚗 CLマイページ（買取）</span>
+    <span class="step-desc-actor">アクター：買取店</span>
+  </div>
+
+  <!-- ヘッダー -->
+  <div style="background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;">
+    <span style="color:white;font-size:18px;font-weight:900;letter-spacing:-0.5px;">MöTA モータ</span>
+    <span style="color:#aaa;font-size:12px;">[ ログアウト</span>
+  </div>
+
+  <!-- グローバルナビ -->
+  <div style="background:#1a1a1a;display:flex;border-bottom:1px solid #333;">
+    <div style="padding:13px 40px;font-size:13px;color:#888;cursor:pointer;">マイページ</div>
+    <div style="padding:13px 40px;font-size:13px;color:white;font-weight:700;border-bottom:3px solid #c0392b;margin-bottom:-1px;cursor:pointer;">車買取</div>
+    <div style="padding:13px 40px;font-size:13px;color:#888;cursor:pointer;">車買取Plus</div>
+  </div>
+
+  <!-- タブ -->
+  <div style="background:white;display:flex;border-bottom:1px solid #e0e0e0;padding:0 24px;">
+    <div style="padding:12px 0;margin-right:32px;font-size:13px;color:#c0392b;font-weight:700;border-bottom:2px solid #c0392b;margin-bottom:-1px;cursor:pointer;">入札受付中</div>
+    <div style="padding:12px 0;margin-right:32px;font-size:13px;color:#999;cursor:pointer;">入賞確定な車両</div>
+    <div style="padding:12px 0;font-size:13px;color:#999;cursor:pointer;">入札受付終了</div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:8px;padding:8px 0;">
+      <span style="font-size:12px;color:#555;">対応状況</span>
+      <div style="background:#4CAF50;border-radius:20px;width:40px;height:22px;position:relative;cursor:pointer;"><div style="position:absolute;top:3px;right:3px;width:16px;height:16px;background:white;border-radius:50%;"></div></div>
+    </div>
+  </div>
+
+  <!-- サマリーカード：フルwidth（絞り込みの上） -->
+  <div style="background:#f5f4f0;padding:16px 24px;border-bottom:1px solid #e0e0e0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:white;border:1px solid #e0e0e0;padding:14px 18px;">
+        <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:2px;">入札対応残数</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px;">「入札済」「入札見送り」車両を除く、未入札の車両の件数</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;white-space:nowrap;">本日18時締切</span><span style="font-size:13px;">入札対応残数 <strong>2</strong> 件</span></div>
+          <span style="color:#ccc;font-size:16px;">›</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;white-space:nowrap;">翌日12時締切</span><span style="font-size:13px;">入札対応残数 <strong>0</strong> 件</span></div>
+          <span style="color:#ccc;font-size:16px;">›</span>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid #e0e0e0;padding:14px 18px;">
+        <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:2px;">現時点で入賞確実な車両件数</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px;">「入札見送り」車両含む、未入札かつ、現時点で入札が3社未満の車両の件数</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;white-space:nowrap;">本日18時締切</span><span style="font-size:13px;">現時点で入賞確実な車両 <strong>2</strong> 件</span></div>
+          <span style="color:#ccc;font-size:16px;">›</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;white-space:nowrap;">翌日12時締切</span><span style="font-size:13px;">現時点で入賞確実な車両 <strong>0</strong> 件</span></div>
+          <span style="color:#ccc;font-size:16px;">›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- メインレイアウト（左サイドバー＋コンテンツ） -->
+  <div style="display:flex;background:#f5f4f0;min-height:calc(100vh - 180px);">
+
+    <!-- 左サイドバー（絞り込み） -->
+    <div style="width:200px;flex-shrink:0;background:white;border-right:1px solid #e0e0e0;padding:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #e8e8e8;">
+        <span style="font-size:13px;font-weight:700;">絞り込み</span>
+        <span style="font-size:12px;color:#1E56A0;cursor:pointer;">◀ 閉じる</span>
+      </div>
+
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">入札状況</div>
+        <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;background:white;"><option>-</option></select>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">入札締切時間</div>
+        <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;background:white;"><option>-</option></select>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">車両種別</div>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;">
+          <button style="font-size:10px;padding:3px 8px;border:1px solid #ccc;border-radius:2px;background:white;cursor:pointer;">全て</button>
+          <button style="font-size:10px;padding:3px 8px;border:1px solid #ccc;border-radius:2px;background:white;cursor:pointer;">MOTA車買取</button>
+          <button style="font-size:10px;padding:3px 8px;border:1px solid #ccc;border-radius:2px;background:white;cursor:pointer;">車取サポート</button>
+        </div>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">メーカー</div>
+        <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;background:white;"><option>- 入力または選択</option></select>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">車種</div>
+        <input style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;" placeholder="メーカー名を入力してください">
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">都道府県</div>
+        <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;background:white;"><option>- 入力または選択</option></select>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="display:flex;gap:6px;margin-bottom:6px;">
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#666;margin-bottom:3px;">売却希望時期</div>
+            <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 4px;font-size:11px;font-family:inherit;background:white;"><option>-</option></select>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#666;margin-bottom:3px;">修復歴</div>
+            <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 4px;font-size:11px;font-family:inherit;background:white;"><option>-</option></select>
+          </div>
+        </div>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="display:flex;gap:6px;margin-bottom:6px;">
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#666;margin-bottom:3px;">写真の有無</div>
+            <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 4px;font-size:11px;font-family:inherit;background:white;"><option>-</option></select>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#666;margin-bottom:3px;">情報の変更</div>
+            <select style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 4px;font-size:11px;font-family:inherit;background:white;"><option>-</option></select>
+          </div>
+        </div>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">査定番号</div>
+        <input style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;" placeholder="数値で入力">
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:6px;">成約状況</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
+            <input type="radio" name="filter-seiyaku" value="all" checked style="accent-color:#1a1a1a;"> すべて
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
+            <input type="radio" name="filter-seiyaku" value="seiyaku" style="accent-color:#1D6B35;"> <span style="color:#1D6B35;font-weight:700;">成約のみ</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
+            <input type="radio" name="filter-seiyaku" value="miseiyaku" style="accent-color:#888;"> <span style="color:#555;">未成約のみ</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
+            <input type="radio" name="filter-seiyaku" value="unset" style="accent-color:#e67e22;"> <span style="color:#e67e22;">未選択のみ</span>
+          </label>
+        </div>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #f0f0f0;">
+        <div style="font-size:11px;color:#666;margin-bottom:5px;">メモ検索</div>
+        <input style="width:100%;border:1px solid #ccc;border-radius:2px;padding:5px 6px;font-size:12px;font-family:inherit;" placeholder="キーワードを入力">
+      </div>
+      <div style="padding:12px 14px;display:flex;gap:6px;">
+        <button style="flex:1;padding:7px;border:1px solid #ccc;border-radius:2px;background:white;font-size:12px;font-family:inherit;cursor:pointer;">クリア</button>
+        <button style="flex:1;padding:7px;border:none;border-radius:2px;background:#1a1a1a;color:white;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;">絞り込む</button>
+      </div>
+    </div>
+
+    <!-- 右コンテンツ -->
+    <div style="flex:1;padding:16px 20px;overflow:auto;">
+
+      <!-- 一括操作バー -->
+      <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:10px 14px;margin-bottom:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;cursor:pointer;">
+          <input type="checkbox" id="check-all" style="width:15px;height:15px;accent-color:#1a1a1a;" onclick="toggleAll(this)">
+          全選択
+        </label>
+        <span id="selected-count" style="font-size:12px;font-weight:700;color:#1a1a1a;background:#e0e0e0;padding:2px 10px;border-radius:20px;">0件選択中</span>
+        <span style="font-size:12px;color:#888;">選択した物件を一括で：</span>
+        <button onclick="alert('選択物件を一括「成約」に登録します')" style="background:#1D6B35;color:white;border:none;border-radius:3px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">✅ まとめて成約に登録</button>
+        <button onclick="alert('選択物件を一括「未成約」に登録します')" style="background:white;color:#555;border:1px solid #bbb;border-radius:3px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">✗ まとめて未成約に登録</button>
+        <span style="font-size:11px;color:#a07800;margin-left:auto;">※ ラジオボタン選択後、まとめて登録ボタンを押すことで一括保存されます</span>
+      </div>
+
+      <!-- リストヘッダー -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <span style="font-size:13px;font-weight:700;">全 30 件</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <select style="border:1px solid #ccc;border-radius:2px;padding:5px 8px;font-size:12px;font-family:inherit;background:white;"><option>新着順</option></select>
+          <span style="font-size:11px;color:#888;">表示 30 / 60 / 100件</span>
+        </div>
+      </div>
+
+      <!-- 車両リスト（カード型） -->
+      <div>
+        <div style="background:#f5f5f5;border:1px solid #e0e0e0;display:flex;align-items:center;gap:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#555;white-space:nowrap;overflow-x:auto;">
+          <span class="cl-col-check"></span>
+          <span class="cl-col-id">査定番号</span>
+          <span class="cl-col-badge"></span>
+          <span class="cl-col-name">車両名</span>
+          <span class="cl-col-customer">お客様名</span>
+          <span class="cl-col-year">年式</span>
+          <span class="cl-col-km">走行距離</span>
+          <span class="cl-col-area">エリア</span>
+          <span class="cl-col-price">査定額</span>
+          <span class="cl-col-repair">修復</span>
+          <span class="cl-col-photo">写真</span>
+          <span class="cl-col-change">情報変更</span>
+          <span class="cl-col-deadline" style="margin-left:auto;">締切</span>
+          <span style="width:220px;flex-shrink:0;color:#1D6B35;">成約 / 未成約 ｜ メモ</span>
+        </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127615</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">ホンダ ZR-V</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和5年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">2.4万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">神奈川県横浜市青葉区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">田中 裕子</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">245万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#c0392b;white-space:nowrap;margin-left:auto;">12時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127615" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127615" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127615 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127616</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">トヨタ ヴェルファイア</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和3年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">5.8万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">東京都世田谷区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">山本 健太</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">420万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="background:#1D6B35;color:white;font-size:10px;padding:2px 6px;border-radius:2px;">入賞確実</span></span>
+                <span style="font-size:13px;font-weight:700;color:#1a1a1a;white-space:nowrap;margin-left:auto;">18時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127616" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127616" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127616 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127617</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">日産 エクストレイル</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和4年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">3.1万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">埼玉県さいたま市浦和区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">佐藤 美穂</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">280万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#c0392b;white-space:nowrap;margin-left:auto;">12時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127617" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127617" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127617 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127618</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">マツダ CX-5</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和2年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">6.4万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">大阪府大阪市北区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">鈴木 大輔</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">198万</span>
+                <span class="cl-col-repair">修復 あり</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#1a1a1a;white-space:nowrap;margin-left:auto;">18時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127618" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127618" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127618 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127619</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">スバル フォレスター</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和3年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">4.2万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">福岡県福岡市博多区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">中村 さやか</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">230万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#c0392b;white-space:nowrap;margin-left:auto;">12時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127619" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127619" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127619 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127620</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">レクサス RX</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和4年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">1.8万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">愛知県名古屋市千種区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">高橋 誠</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">660万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#1a1a1a;white-space:nowrap;margin-left:auto;">18時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127620" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127620" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127620 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127621</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">BMW 3シリーズ</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和2年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">3.5万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">神奈川県川崎市中原区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">伊藤 麻衣</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">330万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#c0392b;white-space:nowrap;margin-left:auto;">12時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127621" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127621" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127621 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127622</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">トヨタ RAV4</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和5年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">0.8万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">千葉県千葉市稲毛区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">渡辺 拓也</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">295万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#1a1a1a;white-space:nowrap;margin-left:auto;">18時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127622" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127622" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127622 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127623</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">トヨタ アルファード</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和4年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">1.2万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">東京都渋谷区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">小林 奈々</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">580万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#c0392b;white-space:nowrap;margin-left:auto;">12時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127623" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127623" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127623 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="background:white;border:1px solid #e0e0e0;border-bottom:2px solid #ececec;margin-bottom:1px;display:grid;grid-template-columns:1fr 48px;">
+              <div style="padding:8px 12px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;grid-column:1;">
+                <input type="checkbox" class="card-check cl-col-check" onchange="updateCount()" style="width:16px;height:16px;accent-color:#1a1a1a;flex-shrink:0;"><span style="color:#1E56A0;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;width:60px;flex-shrink:0;">2127624</span>
+                <span class="cl-col-badge"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;">未入札</span></span>
+                <span class="cl-col-name" style="font-size:13px;font-weight:700;white-space:nowrap;">ホンダ ヴェゼル</span>
+                <span class="cl-col-year" style="font-size:12px;color:#555;white-space:nowrap;">令和5年</span>
+                <span class="cl-col-km" style="font-size:12px;color:#555;white-space:nowrap;">0.5万km</span>
+                <span class="cl-col-area" style="font-size:12px;color:#555;white-space:nowrap;">大阪府堺市堺区</span><span class="cl-col-customer" style="font-size:11px;background:#f0f4fb;color:#1E56A0;border-radius:2px;padding:2px 7px;white-space:nowrap;font-weight:500;">加藤 剛</span>
+                <span class="cl-col-price" style="font-size:13px;font-weight:700;white-space:nowrap;">265万</span>
+                <span class="cl-col-repair">修復 なし</span>
+                <span class="cl-col-photo">写真 なし</span>
+                <span class="cl-col-change" style="font-size:11px;"><span style="color:#999;">なし</span></span>
+                <span style="font-size:13px;font-weight:700;color:#1a1a1a;white-space:nowrap;margin-left:auto;">18時</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:flex;gap:0;border:1px solid #ccc;border-radius:3px;overflow:hidden;font-size:12px;font-family:inherit;">
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;border-right:1px solid #ccc;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127624" value="seiyaku" style="accent-color:#1D6B35;width:13px;height:13px;">
+                      <span style="font-weight:700;color:#1D6B35;">成約</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:5px;padding:5px 12px;background:white;cursor:pointer;white-space:nowrap;">
+                      <input type="radio" name="seiyaku-2127624" value="miseiyaku" style="accent-color:#888;width:13px;height:13px;">
+                      <span style="color:#888;">未成約</span>
+                    </label>
+                  </div>
+                  <button onclick="alert('2127624 の成約状況を保存しました')" style="background:#1a1a1a;color:white;border:none;border-radius:3px;padding:0 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;height:36px;">保存</button>
+                  <button onclick="alert('あんしん決済管理画面へ遷移')" title="あんしん決済管理画面へ" style="background:#c0392b;color:white;border:none;border-radius:0 0 0 0;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;width:48px;min-height:100%;line-height:1;grid-column:2;grid-row:1/3;border-left:1px solid rgba(255,255,255,0.2);">
+                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 30L3 15C1 13 0 11 0 9C0 4 4 0 9 0C12 0 14.8 1.5 16.5 4L18 6L19.5 4C21.2 1.5 24 0 27 0C32 0 36 4 36 9C36 11 35 13 33 15L18 30Z" fill="white"/>
+                      <text x="18" y="21" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial,sans-serif" fill="#c0392b" letter-spacing="-0.5">M</text>
+                    </svg>
+                  </button>
+                </div>
+                  <input type="text" placeholder="📝 フリーメモ（ユーザー非表示）" style="border:1px solid #ddd;border-radius:2px;padding:0 8px;font-size:11px;font-family:inherit;color:#555;background:#fafafa;height:36px;width:180px;flex-shrink:0;">
+                  <button style="white-space:nowrap;border:1px solid #1E56A0;background:white;color:#1E56A0;padding:0 10px;font-size:11px;font-weight:700;border-radius:2px;cursor:pointer;font-family:inherit;height:36px;flex-shrink:0;">更新</button>
+              </div>
+            </div>
+            <div style="padding:8px 14px;font-size:11px;color:#aaa;text-align:center;background:#fafafa;border:1px solid #e0e0e0;">… 以下20件省略 …</div>
+      </div>
+
+      <div class="design-note" style="margin-top:14px;">
+        <strong>📌 設計メモ</strong>
+        ・「成約」ラジオボタン・保存ボタン・ハート＆Mボタンは<strong>あんしん決済対応店舗のみに表示</strong>（非対応店舗には当該列ごと非表示）<br>
+        ・ハート＆Mボタン（あんしん決済管理画面への導線）も同様に<strong>あんしん決済対応店舗のみに表示</strong><br>
+        ・成約ラジオ選択→保存ボタン押下でステータス確定。ハート＆Mボタン押下であんしん決済管理画面（STEP①成約情報登録）へ遷移<br>
+        ・【論点】成約前に誤って押してしまう店舗への対応（3/25定例で課題提起済み）
+      </div>
+
+      <div style="margin-top:24px;padding-top:12px;border-top:1px solid #e0e0e0;font-size:11px;color:#aaa;text-align:center;line-height:2.2;">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>

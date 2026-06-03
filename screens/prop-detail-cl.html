@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物件詳細（CL） | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">prop-detail-cl</span><span class="nm">物件詳細（CL）</span>
+</div>
+<div class="screen active" id="screen-prop-detail-cl">
+  <div class="step-desc-bar">
+    <span class="step-desc-num">詳細CL</span>
+    <span class="step-desc-title">物件詳細 — CLログイン時（買取店向け）</span>
+    <span style="background:#e67e22;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（買取店）</span>
+  </div>
+
+  <!-- ヘッダー -->
+  <div class="app-header">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
+    </div>
+    <div class="menu">
+      <div class="menu-item active" onclick="showScreen('prop-list-new',null)">成約</div>
+      <div class="menu-item" onclick="showScreen('cl-basic-info',null)">各種設定</div>
+      <div class="menu-item" onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div>
+    </div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+  <div class="admin-wrap">
+    <!-- タイトル行 + ボタン -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div class="admin-page-title" style="margin-bottom:0;">物件詳細</div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-primary" style="padding:7px 16px;font-size:12px;">情報を更新する</button>
+      </div>
+    </div>
+
+    <!-- 査定番号・ステップバー -->
+    <div style="background:white;border:1px solid #e0e0e0;padding:14px 20px;margin-bottom:12px;overflow-x:auto;">
+      <div style="font-size:12px;color:#666;margin-bottom:10px;">査定番号：2119473　車名：ホンダ フィット　氏名：内堀 けんじ</div>
+      <div style="display:flex;min-width:900px;">
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">①</span>【買取店】成約情報登録<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月14日</span></div>
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">②</span>【売主】成約情報確認<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月15日</span></div>
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">③</span>【買取店】入金<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月21日</span></div>
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">④</span>【MOTA】入金確認<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月21日</span></div>
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">⑤</span>【買取店】受領連絡<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月28日</span></div>
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">⑥</span>【MOTA】送金<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年05月06日</span></div>
+        <div class="sb-box current" style="flex:1;"><span class="sb-num">⑦</span>完了<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年05月07日</span></div>
+      </div>
+      <!-- 【v55追加】STEP④ 業務責任ハンドオフ可視化チップ -->
+      <div style="margin-top:12px;padding:10px 14px;background:#f0f8f3;border:1px solid #c8e6cf;border-radius:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;">v55 NEW</span>
+        <span style="background:white;color:#1D6B35;border:1px solid #1D6B35;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">✓ STEP④ 入金確認 完了</span>
+        <span style="font-size:11px;color:#555;">MOTA → 買取店 へ業務責任がハンドオフ済み（2026年04月21日 14:32）</span>
+      </div>
+    </div>
+
+    <!-- 物件情報（サービス区分バッジ付き、3列）— v56でMOTA版と項目統一 -->
+    <div class="section-title" style="display:flex;align-items:center;gap:8px;">
+      物件情報
+      <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">車買取</span>
+      <span style="background:#16a085;color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;">v56 統一</span>
+    </div>
+    <div style="margin-bottom:4px;border:1px solid #e0e0e0;">
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">成約情報受領日</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">2026-04-13</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">ローン残債</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥0</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">書類フォルダ</div><div style="padding:10px 12px;font-size:13px;color:#aaa;">アップロードするファイルを選択してください</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">買取予定金額</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥1,000,000</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">担当者メールアドレス</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">c_test_1619@mota.inc</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">減額</div><div style="padding:10px 12px;font-size:13px;">¥0</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">買取金額 ※減額後含む</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;font-weight:700;">¥1,000,000</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主あんしん決済利用手数料（税込）</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥0 <span style="font-size:10px;color:#888;">※v56：手数料制度廃止</span></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主送金額</div><div style="padding:10px 12px;font-size:13px;font-weight:700;">¥1,000,000</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">入庫予定日</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">2026-04-24</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">振込依頼実行日時</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">2026-04-13 17:32:17</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;"></div>
+      </div>
+    </div>
+
+    <!-- 買取店情報 -->
+    <div class="section-title">買取店情報</div>
+    <div style="margin-bottom:4px;border:1px solid #e0e0e0;">
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">店舗名</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">株式会社One For All</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">店舗ID</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">C001234</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">入金予定日</div><div style="padding:10px 12px;font-size:13px;">2026-04-18</div>
+      </div>
+    </div>
+
+    <!-- 入金／送金履歴（振込方法種別含む）-->
+    <div class="section-title">入金／送金履歴</div>
+    <div style="margin-bottom:16px;border:1px solid #e0e0e0;">
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;align-items:stretch;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;font-weight:700;">買取店入金</div>
+        <div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span style="background:#1E56A0;color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:2px;">ペイジー</span>
+            <span style="font-size:12px;color:#1a1a1a;">¥1,000,000</span>
+            <span style="font-size:11px;color:#888;">2026-04-21 14:32</span>
+            <span style="background:#1D6B35;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">確認済</span>
+          </div>
+          <div style="display:flex;justify-content:flex-end;margin-top:6px;">
+            <button style="font-size:10px;font-weight:700;color:#c0392b;background:white;border:1px solid #c0392b;border-radius:3px;padding:3px 10px;cursor:pointer;">📄 買取店請求書</button>
+          </div>
+        </div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;font-weight:700;">MOTA送金</div>
+        <div style="padding:10px 12px;font-size:13px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="background:#555;color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:2px;">銀行振込</span>
+            <span style="font-size:12px;color:#1a1a1a;">¥967,000</span>
+            <span style="font-size:11px;color:#888;">2026-05-06</span>
+            <span style="background:#1D6B35;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">送金完了</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:8px 12px;background:#f9f9f9;">
+        <button onclick="showScreen('payment-mgmt',null)" style="font-size:11px;font-weight:400;color:#1E56A0;background:transparent;border:none;cursor:pointer;padding:0;font-family:inherit;">▶ 入金／送金の詳細履歴を見る</button>
+      </div>
+    </div>
+
+    <!-- 【v55追加】減額発生時の二重送金履歴（参考表示） -->
+    <div style="margin-bottom:16px;border:2px dashed #e67e22;border-radius:6px;background:#fff8f0;padding:12px 16px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="background:#e67e22;color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;">v55 NEW</span>
+        <span style="font-size:13px;font-weight:700;color:#7a3e0d;">⚠ 減額発生時の入金／送金履歴（参考表示）</span>
+      </div>
+      <div style="font-size:11px;color:#7a3e0d;margin-bottom:10px;line-height:1.6;">
+        減額が確定すると、STEP⑥ 送金が「売主送金（減額後金額）」＋「買取店返金（差額）」の<strong>二重送金</strong>に切り替わります。<br>
+        例：当初¥1,000,000入金 → ¥200,000減額確定 → 売主へ¥800,000送金 ＋ 買取店へ¥200,000返金
+      </div>
+      <div style="border:1px solid #ffd0a3;border-radius:4px;background:white;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #f5e0c8;">
+          <div style="padding:10px 12px;background:#fff3e0;font-size:12px;color:#7a3e0d;border-right:1px solid #f5e0c8;font-weight:700;">買取店入金</div>
+          <div style="padding:10px 12px;font-size:13px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="background:#1E56A0;color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:2px;">ペイジー</span>
+              <span style="font-size:12px;color:#1a1a1a;">¥1,000,000</span>
+              <span style="font-size:11px;color:#888;">2026-04-21 14:32</span>
+              <span style="background:#1D6B35;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">確認済</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #f5e0c8;background:#fffbf3;">
+          <div style="padding:10px 12px;background:#ffeed4;font-size:12px;color:#7a3e0d;border-right:1px solid #f5e0c8;font-weight:700;">減額確定</div>
+          <div style="padding:10px 12px;font-size:13px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="background:#e67e22;color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:2px;">⚠ 減額</span>
+              <span style="font-size:12px;color:#1a1a1a;">減額額 ¥200,000</span>
+              <span style="font-size:11px;color:#888;">2026-04-28 11:05（売主同意済）</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #f5e0c8;">
+          <div style="padding:10px 12px;background:#fff3e0;font-size:12px;color:#7a3e0d;border-right:1px solid #f5e0c8;font-weight:700;">MOTA送金<br><span style="font-size:10px;font-weight:400;">（売主送金：減額後）</span></div>
+          <div style="padding:10px 12px;font-size:13px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="background:#555;color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:2px;">銀行振込</span>
+              <span style="font-size:12px;color:#1a1a1a;font-weight:700;">¥800,000</span>
+              <span style="font-size:11px;color:#888;">2026-05-06</span>
+              <span style="background:#1D6B35;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">送金完了</span>
+              <span style="background:#1E56A0;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">売主向け</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;">
+          <div style="padding:10px 12px;background:#fff3e0;font-size:12px;color:#7a3e0d;border-right:1px solid #f5e0c8;font-weight:700;">MOTA返金<br><span style="font-size:10px;font-weight:400;">（買取店返金：差額）</span></div>
+          <div style="padding:10px 12px;font-size:13px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="background:#555;color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:2px;">銀行振込</span>
+              <span style="font-size:12px;color:#1a1a1a;font-weight:700;">¥200,000</span>
+              <span style="font-size:11px;color:#888;">2026-05-06</span>
+              <span style="background:#1D6B35;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">送金完了</span>
+              <span style="background:#c0392b;color:white;font-size:10px;padding:1px 6px;border-radius:2px;">買取店向け</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 売主情報（3列） -->
+    <div class="section-title">売主情報</div>
+    <div style="margin-bottom:4px;border:1px solid #e0e0e0;">
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主名（契約者）</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">内堀　けんじ</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">金融機関コード</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">0005</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">金融機関名</div><div style="padding:10px 12px;font-size:13px;">三井住友銀行</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">支店コード</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">001</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">支店名</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">五反田支店</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">預金種目</div><div style="padding:10px 12px;font-size:13px;">普通預金</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">口座番号</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">1234560</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">口座名義</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">ウチボリ　ケンジ</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">MOTA買取申込時の電話番号</div><div style="padding:10px 12px;font-size:13px;">08012345678</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主メールアドレス</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">uchida.kenji@example.com</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;"></div>
+      </div>
+    </div>
+
+    <!-- ローン会社情報（3列・ローン残債あり） -->
+    <div class="section-title">ローン会社情報</div>
+    <div style="margin-bottom:4px;border:1px solid #e0e0e0;">
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">ローン会社名</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">ローン残債</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥0</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">ローン残債支払い期日</div><div style="padding:10px 12px;font-size:13px;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">金融機関コード</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">金融機関名</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">支店コード</div><div style="padding:10px 12px;font-size:13px;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">支店名</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">預金種目</div><div style="padding:10px 12px;font-size:13px;color:#aaa;border-right:1px solid #e0e0e0;">選択してください</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">口座番号</div><div style="padding:10px 12px;font-size:13px;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-top:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">口座名義</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;"></div>
+      </div>
+    </div>
+
+    <!-- 返金情報 -->
+    <div class="section-title">返金情報</div>
+    <div class="info-grid" style="max-width:400px;"><div class="ig-label">返金額</div><div class="ig-val">¥0</div></div>
+
+
+    <!-- 変更履歴ログ -->
+    <div style="display:flex;gap:12px;align-items:flex-start;margin-top:0;">
+    <div style="flex:1;">
+    <div class="section-title">変更履歴</div>
+    <div style="margin-bottom:16px;border:1px solid #e0e0e0;overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="background:#f7f7f7;">
+            <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;border-right:1px solid #e0e0e0;white-space:nowrap;">日時</th>
+            <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;border-right:1px solid #e0e0e0;white-space:nowrap;">操作者</th>
+            <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;border-right:1px solid #e0e0e0;">変更項目</th>
+            <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;">変更内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f0f0f0;">
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-04-21 09:14</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">菅原 綾香<br><span style="font-size:10px;color:#888;">MOTA</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;margin-right:4px;">ステップ変更</span></td>
+            <td style="padding:9px 12px;"><span style="background:#f5f5f5;border:1px solid #ddd;border-radius:2px;padding:2px 8px;color:#555;">⑨⑩ 受領連絡</span> <span style="color:#aaa;margin:0 6px;">→</span> <span style="background:#1a1a1a;color:white;border-radius:2px;padding:2px 8px;">⑪ 送金</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-04-18 14:02</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">株式会社One For All<br><span style="font-size:10px;color:#888;">CL（買取店）</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;">入庫予定日</td>
+            <td style="padding:9px 12px;color:#888;">変更</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;">
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-04-13 17:30</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">株式会社One For All<br><span style="font-size:10px;color:#888;">CL（買取店）</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;"><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;margin-right:4px;">ステップ変更</span></td>
+            <td style="padding:9px 12px;"><span style="background:#f5f5f5;border:1px solid #ddd;border-radius:2px;padding:2px 8px;color:#555;">⑥ 入金</span> <span style="color:#aaa;margin:0 6px;">→</span> <span style="background:#1a1a1a;color:white;border-radius:2px;padding:2px 8px;">⑦ 引渡し連絡</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-04-10 11:22</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">内堀 賢治<br><span style="font-size:10px;color:#888;">MOTA</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;">買取予定金額</td>
+            <td style="padding:9px 12px;color:#888;">変更</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-04-09 09:05</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">株式会社One For All<br><span style="font-size:10px;color:#888;">CL（買取店）</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;margin-right:4px;">ステップ変更</span></td>
+            <td style="padding:9px 12px;"><span style="background:#f5f5f5;border:1px solid #ddd;border-radius:2px;padding:2px 8px;color:#555;">—</span> <span style="color:#aaa;margin:0 6px;">→</span> <span style="background:#1D6B35;color:white;border-radius:2px;padding:2px 8px;">④ 成約情報登録</span> <span style="font-size:11px;color:#888;margin-left:8px;">（新規作成）</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div><!-- /log-row -->
+    <div class="design-note" style="margin-top:12px;">
+      <strong>📌 設計メモ（物件詳細 CL版 差分まとめ）</strong><br>
+      ・ヘッダーのナビメニューは「成約／設定」の2つ（入金／送金はグローバルナビから削除。物件詳細内の「入金／送金履歴」ボックスからリンク遷移）<br>      ・【v44】物件情報テーブル下に「入金／送金履歴」ボックスを追加：買取店入金（CL→MOTA）・MOTA送金の振込方法種別・金額・日時・状態を一覧表示。詳細リンクで入金/送金管理画面へ遷移<br>
+      ・画面上部ボタン：「キャンセル依頼」「情報を更新する」の2つ（減額依頼は買取店受取画面に移動。MOTA版の「メール作成」「LINE作成」「減額依頼受理」「キャンセル受理」「ステップ変更」は非表示）<br>
+      ・物件情報：サービス区分バッジを追加（MOTA版と共通）。ローン残債額・売主あんしん決済手数料（税込）・売主送金額 は非表示<br>
+      ・売主情報：契約者氏名カナなし（全画面共通で削除）。売主追い金額・売主追い金支払期日 は非表示<br>
+      ・買取店情報セクション：非表示（CLはMOTA側のみ）<br>
+      ・ローン会社情報：ローン残債あり（DX版キャプチャに準拠）<br>
+      ・返金情報：表示あり（読み取り専用）<br>
+      ・強制OK/NG入力セクション：非表示（MOTAアカウントのみ）
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>

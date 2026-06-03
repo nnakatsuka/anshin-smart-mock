@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>利用実績サマリ | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">summary</span><span class="nm">利用実績サマリ</span>
+</div>
+<div class="screen active" id="screen-summary">
+  <div class="step-desc-bar" style="background:#1E56A0;">
+    <span class="step-desc-num" style="background:#fff;color:#1E56A0;">📊 参考</span>
+    <span class="step-desc-title">車買取サマリー — あんしん決済実績・CSV出力</span>
+    <span class="step-desc-actor">アクター：買取店（マイページ）</span>
+  </div>
+
+  <!-- MOTAマイページ風ヘッダー -->
+  <div style="background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;">
+    <span style="color:white;font-size:18px;font-weight:900;letter-spacing:-0.5px;">MöTA モータ</span>
+    <span style="color:#aaa;font-size:12px;">ログアウト</span>
+  </div>
+  <div style="background:#1a1a1a;display:flex;border-bottom:1px solid #333;">
+    <div style="padding:13px 40px;font-size:13px;color:#888;cursor:pointer;">マイページ</div>
+    <div style="padding:13px 40px;font-size:13px;color:white;font-weight:700;border-bottom:3px solid #c0392b;margin-bottom:-1px;cursor:pointer;">車買取</div>
+    <div style="padding:13px 40px;font-size:13px;color:#888;cursor:pointer;">車買取Plus</div>
+  </div>
+
+  <div style="background:#f5f5f5;padding:28px 40px;min-height:80vh;">
+    <div style="font-size:20px;font-weight:700;margin-bottom:24px;">車買取サマリー</div>
+
+    <!-- 店舗情報 -->
+    <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:20px;">
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;color:#555;border-bottom:1px solid #e0e0e0;padding-bottom:8px;">店舗情報</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div style="width:80px;height:80px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#888;flex-shrink:0;">NO IMAGE</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1;font-size:13px;">
+          <div><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">会社名</span>株式会社One For All</div>
+          <div><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">店舗名</span>株式会社One For All</div>
+          <div><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">電話</span>0286128742</div>
+          <div><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">FAX</span>—</div>
+          <div><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">古物商番号</span>411220002398</div>
+          <div><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">郵便番号</span>3210902</div>
+          <div style="grid-column:1/-1;"><span style="color:#888;font-size:11px;display:block;margin-bottom:2px;">住所</span>宇都宮市柳田町587-5</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 入札対応残数 + 当月予算使用状況 -->
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;margin-bottom:20px;">
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:10px;">入札対応残数</div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:11px;color:#888;margin-bottom:2px;">本日12時締切</div>
+          <div style="font-size:28px;font-weight:900;color:#c0392b;line-height:1;">0<span style="font-size:13px;font-weight:400;color:#888;">件</span></div>
+          <div style="font-size:11px;color:#1E56A0;cursor:pointer;margin-top:2px;">すべてを見る ›</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#888;margin-bottom:2px;">本日18時締切</div>
+          <div style="font-size:28px;font-weight:900;color:#c0392b;line-height:1;">0<span style="font-size:13px;font-weight:400;color:#888;">件</span></div>
+          <div style="font-size:11px;color:#1E56A0;cursor:pointer;margin-top:2px;">すべてを見る ›</div>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:12px;">当月の予算使用状況</div>
+        <div style="display:flex;align-items:center;gap:24px;">
+          <div style="width:80px;height:80px;border-radius:50%;background:conic-gradient(#1E56A0 0%, #e0e0e0 0%);display:flex;align-items:center;justify-content:center;position:relative;">
+            <div style="width:58px;height:58px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1E56A0;">無制限</div>
+          </div>
+          <div style="font-size:13px;line-height:2.2;">
+            <div>使用金額 合計 <strong>0</strong> 円(税別) ／ 希望上限金額 <strong>無制限</strong></div>
+            <div>車両情報件数 <strong>0</strong> 件 ／ 請求予定金額 <strong>0</strong> 円(税別)</div>
+            <div>現車確認件数 <strong>0</strong> 件 ／ 請求予定金額 <strong>0</strong> 円(税別)</div>
+            <div style="margin-top:4px;"><span style="color:#1E56A0;cursor:pointer;font-size:12px;">今月のご利用状況を見る ›</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 口コミ + 入賞しやすい市区町村 + 価値共創レポート -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:10px;">口コミ</div>
+        <div style="font-size:12px;color:#888;margin-bottom:8px;">総合評価</div>
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+          <div style="font-size:32px;font-weight:900;color:#1E56A0;">4.2</div>
+          <div style="font-size:12px;color:#888;">査定価格 4.1　連続対応 4.3　おすすめ度 4.2</div>
+        </div>
+        <div style="font-size:12px;color:#1E56A0;cursor:pointer;margin-top:8px;">口コミを見る ›</div>
+      </div>
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;">入賞しやすい市区町村情報</div>
+        <div style="font-size:12px;color:#888;line-height:1.8;">売却意向が高く入賞率が低い市区町村をご紹介<br>対象は「売却希望時期が1ヶ月以内または3ヶ月以内」</div>
+        <div style="font-size:12px;color:#1E56A0;cursor:pointer;margin-top:8px;">市区町村を確認する ›</div>
+      </div>
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;">価値共創レポート</div>
+        <div style="font-size:12px;color:#888;line-height:1.8;">ユーザーの生の声（VOC）から加盟店の皆さまと共に新たな価値を創り、サービス体験を高めていくことを目指します</div>
+        <div style="font-size:12px;color:#1E56A0;cursor:pointer;margin-top:8px;">価値共創レポートを確認する ›</div>
+      </div>
+    </div>
+
+    <!-- あんしん決済実績カード -->
+    <div style="background:white;border:1px solid #e0e0e0;border-radius:4px;padding:20px 24px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:700;color:#555;">あんしん決済 実績サマリー</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <select style="border:1px solid #ccc;border-radius:2px;padding:5px 10px;font-size:12px;font-family:inherit;background:white;">
+            <option>2026年4月</option><option>2026年3月</option><option>2026年2月</option>
+          </select>
+          <button onclick="alert('CSVをダウンロードします')" style="background:#1E56A0;color:white;border:none;border-radius:3px;padding:7px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;">
+            ⬇ CSV出力
+          </button>
+        </div>
+      </div>
+
+      <!-- 4指標カード -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+        <div style="background:#f8fafd;border:1px solid #d0dcf0;border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:11px;color:#1E56A0;font-weight:700;margin-bottom:6px;">情報数</div>
+          <div style="font-size:32px;font-weight:900;color:#1a1a1a;line-height:1;">28</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">件</div>
+        </div>
+        <div style="background:#f8fafd;border:1px solid #d0dcf0;border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:11px;color:#1E56A0;font-weight:700;margin-bottom:6px;">入札数</div>
+          <div style="font-size:32px;font-weight:900;color:#1a1a1a;line-height:1;">21</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">件</div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #a5d6a7;border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:11px;color:#1D6B35;font-weight:700;margin-bottom:6px;">入賞数</div>
+          <div style="font-size:32px;font-weight:900;color:#1D6B35;line-height:1;">8</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">件</div>
+        </div>
+        <div style="background:#fef9e7;border:1px solid #f9ca24;border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:11px;color:#856404;font-weight:700;margin-bottom:6px;">成約数</div>
+          <div style="font-size:32px;font-weight:900;color:#856404;line-height:1;">5</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">件 <span style="font-size:10px;">(あんしん決済適用)</span></div>
+        </div>
+      </div>
+
+      <!-- 月別推移テーブル -->
+      <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;">月別推移</div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="background:#f5f5f5;border-bottom:2px solid #e0e0e0;">
+            <th style="padding:8px 12px;text-align:left;font-weight:700;color:#555;">月</th>
+            <th style="padding:8px 12px;text-align:right;font-weight:700;color:#1E56A0;">情報数</th>
+            <th style="padding:8px 12px;text-align:right;font-weight:700;color:#1E56A0;">入札数</th>
+            <th style="padding:8px 12px;text-align:right;font-weight:700;color:#1D6B35;">入賞数</th>
+            <th style="padding:8px 12px;text-align:right;font-weight:700;color:#856404;">成約数</th>
+            <th style="padding:8px 12px;text-align:right;font-weight:700;color:#555;">成約率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:8px 12px;font-weight:700;">2026年4月</td>
+            <td style="padding:8px 12px;text-align:right;">28</td>
+            <td style="padding:8px 12px;text-align:right;">21</td>
+            <td style="padding:8px 12px;text-align:right;color:#1D6B35;font-weight:700;">8</td>
+            <td style="padding:8px 12px;text-align:right;color:#856404;font-weight:700;">5</td>
+            <td style="padding:8px 12px;text-align:right;">62.5%</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;">
+            <td style="padding:8px 12px;">2026年3月</td>
+            <td style="padding:8px 12px;text-align:right;">32</td>
+            <td style="padding:8px 12px;text-align:right;">25</td>
+            <td style="padding:8px 12px;text-align:right;">10</td>
+            <td style="padding:8px 12px;text-align:right;">7</td>
+            <td style="padding:8px 12px;text-align:right;">70.0%</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;">
+            <td style="padding:8px 12px;">2026年2月</td>
+            <td style="padding:8px 12px;text-align:right;">24</td>
+            <td style="padding:8px 12px;text-align:right;">18</td>
+            <td style="padding:8px 12px;text-align:right;">6</td>
+            <td style="padding:8px 12px;text-align:right;">4</td>
+            <td style="padding:8px 12px;text-align:right;">66.7%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="design-note">
+      <strong>📌 設計メモ</strong>
+      ・このサマリー画面はSTEPとは独立。買取店マイページ内「車買取サマリー」または「ご利用状況」画面への追加を想定<br>
+      ・CSV出力対象：情報数・入札数・入賞数・成約数（あんしん決済適用）の月別データ<br>
+      ・月・期間の絞り込みができるとより使いやすい
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>

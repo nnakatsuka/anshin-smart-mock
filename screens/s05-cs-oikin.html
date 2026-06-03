@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>追い金入金 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">s05-cs-oikin</span><span class="nm">追い金入金</span>
+</div>
+<div class="screen active" id="screen-s05-cs-oikin">
+  <div class="step-desc-bar" style="background:#1E56A0;">
+    <span class="step-desc-num" style="background:#fff;color:#1E56A0;">STEP ③ 追</span>
+    <span class="step-desc-title">追い金入金 — 売主がローン残債超過分をMOTAへ入金</span>
+    <span class="step-desc-actor">アクター：売主（CS）</span>
+  </div>
+  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
+    <strong>【v59 PC化】</strong>1200px統一・共通ヘッダー適用・2カラム配置
+  </div>
+
+  <div class="app-header cs">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('no-action-cs',null)">MöTA</span>
+      <span style="color:rgba(255,255,255,0.85);font-size:12px;">あんしん決済 — 売主専用</span>
+    </div>
+    <div class="menu"><div class="menu-item active">各種設定</div><div class="menu-item " onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div></div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+
+  <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
+    <div class="pc-container">
+      <div style="font-size:11px;color:#888;margin-bottom:6px;">あんしん決済 > 追い金入金</div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">追い金のお支払い</div>
+      <div style="font-size:12px;color:#888;margin-bottom:20px;">ローン残債が買取金額を上回るため、差額分のお支払いをお願いします。</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+
+        <!-- 左：金額内訳 -->
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">お支払い内訳</div>
+
+          <div style="display:grid;grid-template-columns:1fr auto;gap:10px 14px;font-size:13px;line-height:1.8;">
+            <div style="color:#888;font-weight:700;">買取金額</div><div style="font-weight:700;">¥1,500,000</div>
+            <div style="color:#888;font-weight:700;">ローン残債</div><div style="color:#c0392b;font-weight:700;">−¥2,516,500</div>
+            <div style="border-top:1px solid #f0f0f0;padding-top:10px;font-weight:700;color:#1a1a1a;">お支払い額（追い金）</div><div style="border-top:1px solid #f0f0f0;padding-top:10px;font-size:20px;font-weight:700;color:#c0392b;">¥1,016,500</div>
+          </div>
+
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:6px;">📅 振込期日</div>
+            <div style="font-size:14px;font-weight:700;color:#c0392b;">2026年04月21日（金）まで</div>
+          </div>
+
+          <div style="margin-top:14px;padding:10px 12px;background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;font-size:11px;color:#856404;line-height:1.7;">
+            ⚠️ 期日までにご入金がない場合、取引が成立しない場合があります。
+          </div>
+        </div>
+
+        <!-- 右：支払方法選択 -->
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">お支払い方法</div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+            <label style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:2px solid #1E56A0;border-radius:6px;background:#f5fbff;cursor:pointer;">
+              <input type="radio" name="cs-oikin-pay" checked style="margin-top:3px;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#1E56A0;">🏧 ペイジー決済（推奨）</div>
+                <div style="font-size:11px;color:#666;margin-top:3px;line-height:1.6;">登録口座から即時送金可能。ATM・ネットバンキング対応。</div>
+              </div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
+              <input type="radio" name="cs-oikin-pay" style="margin-top:3px;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#555;">🏦 銀行振込</div>
+                <div style="font-size:11px;color:#666;margin-top:3px;line-height:1.6;">指定口座へお振込み。手数料はお客様負担です。</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- バーチャル口座情報 -->
+          <div style="background:#fafafa;border:1px dashed #aaa;border-radius:6px;padding:14px;font-size:12px;line-height:1.8;color:#555;margin-bottom:18px;">
+            <div style="font-weight:700;color:#1a1a1a;margin-bottom:6px;">振込先（バーチャル口座）</div>
+            <div>みずほ銀行 〇〇支店</div>
+            <div>普通預金 1234567</div>
+            <div>カ）モータ</div>
+          </div>
+
+          <button style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">ペイジーで支払う</button>
+        </div>
+      </div>
+
+      <div class="design-note" style="margin-top:18px;">
+        <strong>📌 設計メモ（CS追い金入金・v59 PC化）</strong>
+        ・<strong>【v59】PC化</strong>：1200px幅・2カラム（左=金額内訳、右=支払方法選択）<br>
+        ・ペイジー対応口座登録ありの場合のみペイジー選択可。それ以外は銀振のみ
+      </div>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div><!-- /screen-s05-cs-oikin -->
+<script src="../assets/common.js"></script>
+</body>
+</html>

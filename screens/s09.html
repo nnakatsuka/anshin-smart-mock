@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>受領連絡 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">s09</span><span class="nm">受領連絡</span>
+</div>
+<div class="screen active" id="screen-s09">
+  <div class="step-desc-bar">
+    <span class="step-desc-num">STEP ⑤</span>
+    <span class="step-desc-title">【買取店】受領連絡 — 鑑定・検査完了後に受領連絡ボタンを押下（=旧 引渡連絡＋受領連絡を統合）</span><span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（買取店）</span>
+    <span class="step-desc-actor">アクター：買取店（検査）→ 買取店・MOTA運用（報告）</span>
+  </div>
+  <div class="app-header">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
+    </div>
+    <div class="menu">
+      <div class="menu-item active" onclick="showScreen('prop-list-new',null)">成約</div>
+      <div class="menu-item" onclick="showScreen('cl-basic-info',null)">各種設定</div>
+      <div class="menu-item" onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div>
+    </div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+  <div class="step-bar-wrap">
+    <div class="step-bar">
+      <div class="sb-item"><div class="sb-box done"><span class="sb-num">STEP ①</span>【買取店】成約情報登録</div></div>
+      <div class="sb-item"><div class="sb-box done"><span class="sb-num">STEP ②</span>【売主】成約情報確認</div></div>
+      <div class="sb-item"><div class="sb-box done"><span class="sb-num">STEP ③</span>【買取店】入金</div></div>
+      <div class="sb-item"><div class="sb-box done"><span class="sb-num">STEP ④</span>【MOTA】入金確認</div></div>
+      <div class="sb-item"><div class="sb-box current"><span class="sb-num">STEP ⑤</span>【買取店】受領連絡</div></div>
+      <div class="sb-item"><div class="sb-box"><span class="sb-num">STEP ⑥</span>【MOTA】送金</div></div>
+      <div class="sb-item"><div class="sb-box"><span class="sb-num">STEP ⑦</span>完了</div></div>
+    </div>
+  </div>
+
+  <div class="payment-body">
+
+    <!-- ===== 検査・受領連絡 ===== -->
+    <div style="padding:0 0 28px;">
+
+      <!-- 画面タイトル + 右上「物件詳細を見る」 -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e0e0e0;">
+        <div style="font-size:18px;font-weight:700;">鑑定・検査 / 受領連絡</div>
+        <button onclick="showScreen('prop-detail-cl',null)" style="background:white;color:#1E56A0;border:1px solid #1E56A0;border-radius:3px;padding:7px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">📄 物件詳細を見る</button>
+      </div>
+
+      <!-- 物件サマリー -->
+      <div style="display:grid;grid-template-columns:150px 1fr 150px 1fr;gap:0;border:1px solid #e0e0e0;margin-bottom:16px;">
+        <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">査定番号</div>
+        <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;border-right:1px solid #e0e0e0;">2119387</div>
+        <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">売主名</div>
+        <div style="padding:9px 14px;font-size:12px;border-bottom:1px solid #e0e0e0;">菅原 綾香</div>
+        <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">車両名／グレード</div>
+        <div style="padding:9px 14px;font-size:12px;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">トヨタ ヴォクシー ZS</div>
+        <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">買取金額※減額後含む</div>
+        <div style="padding:9px 14px;font-size:13px;font-weight:700;border-bottom:1px solid #e0e0e0;">¥1,500,000</div>
+        <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">書類フォルダ</div>
+        <div style="padding:9px 14px;font-size:12px;border-right:1px solid #e0e0e0;"><span style="color:#1E56A0;text-decoration:underline;cursor:pointer;">契約書PDF.pdf</span></div>
+        <div style="padding:9px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div>
+        <div style="padding:9px 14px;font-size:12px;"></div>
+      </div>
+
+      <!-- メイン：売主へ送金処理を進めるボタン（最大サイズ） -->
+      <div style="background:#e8f5e9;border:2px solid #1D6B35;border-radius:6px;padding:24px 28px;margin-bottom:16px;">
+        <div style="font-size:14px;color:#1a1a1a;line-height:1.9;margin-bottom:14px;">
+          鑑定・検査が完了し、車両・書類に問題がなければ<strong>「売主へ送金処理を進める」</strong>ボタンを押してください。<br>
+          押下後、MOTAが売主への送金処理を行います。
+        </div>
+        <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:12px 16px;font-size:12px;color:#856404;margin-bottom:14px;line-height:1.9;">
+          ⚠️ <strong>車両引渡し後3営業日以内を目安に押下してください。</strong><br>
+          ※ 早期に押下いただいた場合でも、MOTA→売主への送金は、買取店からMOTAへの入金から4日後以降となります。
+        </div>
+        <button onclick="if(confirm('「売主へ送金処理を進める」を実行します。\n\n⚠️ 一度送信すると取り消しできません。\nMOTAによる売主への送金処理が即時開始されます。\n車両・書類の内容を十分に確認してから実行してください。\n\nよろしいですか？'))alert('送金処理を開始しました。MOTAが売主への送金処理を実行します。')" style="background:#1D6B35;color:white;border:none;border-radius:6px;padding:18px 48px;font-size:18px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:10px;">
+          💰 売主へ送金処理を進める
+        </button>
+      </div>
+
+      <!-- 減額（左）・キャンセル（右）セクション -->
+      <div style="font-size:12px;color:#555;margin-bottom:10px;">減額・キャンセルが必要な場合は、送金処理の代わりに以下から対応してください：</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <!-- 減額（左） -->
+        <div style="border:1px solid #e0e0e0;border-radius:4px;padding:16px 20px;background:white;">
+          <div style="font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
+            <span style="background:#e67e22;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">減額</span>
+            買取金額を減額する
+          </div>
+          <div style="font-size:11px;color:#555;line-height:1.7;margin-bottom:12px;">売主との合意の上、依頼してください。依頼後、売主側に確認依頼が届き、確認完了後に減額が完了し送金に進みます。</div>
+          <button onclick="showScreen('s09-gengaku',null)" style="background:white;color:#e67e22;border:1px solid #e67e22;border-radius:3px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">減額依頼を送る</button>
+        </div>
+        <!-- キャンセル（右） -->
+        <div style="border:1px solid #e0e0e0;border-radius:4px;padding:16px 20px;background:white;">
+          <div style="font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
+            <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">キャンセル</span>
+            取引をキャンセルする
+          </div>
+          <div style="font-size:11px;color:#555;line-height:1.7;margin-bottom:12px;">売主との合意の上、依頼してください。依頼後、売主側に確認依頼が届き、確認完了後にキャンセルが完了します。</div>
+          <button onclick="showScreen('s09-cancel',null)" style="background:white;color:#c0392b;border:1px solid #c0392b;border-radius:3px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">キャンセル依頼を送る</button>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    <div class="design-note" style="margin-top:16px;">
+      <strong>📌 設計メモ（v61改修）</strong>
+      ・<strong>【v61】メインアクション文言変更</strong>：「受領連絡を送る」→「💰 売主へ送金処理を進める」（最大サイズ）<br>
+      ・<strong>【v61】減額（左）／キャンセル（右）に並べ替え</strong>。両方のボタンサイズを小さくして、メインアクションを際立たせる<br>
+      ・<strong>【v61】「一度送信すると取り消せません」を本文から削除</strong>→ 送金処理ボタン押下時の確認ダイアログに集約<br>
+      ・<strong>【v61】「物件詳細を見る」をh1見出し右側に配置</strong>（CLのSTEP画面共通）<br>
+      ・問題がある場合のみ買取店がキャンセル／減額依頼ボタンを押下 → 例外フロー（MOTA運用エスカレーション）<br>
+      ・<strong>MOTAアカウントログイン時</strong>：CL画面と同一の表示。強制的に送金処理を進める必要がある場合は物件詳細画面の「強制OK/NG入力」から対応
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>

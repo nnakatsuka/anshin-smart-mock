@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成約情報確認 | あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">s03</span><span class="nm">成約情報確認</span>
+</div>
+<div class="screen active" id="screen-s03">
+  <div class="step-desc-bar" style="background:#1E56A0;">
+    <span class="step-desc-num" style="background:#fff;color:#1E56A0;">STEP ②</span>
+    <span class="step-desc-title">成約情報確認 — 売主が金額・車両情報を確認し、3択判定（OK／差し戻し／対象外）</span>
+    <span style="background:#fff;color:#1E56A0;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">📱 あんしん決済管理画面（売主）</span>
+    <span class="step-desc-actor">アクター：売主（CS）</span>
+  </div>
+  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
+    <strong>【v59 PC化】</strong>1200px統一・共通ヘッダー適用・2カラムグリッド配置
+  </div>
+
+  <div class="app-header cs">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('no-action-cs',null)">MöTA</span>
+      <span style="color:rgba(255,255,255,0.85);font-size:12px;">あんしん決済 — 売主専用</span>
+    </div>
+    <div class="menu"><div class="menu-item active">各種設定</div><div class="menu-item " onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div></div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+
+  <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
+    <div class="pc-container">
+      <div style="font-size:11px;color:#888;margin-bottom:6px;">あんしん決済 > 成約情報確認</div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">成約情報の確認</div>
+      <div style="font-size:12px;color:#888;margin-bottom:20px;">買取店から送られた成約情報をご確認のうえ、判定をお選びください。</div>
+
+      <!-- ステップバー -->
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:14px 20px;margin-bottom:18px;overflow-x:auto;">
+        <div style="display:flex;min-width:900px;gap:4px;">
+          <div class="sb-box done" style="flex:1;"><span class="sb-num">①</span>【買取店】成約情報登録<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月14日</span></div>
+          <div class="sb-box current" style="flex:1;"><span class="sb-num">②</span>【売主】成約情報確認<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月15日</span></div>
+          <div class="sb-box" style="flex:1;"><span class="sb-num">③</span>【買取店】入金<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月21日</span></div>
+          <div class="sb-box" style="flex:1;"><span class="sb-num">④</span>【MOTA】入金確認<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月21日</span></div>
+          <div class="sb-box" style="flex:1;"><span class="sb-num">⑤</span>【買取店】受領連絡<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月28日</span></div>
+          <div class="sb-box" style="flex:1;"><span class="sb-num">⑥</span>【MOTA】送金<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年05月06日</span></div>
+          <div class="sb-box" style="flex:1;"><span class="sb-num">⑦</span>完了<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年05月07日</span></div>
+        </div>
+      </div>
+
+      <!-- 2カラムレイアウト：左=情報確認、右=口座登録 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+
+        <!-- 左：成約情報確認 -->
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">成約情報</div>
+
+          <div style="display:grid;grid-template-columns:140px 1fr;gap:10px 14px;font-size:13px;line-height:1.8;">
+            <div style="color:#888;font-weight:700;">査定番号</div><div style="font-weight:700;">2119387</div>
+            <div style="color:#888;font-weight:700;">車両名</div><div>ホンダ フィット</div>
+            <div style="color:#888;font-weight:700;">買取店</div><div>株式会社One For All</div>
+            <div style="color:#888;font-weight:700;">担当者</div><div>内堀 けんじ</div>
+            <div style="color:#888;font-weight:700;">買取金額</div><div style="font-weight:700;font-size:16px;">¥1,000,000</div>
+            <div style="color:#888;font-weight:700;">ローン残債</div><div>¥0</div>
+            <div style="color:#888;font-weight:700;">追い金（CS入金）</div><div style="color:#888;">なし</div>
+            <div style="color:#888;font-weight:700;">入庫予定日</div><div>2026-04-24</div>
+          </div>
+
+          <!-- 契約書 -->
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">📄 売買契約書</div>
+            <a style="color:#1E56A0;text-decoration:underline;font-size:12px;cursor:pointer;">contract_2119387.pdf を表示</a>
+          </div>
+        </div>
+
+        <!-- 右：判定＆口座登録 -->
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">確認</div>
+
+          <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:6px;padding:10px 12px;font-size:11px;color:#856404;margin-bottom:14px;line-height:1.7;">
+            ⚠️ 内容に相違がないかご確認のうえ、いずれかをお選びください。
+          </div>
+
+          <!-- 1段階目：2択ラジオ（v61：対象外削除） -->
+          <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:6px;letter-spacing:0.5px;">▼ 1段階目：確認結果を選択</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:2px solid #1D6B35;border-radius:6px;background:#f0f8f3;cursor:pointer;">
+              <input type="radio" name="cs-judge" value="ok" checked onchange="csJudgeChange('ok')" style="width:18px;height:18px;">
+              <span style="font-size:13px;font-weight:700;color:#1D6B35;">✓ 確認OK（買取に同意）</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
+              <input type="radio" name="cs-judge" value="ng" onchange="csJudgeChange('ng')" style="width:18px;height:18px;">
+              <span style="font-size:13px;color:#555;">⚠ 差し戻し（内容に相違あり）</span>
+            </label>
+          </div>
+
+          <!-- 【v60追加】2段階目：差し戻し理由（差し戻し選択時のみ表示） -->
+          <div id="cs-ng-reason-area" style="display:none;margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;">
+            <div style="font-size:11px;font-weight:700;color:#7a4a00;margin-bottom:10px;letter-spacing:0.5px;">▼ 2段階目：差し戻し理由を選択 <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 6px;border-radius:2px;margin-left:4px;">v60 NEW</span></div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid #f0c987;border-radius:5px;background:white;cursor:pointer;">
+                <input type="radio" name="cs-ng-reason" value="info_diff" onchange="csNgReasonChange('info_diff')" style="width:16px;height:16px;">
+                <span style="font-size:12px;color:#333;">買取店が登録した情報が相違している</span>
+              </label>
+              <label style="display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border:1px solid #f0c987;border-radius:5px;background:white;cursor:pointer;">
+                <input type="radio" name="cs-ng-reason" value="other" onchange="csNgReasonChange('other')" style="width:16px;height:16px;margin-top:2px;">
+                <div style="flex:1;">
+                  <div style="font-size:12px;color:#333;margin-bottom:6px;">その他</div>
+                  <textarea id="cs-ng-reason-other-text" disabled rows="3" placeholder="その他選択時、こちらに理由をご記入ください" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:11px;font-family:inherit;resize:vertical;box-sizing:border-box;background:#fafafa;color:#999;"></textarea>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 口座情報入力（OK選択時のみ） -->
+          <div id="cs-koza-area" style="border-top:1px solid #f0f0f0;padding-top:14px;">
+            <div style="font-size:13px;font-weight:700;margin-bottom:10px;">送金先口座を登録（OK選択時必須）</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-bottom:14px;">
+              <div>
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">金融機関名 *</label>
+                <input type="text" placeholder="例：三菱UFJ銀行" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+              </div>
+              <div>
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">支店名 *</label>
+                <input type="text" placeholder="例：青山支店" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+              </div>
+              <div>
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">口座種別 *</label>
+                <select style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;background:white;">
+                  <option>普通預金</option><option>当座預金</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">口座番号 *</label>
+                <input type="text" placeholder="7桁" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+              </div>
+              <div style="grid-column:1/3;">
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">口座名義（カナ） *</label>
+                <input type="text" placeholder="例：ウチボリ ケンジ" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+              </div>
+            </div>
+          </div>
+
+          <button onclick="showScreen('s03c',null)" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で送信する</button>
+        </div>
+      </div>
+
+      <div class="design-note">
+        <strong>📌 設計メモ（CS成約情報確認・v60 判定UI改修）</strong>
+        ・<strong>【v60】判定UIを2段階選択に変更</strong>：1段階目「確認OK／差し戻し／対象外」の3択ラジオ→差し戻し選択時のみ2段階目「買取店登録情報の相違／その他＋自由記入」を表示<br>
+        ・対象外は維持（廃止せず）<br>
+        ・OK選択時のみ口座情報入力欄を表示／差し戻し・対象外選択時は口座入力を非表示化（スクロール削減）<br>
+        ・<strong>【v59】SP想定からPC化</strong>：1200px幅・2カラムレイアウト（左=情報確認、右=判定＋口座登録）
+      </div>
+
+<script>
+function csJudgeChange(value) {
+  var koza = document.getElementById('cs-koza-area');
+  var ngArea = document.getElementById('cs-ng-reason-area');
+  if (koza) koza.style.display = (value === 'ok') ? '' : 'none';
+  if (ngArea) ngArea.style.display = (value === 'ng') ? '' : 'none';
+  // ラジオラベルの枠線色も切替
+  document.querySelectorAll('input[name="cs-judge"]').forEach(function(r) {
+    var lbl = r.closest('label');
+    if (!lbl) return;
+    if (r.checked) {
+      if (r.value === 'ok') { lbl.style.border = '2px solid #1D6B35'; lbl.style.background = '#f0f8f3'; }
+      else if (r.value === 'ng') { lbl.style.border = '2px solid #f39c12'; lbl.style.background = '#fef5e7'; }
+      else { lbl.style.border = '2px solid #c0392b'; lbl.style.background = '#fdf2f0'; }
+    } else {
+      lbl.style.border = '1px solid #e0e0e0';
+      lbl.style.background = 'white';
+    }
+  });
+}
+function csNgReasonChange(value) {
+  var textarea = document.getElementById('cs-ng-reason-other-text');
+  if (!textarea) return;
+  if (value === 'other') {
+    textarea.disabled = false;
+    textarea.style.background = 'white';
+    textarea.style.color = '#333';
+    textarea.focus();
+  } else {
+    textarea.disabled = true;
+    textarea.style.background = '#fafafa';
+    textarea.style.color = '#999';
+    textarea.value = '';
+  }
+}
+</script>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+
+</div><!-- /screen-s03 -->
+<script src="../assets/common.js"></script>
+</body>
+</html>
