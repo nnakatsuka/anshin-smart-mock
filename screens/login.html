@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/nnakatsuka_mota/Downloads/login_2.html -->
-<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ログイン画面 | あんしん決済 Smart版</title>
-<link rel="stylesheet" href="file:///C:/Users/nnakatsuka_mota/assets/common.css">
 <style>
-/* ===== login画面 専用（ulloログインフォームを踏襲） ===== */
-.lg-stage{background:#eef0f3;padding:40px 24px 56px;min-height:100vh;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;align-items:flex-start;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:#f0f2f5;color:#1a1a1a;font-size:14px;}
+
+/* 画面一覧へ戻るバー（モック用） */
+.mock-backbar{position:sticky;top:0;z-index:20000;background:#0d0d0d;border-bottom:1px solid #2a2a2a;display:flex;align-items:center;gap:14px;padding:8px 16px;}
+.mock-backbar a{color:#fff;text-decoration:none;font-size:12px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid #333;border-radius:4px;padding:5px 12px;}
+.mock-backbar a:hover{background:rgba(255,255,255,.2);}
+.mock-backbar .sid{color:#888;font-size:11px;letter-spacing:.5px;}
+.mock-backbar .nm{color:#ddd;font-size:12px;font-weight:700;}
+
+/* ===== login画面（ulloログインフォームを踏襲） ===== */
+.lg-stage{background:#eef0f3;padding:40px 24px 56px;min-height:90vh;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;align-items:flex-start;}
 .lg-col{width:420px;max-width:100%;}
 .lg-badge{font-size:12px;font-weight:700;color:#888;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;}
 .lg-badge .tag{color:#fff;padding:4px 12px;border-radius:3px;font-size:11px;}
@@ -28,94 +38,97 @@
 </head>
 <body>
 <div class="mock-backbar">
-  <a href="file:///C:/Users/nnakatsuka_mota/index.html">← 画面一覧へ戻る</a>
+  <a href="../index.html">← 画面一覧へ戻る</a>
   <span class="sid">login</span><span class="nm">ログイン画面</span>
 </div>
-<div class="screen active" id="screen-login">
 
-  <div class="lg-stage">
+<div class="lg-stage">
 
-    <!-- ===== ユーザーマイページ（CS／売主） ===== -->
-    <div class="lg-col">
-      <div class="lg-badge"><span class="tag" style="background:#E60012;">ユーザー（売主）</span><span>ullo ユーザーマイページ準拠</span></div>
-      <div class="lg-card">
-        <div class="lg-head" style="background:#E60012;">
-          <div class="lg-logo" style="color:#fff;">MOTA</div>
-          <div class="lg-sub" style="color:#fff;">車買取 ユーザーマイページ</div>
+  <!-- ===== ユーザーマイページ（CS／売主） ===== -->
+  <div class="lg-col">
+    <div class="lg-badge"><span class="tag" style="background:#E60012;">ユーザー（売主）</span><span>ullo ユーザーマイページ準拠</span></div>
+    <div class="lg-card">
+      <div class="lg-head" style="background:#E60012;">
+        <div class="lg-logo" style="color:#fff;">MOTA</div>
+        <div class="lg-sub" style="color:#fff;">車買取 ユーザーマイページ</div>
+      </div>
+      <div class="lg-body">
+        <div class="lg-h1">ログイン</div>
+        <div class="lg-field">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="example@mota.jp">
         </div>
-        <div class="lg-body">
-          <div class="lg-h1">ログイン</div>
-          <div class="lg-field">
-            <label>メールアドレス</label>
-            <input type="email" placeholder="example@mota.jp">
-          </div>
-          <div class="lg-field">
-            <label>パスワード</label>
-            <input type="password" placeholder="">
-          </div>
-          <button class="lg-btn" style="background:#E60012;" onclick="showScreen(&#39;no-action-cs&#39;,null)">ログイン</button>
-          <div class="lg-links">
-            <a href="file:///C:/Users/nnakatsuka_mota/Downloads/login_2.html#">パスワードを忘れた方はこちら</a>
-            <a href="https://autoc-one.jp/ullo/help/inquiry/" target="_blank" rel="noopener">お問合せ</a>
-          </div>
+        <div class="lg-field">
+          <label>パスワード</label>
+          <input type="password" placeholder="">
+        </div>
+        <button class="lg-btn" style="background:#E60012;" onclick="goScreen('no-action-cs')">ログイン</button>
+        <div class="lg-links">
+          <a href="#">パスワードを忘れた方はこちら</a>
+          <a href="https://autoc-one.jp/ullo/help/inquiry/" target="_blank" rel="noopener">お問合せ</a>
         </div>
       </div>
     </div>
-
-    <!-- ===== 加盟店マイページ（CL／買取店）｜ヘッダー黒 ===== -->
-    <div class="lg-col">
-      <div class="lg-badge"><span class="tag" style="background:#1a1a1a;">加盟店（買取店）</span><span>ullo 加盟店マイページ準拠</span></div>
-      <div class="lg-card">
-        <div class="lg-head" style="background:#1a1a1a;">
-          <div class="lg-logo" style="color:#fff;">MOTA</div>
-          <div class="lg-sub" style="color:#cfcfcf;">車買取 加盟店マイページ</div>
-        </div>
-        <div class="lg-body">
-          <div class="lg-h1">ログイン</div>
-          <div class="lg-field">
-            <label>メールアドレス</label>
-            <input type="email" placeholder="shop@example.co.jp">
-          </div>
-          <div class="lg-field">
-            <label>パスワード</label>
-            <input type="password" placeholder="">
-          </div>
-          <button class="lg-btn" style="background:#1a1a1a;" onclick="showScreen(&#39;prop-list-new&#39;,null)">ログイン</button>
-          <div class="lg-links">
-            <a href="file:///C:/Users/nnakatsuka_mota/Downloads/login_2.html#">パスワードを忘れた方はこちら</a>
-            <a href="https://autoc-one.jp/ullo/help/inquiry/" target="_blank" rel="noopener">お問合せ</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== 運営管理画面（MOTA）｜ヘッダー緑 ===== -->
-    <div class="lg-col">
-      <div class="lg-badge"><span class="tag" style="background:#1B8040;">運営（MOTA）</span><span>あんしん決済 運営管理</span></div>
-      <div class="lg-card">
-        <div class="lg-head" style="background:#1B8040;">
-          <div class="lg-logo" style="color:#fff;">MOTA</div>
-          <div class="lg-sub" style="color:#e6f3ea;">あんしん決済 運営管理画面</div>
-        </div>
-        <div class="lg-body">
-          <div class="lg-h1">ログイン</div>
-          <div class="lg-field">
-            <label>メールアドレス</label>
-            <input type="email" placeholder="staff@mota.inc">
-          </div>
-          <div class="lg-field">
-            <label>パスワード</label>
-            <input type="password" placeholder="">
-          </div>
-          <button class="lg-btn" style="background:#1B8040;" onclick="showScreen(&#39;prop-list-new&#39;,null)">ログイン</button>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-</div><!-- /screen-login -->
-<script src="file:///C:/Users/nnakatsuka_mota/assets/common.js"></script>
+  <!-- ===== 加盟店マイページ（CL／買取店）｜ヘッダー黒 ===== -->
+  <div class="lg-col">
+    <div class="lg-badge"><span class="tag" style="background:#1a1a1a;">加盟店（買取店）</span><span>ullo 加盟店マイページ準拠</span></div>
+    <div class="lg-card">
+      <div class="lg-head" style="background:#1a1a1a;">
+        <div class="lg-logo" style="color:#fff;">MOTA</div>
+        <div class="lg-sub" style="color:#cfcfcf;">車買取 加盟店マイページ</div>
+      </div>
+      <div class="lg-body">
+        <div class="lg-h1">ログイン</div>
+        <div class="lg-field">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="shop@example.co.jp">
+        </div>
+        <div class="lg-field">
+          <label>パスワード</label>
+          <input type="password" placeholder="">
+        </div>
+        <button class="lg-btn" style="background:#1a1a1a;" onclick="goScreen('prop-list-new')">ログイン</button>
+        <div class="lg-links">
+          <a href="#">パスワードを忘れた方はこちら</a>
+          <a href="https://autoc-one.jp/ullo/help/inquiry/" target="_blank" rel="noopener">お問合せ</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- ===== 運営管理画面（MOTA）｜ヘッダー緑 ===== -->
+  <div class="lg-col">
+    <div class="lg-badge"><span class="tag" style="background:#1B8040;">運営（MOTA）</span><span>あんしん決済 運営管理</span></div>
+    <div class="lg-card">
+      <div class="lg-head" style="background:#1B8040;">
+        <div class="lg-logo" style="color:#fff;">MOTA</div>
+        <div class="lg-sub" style="color:#e6f3ea;">あんしん決済 運営管理画面</div>
+      </div>
+      <div class="lg-body">
+        <div class="lg-h1">ログイン</div>
+        <div class="lg-field">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="staff@mota.inc">
+        </div>
+        <div class="lg-field">
+          <label>パスワード</label>
+          <input type="password" placeholder="">
+        </div>
+        <button class="lg-btn" style="background:#1B8040;" onclick="goScreen('prop-list-new')">ログイン</button>
+      </div>
+    </div>
+  </div>
 
-</body></html>
+</div>
+
+<script>
+/* リポジトリ内（screens/配下）に置いたとき、同フォルダの各画面へ遷移。
+   単体で開いた場合は遷移先が無いので何もしません。 */
+function goScreen(id){
+  try { location.href = id + '.html'; } catch(e){}
+}
+</script>
+</body>
+</html>
