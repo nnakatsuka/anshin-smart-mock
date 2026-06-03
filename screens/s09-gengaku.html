@@ -27,17 +27,19 @@
     <div style="display:flex;align-items:center;gap:24px;height:100%;">
       <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
     </div>
-    <div class="right-tools">
-      <a href="prop-list-new.html" style="background:#fff;color:#1a1a1a;font-size:13px;font-weight:700;text-decoration:none;border-radius:4px;padding:8px 18px;display:inline-block;">物件一覧へ →</a>
-    </div>
   </div>
 
   <!-- タイトル帯（基本情報画面と同デザイン） -->
   <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
     <div class="pc-container">
-      <div style="font-size:11px;color:#888;margin-bottom:6px;">減額申請</div>
-      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">買取金額を減額する</div>
-      <div style="font-size:12px;color:#888;margin-bottom:20px;">車両の状態に問題があり、売主と減額再合意した場合に使用してください。</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px;">
+        <div>
+          <div style="font-size:11px;color:#888;margin-bottom:6px;">減額申請</div>
+          <div style="font-size:22px;font-weight:700;margin-bottom:6px;">買取金額を減額する</div>
+          <div style="font-size:12px;color:#888;">車両の状態に問題があり、売主と減額再合意した場合に使用してください。</div>
+        </div>
+        <a href="prop-list-new.html" style="flex-shrink:0;background:#fff;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:4px;padding:9px 20px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;">物件一覧へ →</a>
+      </div>
 
       <!-- 2カラム（左：情報＋入力、右：注意＋アクション） -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
