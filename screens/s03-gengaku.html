@@ -29,7 +29,6 @@
       <span class="logo" onclick="showScreen('no-action-cs',null)">MöTA</span>
       <span style="color:rgba(255,255,255,0.85);font-size:12px;">あんしん決済 — 売主専用</span>
     </div>
-    <div class="menu"><div class="menu-item active">各種設定</div><div class="menu-item " onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div></div>
     <div class="right-tools">
       <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
       <button class="logout-btn">ログアウト</button>
@@ -39,8 +38,9 @@
 
   <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
     <div class="pc-container">
-      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">⚠ 減額依頼の確認</div>
-      <div style="font-size:12px;color:#888;margin-bottom:20px;">買取店から減額の提案が届いています。内容をご確認のうえ、同意または辞退を選択してください。</div>
+      <div style="font-size:11px;color:#888;margin-bottom:6px;">減額依頼 ＞ 承認</div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">減額依頼を確認・同意をする</div>
+      <div style="font-size:12px;color:#888;margin-bottom:20px;">買取店から減額の提案が届いています。内容をご確認のうえ、同意または同意しないを選択してください。</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
 
@@ -67,23 +67,21 @@
         <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
           <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">ご返答</div>
 
-          <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:6px;padding:10px 12px;font-size:11px;color:#856404;margin-bottom:14px;line-height:1.7;">
-            ⚠️ 減額に同意される場合、減額後の金額で送金処理が進みます。同意しない場合は買取店との再交渉、またはキャンセルとなります。
+          <div style="background:#fce4ec;border:1px solid #c0392b;border-radius:6px;padding:12px 14px;font-size:11px;color:#c0392b;margin-bottom:14px;line-height:1.9;">
+            <div style="font-weight:700;margin-bottom:6px;">⚠ 減額依頼の注意事項</div>
+            ・減額を同意した後は取り消しができません。減額後の金額でお客様に送金いたします。<br>
+            ・減額を同意しない場合はMOTA事務局から、ご確認のご連絡をいたします。<br>
+            　同意が難しい場合はキャンセルも可能です。
           </div>
 
           <!-- v61：ラジオ→ボタンに変更 -->
           <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:6px;">
-            <button onclick="if(confirm('減額（¥1,000,000）に同意します。よろしいですか？'))alert('減額に同意しました。減額後の金額で送金処理に進みます。')" style="background:#1D6B35;color:white;border:none;border-radius:6px;padding:16px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">✓ 減額に同意する（¥1,000,000で取引）</button>
-            <button onclick="if(confirm('減額に同意しません。取引キャンセルに進みます。よろしいですか？'))alert('同意しない旨を送信しました。')" style="background:white;color:#c0392b;border:2px solid #c0392b;border-radius:6px;padding:14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✕ 同意しない（取引キャンセル）</button>
+            <button onclick="if(confirm('減額（¥1,000,000）に同意します。よろしいですか？'))alert('減額に同意しました。減額後の金額で送金処理に進みます。')" style="background:#1D6B35;color:white;border:none;border-radius:6px;padding:16px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">✓ 減額に同意する（¥1,000,000で売却）</button>
+            <button onclick="if(confirm('減額に同意しません。よろしいですか？'))alert('同意しない旨を送信しました。MOTA事務局よりご連絡いたします。')" style="background:white;color:#c0392b;border:2px solid #c0392b;border-radius:6px;padding:14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✕ 同意しない（MOTAからご連絡いたします）</button>
           </div>
         </div>
       </div>
 
-      <div class="design-note">
-        <strong>📌 設計メモ（CS減額確認・v59 PC化）</strong>
-        ・<strong>【v59】PC化</strong>：1200px幅・2カラム（左=減額内容、右=判定）<br>
-        ・同意時は減額後金額で送金処理へ進行／不同意時はキャンセルフローへ
-      </div>
     </div>
   </div>
 
