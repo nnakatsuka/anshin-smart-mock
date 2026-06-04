@@ -17,9 +17,6 @@
     <span class="step-desc-title">追い金入金 — 売主がローン残債超過分をMOTAへ入金</span>
     <span class="step-desc-actor">アクター：売主（CS）</span>
   </div>
-  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
-    <strong>【v59 PC化】</strong>1200px統一・共通ヘッダー適用・2カラム配置
-  </div>
 
   <div class="app-header cs">
     <div style="display:flex;align-items:center;gap:24px;height:100%;">
@@ -68,14 +65,14 @@
 
           <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
             <label style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:2px solid #1E56A0;border-radius:6px;background:#f5fbff;cursor:pointer;">
-              <input type="radio" name="cs-oikin-pay" checked style="margin-top:3px;">
+              <input type="radio" name="cs-oikin-pay" value="paygee" checked onchange="setOikinPay('paygee')" style="margin-top:3px;">
               <div>
                 <div style="font-size:13px;font-weight:700;color:#1E56A0;">🏧 ペイジー決済（推奨）</div>
                 <div style="font-size:11px;color:#666;margin-top:3px;line-height:1.6;">登録口座から即時送金可能。ATM・ネットバンキング対応。</div>
               </div>
             </label>
             <label style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
-              <input type="radio" name="cs-oikin-pay" style="margin-top:3px;">
+              <input type="radio" name="cs-oikin-pay" value="bank" onchange="setOikinPay('bank')" style="margin-top:3px;">
               <div>
                 <div style="font-size:13px;font-weight:700;color:#555;">🏦 銀行振込</div>
                 <div style="font-size:11px;color:#666;margin-top:3px;line-height:1.6;">指定口座へお振込み。手数料はお客様負担です。</div>
@@ -83,25 +80,50 @@
             </label>
           </div>
 
-          <!-- バーチャル口座情報 -->
-          <div style="background:#fafafa;border:1px dashed #aaa;border-radius:6px;padding:14px;font-size:12px;line-height:1.8;color:#555;margin-bottom:18px;">
+          <!-- 振込先（バーチャル口座）：銀行振込選択時のみ表示 -->
+          <div id="oikin-bank-info" style="display:none;background:#fafafa;border:1px dashed #aaa;border-radius:6px;padding:14px;font-size:12px;line-height:1.8;color:#555;margin-bottom:18px;">
             <div style="font-weight:700;color:#1a1a1a;margin-bottom:6px;">振込先（バーチャル口座）</div>
             <div>みずほ銀行 〇〇支店</div>
             <div>普通預金 1234567</div>
             <div>カ）モータ</div>
           </div>
 
-          <button style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">ペイジーで支払う</button>
+          <!-- ペイジーで支払う：ペイジー選択時のみ表示 -->
+          <button id="oikin-btn-paygee" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">ペイジーで支払う</button>
+          <!-- 振込完了：銀行振込選択時のみ表示 -->
+          <button id="oikin-btn-bank" onclick="if(confirm('振込完了をMOTAへ報告します。よろしいですか？'))alert('振込完了を報告しました。MOTAが入金確認を行います。')" style="display:none;width:100%;background:#1D6B35;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 振込完了</button>
         </div>
       </div>
 
-      <div class="design-note" style="margin-top:18px;">
-        <strong>📌 設計メモ（CS追い金入金・v59 PC化）</strong>
-        ・<strong>【v59】PC化</strong>：1200px幅・2カラム（左=金額内訳、右=支払方法選択）<br>
-        ・ペイジー対応口座登録ありの場合のみペイジー選択可。それ以外は銀振のみ
-      </div>
     </div>
   </div>
+
+<script>
+function setOikinPay(method) {
+  var info = document.getElementById('oikin-bank-info');
+  var btnPaygee = document.getElementById('oikin-btn-paygee');
+  var btnBank = document.getElementById('oikin-btn-bank');
+  if (info) info.style.display = (method === 'bank') ? '' : 'none';
+  if (btnPaygee) btnPaygee.style.display = (method === 'paygee') ? '' : 'none';
+  if (btnBank) btnBank.style.display = (method === 'bank') ? '' : 'none';
+  // 選択ラベルの枠線・背景も切替
+  document.querySelectorAll('input[name="cs-oikin-pay"]').forEach(function(r) {
+    var lbl = r.closest('label');
+    if (!lbl) return;
+    if (r.checked) {
+      lbl.style.border = '2px solid #1E56A0';
+      lbl.style.background = '#f5fbff';
+      var head = lbl.querySelector('div > div:first-child');
+      if (head) head.style.color = '#1E56A0';
+    } else {
+      lbl.style.border = '1px solid #e0e0e0';
+      lbl.style.background = 'white';
+      var head = lbl.querySelector('div > div:first-child');
+      if (head) head.style.color = '#555';
+    }
+  });
+}
+</script>
 
   <div class="app-footer">
     <div class="links"><span>会社概要</span><span>利用規約</span></div>
