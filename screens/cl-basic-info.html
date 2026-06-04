@@ -18,9 +18,6 @@
     <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（買取店）</span>
     <span class="step-desc-actor">アクター：買取店（CL）</span>
   </div>
-  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
-    <strong>【v58新規】</strong>CLの「設定」配下に「基本情報」画面として、通知先設定と入金方法設定を1ページに統合。入金方法は cl-koza-link で連携した口座を用途別に紐付け。
-  </div>
 
   <!-- CL共通ヘッダー -->
   <div class="app-header">
@@ -44,11 +41,10 @@
       <div style="font-size:22px;font-weight:700;margin-bottom:6px;">基本情報</div>
       <div style="font-size:12px;color:#888;margin-bottom:20px;">通知先と入金方法（連携口座の用途設定）を管理します</div>
 
-      <!-- セクション1: 通知先設定（v60：3テーブル構成） -->
+      <!-- セクション1: 通知先設定 -->
       <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;margin-bottom:18px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #c0392b;">
           <div style="font-size:16px;font-weight:700;color:#c0392b;">通知先設定</div>
-          <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:2px;">v60 NEW</span>
         </div>
         <div style="font-size:11px;color:#888;margin-bottom:18px;line-height:1.7;">
           あんしん決済の進行状況に応じて、該当する担当者に通知（SMS／メール）を送信します。<br>
@@ -149,12 +145,11 @@
         </div>
       </div>
 
-      <!-- セクション2: 入金方法設定（v61：全口座一覧＋用途バッジ） -->
+      <!-- セクション2: 入金方法設定 -->
       <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;margin-bottom:18px;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #c0392b;">
           <div style="display:flex;align-items:center;gap:8px;">
             <div style="font-size:16px;font-weight:700;color:#c0392b;">入金方法設定</div>
-            <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:2px;">v61 NEW</span>
           </div>
           <a onclick="showScreen('cl-koza-link',null)" style="font-size:11px;color:#1E56A0;text-decoration:underline;cursor:pointer;">🔗 口座連携の設定はこちら →</a>
         </div>
@@ -256,18 +251,6 @@
       <!-- 保存ボタン -->
       <div style="display:flex;justify-content:flex-end;gap:10px;">
         <button onclick="showCsToast()" style="background:#1a1a1a;color:white;border:none;border-radius:6px;padding:13px 38px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で更新する</button>
-      </div>
-
-      <div class="design-note" style="margin-top:24px;">
-        <strong>📌 設計メモ（CL基本情報・v60改修）</strong>
-        ・<strong>【v60】通知先設定を3テーブル構成に再編</strong>：査定員／責任者／経理の各テーブルに「担当者名／SMS通知先（電話番号）／メール通知先アドレス／削除」を配置。通知ON/OFFは廃止<br>
-        ・査定員・責任者は案件ごとに担当として選択可能（成約情報登録画面でドロップダウン表示）。経理は全案件共通で入金・送金関連の通知が届く<br>
-        ・<strong>【v60】入金方法設定を案件内で変更可能に</strong>：「変更」ボタン押下でインライン展開→ullo連携で取得した口座リストからselect→ローディング→ペイジー対応チェック→結果表示<br>
-        ・<strong>入金口座 (a) のみペイジー対応必須</strong>：ペイジー非対応口座選択時は「更新できませんでした」エラーを表示し更新不可<br>
-        ・<strong>返金口座 (b) は全口座選択可</strong>：銀行振込のため更新失敗ケースなし<br>
-        ・連携口座リストは <strong>ullo連携で取得した口座</strong> を使用（CSは案件ごと1口座のみ・ullo連携なし、CLはullo連携あり＋複数口座管理）<br>
-        ・口座の追加・削除・編集は別画面（cl-koza-link 口座連携）で行う。本画面では用途設定のみ<br>
-        ・更新時はトースト「更新しました」を表示し画面遷移なし
       </div>
     </div>
   </div>
