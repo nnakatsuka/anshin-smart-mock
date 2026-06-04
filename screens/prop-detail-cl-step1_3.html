@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物件詳細（情報変更）| あんしん決済 Smart版</title>
+<link rel="stylesheet" href="../assets/common.css">
+<style>
+.edit-sec{border:3px solid #c0392b;border-radius:6px;background:#fff;padding:18px 20px;margin-bottom:16px;}
+.edit-tag{display:inline-block;background:#c0392b;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;vertical-align:middle;}
+.ro-tag{display:inline-block;background:#9aa0aa;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;vertical-align:middle;}
+.lock-tag{display:inline-block;background:#9aa0aa;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;vertical-align:middle;}
+.f-in{width:100%;border:1px solid #ccc;border-radius:3px;padding:7px 10px;font-size:13px;font-family:inherit;background:#fff;box-sizing:border-box;}
+.f-in:disabled{background:#ececec;color:#777;cursor:not-allowed;border-color:#ddd;}
+.f-in.req{border:2px solid #c0392b;}
+.locked-sec{border:1px solid #e0e0e0;border-radius:6px;background:#fafafa;padding:18px 20px;margin-bottom:16px;}
+.notify-box2{border:1px solid #e0e0e0;border-radius:6px;overflow:hidden;margin-bottom:16px;}
+.notify-col{flex:1;min-width:0;}
+.notify-col .ttl{font-size:11px;font-weight:700;color:#555;margin-bottom:6px;}
+.tbl{margin-bottom:16px;border:1px solid #e0e0e0;}
+.g3{display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;}
+.g3>.lbl{padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;}
+.g3>.val{padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;}
+.g3>.val.empty{color:#bbb;}
+.g3>.cellin{padding:7px 10px;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;}
+.dl-btn2{font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;}
+</style>
+</head>
+<body>
+<div class="mock-backbar">
+  <a href="../index.html">← 画面一覧へ戻る</a>
+  <span class="sid">prop-detail-cl-step1_3</span><span class="nm">物件詳細（情報変更）</span>
+</div>
+<div class="screen active" id="screen-prop-detail-cl-step1_3">
+  <div class="step-desc-bar">
+    <span class="step-desc-num">金額変更</span>
+    <span class="step-desc-title">物件詳細 — 金額（買取金額・ローン残債）を変更する状態（買取店が入力）</span>
+    <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（買取店）</span>
+  </div>
+  <div style="background:#fdeeee;border-bottom:1px solid #e6a9a9;padding:7px 28px;font-size:11px;color:#c0392b;line-height:1.7;">
+    <strong>📌 この画面の考え方：</strong>買取店（CL）が情報を閲覧・変更できる状態です。<strong>成約情報の登録は確定済み（変更不可）</strong>、<strong>ローン会社情報・通知先・金額変更は変更可能</strong>です。
+  </div>
+
+  <div class="app-header">
+    <div style="display:flex;align-items:center;gap:24px;height:100%;">
+      <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済</span></span>
+    </div>
+    <div class="menu">
+      <div class="menu-item active" onclick="showScreen('prop-list-new',null)">成約</div>
+      <div class="menu-item" onclick="showScreen('cl-basic-info',null)">各種設定</div>
+      <div class="menu-item" onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div>
+    </div>
+    <div class="right-tools">
+      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="logout-btn">ログアウト</button>
+    </div>
+  </div>
+
+  <div class="admin-wrap">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+      <div class="admin-page-title" style="margin-bottom:0;">物件詳細</div>
+      <a href="prop-list-new.html" style="background:#fff;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:4px;padding:8px 18px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;">物件一覧へ →</a>
+    </div>
+    <div style="font-size:12px;color:#888;margin-bottom:16px;">金額変更の入力をしてください。</div>
+
+    <!-- ステップバー -->
+    <div style="background:white;border:1px solid #e0e0e0;padding:14px 20px;margin-bottom:16px;overflow-x:auto;">
+      <div style="display:flex;min-width:900px;">
+        <div class="sb-box done" style="flex:1;"><span class="sb-num">①</span>【買取店】成約情報登録</div>
+        <div class="sb-box current" style="flex:1;"><span class="sb-num">②</span>【売主】成約情報確認</div>
+        <div class="sb-box" style="flex:1;"><span class="sb-num">③</span>【買取店】入金</div>
+        <div class="sb-box" style="flex:1;"><span class="sb-num">④</span>【MOTA】入金確認</div>
+        <div class="sb-box" style="flex:1;"><span class="sb-num">⑤</span>【買取店】受領連絡</div>
+        <div class="sb-box" style="flex:1;"><span class="sb-num">⑥</span>【MOTA】送金</div>
+        <div class="sb-box" style="flex:1;"><span class="sb-num">⑦</span>完了</div>
+      </div>
+    </div>
+
+    <!-- 物件基本情報（変更不可） -->
+    <div class="section-title">物件基本情報 <span class="ro-tag">変更不可</span></div>
+    <div class="tbl">
+      <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div class="lbl" style="border-bottom:none;">サービス区分</div>
+        <div class="val" style="border-right:none;border-bottom:none;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">車買取</span></div>
+      </div>
+      <div class="g3">
+        <div class="lbl">査定番号</div><div class="val">2119387</div>
+        <div class="lbl">車名</div><div class="val">トヨタ ヴォクシー ZS</div>
+        <div class="lbl">成約情報受領日</div><div class="val" style="border-right:none;">2026-03-11</div>
+      </div>
+      <div class="g3">
+        <div class="lbl">申込者名</div><div class="val">菅原 綾香</div>
+        <div class="lbl">電話番号</div><div class="val">08012345678</div>
+        <div class="lbl">メールアドレス</div><div class="val" style="border-right:none;">sugawara@example.com</div>
+      </div>
+      <div class="g3">
+        <div class="lbl" style="border-bottom:none;">所有者名（カナ）</div><div class="val" style="border-bottom:none;">スガワラ アヤカ</div>
+        <div class="lbl" style="border-bottom:none;">使用者名（カナ）</div><div class="val" style="border-bottom:none;">スガワラ アヤカ</div>
+        <div class="lbl" style="border-bottom:none;">連絡先電話番号</div><div class="val empty" style="border-right:none;border-bottom:none;">—</div>
+      </div>
+    </div>
+
+    <!-- 買取店情報（変更不可） -->
+    <div class="section-title">買取店情報 <span class="ro-tag">変更不可</span></div>
+    <div class="tbl">
+      <div class="g3">
+        <div class="lbl" style="border-bottom:none;">店舗名</div><div class="val" style="border-bottom:none;">株式会社One For All</div>
+        <div class="lbl" style="border-bottom:none;">店舗ID</div><div class="val" style="border-right:none;border-bottom:none;">C001234</div>
+        <div class="lbl" style="border-right:none;border-bottom:none;background:#fff;"></div><div class="val" style="border-right:none;border-bottom:none;"></div>
+      </div>
+    </div>
+
+    <!-- 成約情報の登録（確定済み・非活性） -->
+    <div class="section-title">成約情報の登録 <span class="lock-tag">確定済み（変更不可）</span></div>
+    <div class="locked-sec">
+      <div class="info-grid"><div class="ig-label">買取予定金額</div><div class="ig-val">
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:15px;font-weight:700;color:#777;">¥</span><input type="text" class="f-in" value="1,500,000" disabled style="max-width:220px;"></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:#555;font-weight:700;">引渡し予定日</span><input type="text" class="f-in" value="2026-03-20" disabled style="max-width:180px;"></div>
+        </div>
+      </div></div>
+      <div class="info-grid"><div class="ig-label">書類</div><div class="ig-val">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fff;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">① 売買契約書 <span style="color:#1D6B35;font-size:10px;">✓ 登録済み</span></span><button class="dl-btn2">📎 DL</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fff;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">② 車検証 <span style="color:#1D6B35;font-size:10px;">✓ 登録済み</span></span><button class="dl-btn2">📎 DL</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fff;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">③ ローン残債証明書 <span style="color:#1D6B35;font-size:10px;">✓ 登録済み</span></span><button class="dl-btn2">📎 DL</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#f3f3f3;color:#aaa;"><span style="font-size:12px;font-weight:700;flex:1;">④ その他</span><span style="font-size:11px;">—</span></div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ローン会社情報（変更可） -->
+    <div class="section-title">ローン会社情報 <span style="background:#1D6B35;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;">変更可</span> <span style="font-size:11px;color:#888;font-weight:400;">（ある場合のみ）</span></div>
+    <div class="tbl">
+      <div class="g3">
+        <div class="lbl">ローン会社名</div><div class="cellin"><input type="text" class="f-in" value="〇〇ファイナンス"></div>
+        <div class="lbl">ローン残債</div><div class="cellin"><input type="text" class="f-in" value="¥2,516,500"></div>
+        <div class="lbl">ローン残債支払い期日</div><div class="cellin" style="border-right:none;"><input type="date" class="f-in" value="2026-04-21"></div>
+      </div>
+      <div class="g3">
+        <div class="lbl">金融機関コード</div><div class="cellin"><input type="text" class="f-in" value="0001"></div>
+        <div class="lbl">金融機関名</div><div class="cellin"><input type="text" class="f-in" value="みずほ銀行"></div>
+        <div class="lbl">支店コード</div><div class="cellin" style="border-right:none;"><input type="text" class="f-in" value="123"></div>
+      </div>
+      <div class="g3">
+        <div class="lbl">支店名</div><div class="cellin"><input type="text" class="f-in" value="〇〇支店"></div>
+        <div class="lbl">預金種目</div><div class="cellin"><select class="f-in"><option>普通預金</option><option>当座預金</option></select></div>
+        <div class="lbl">口座番号</div><div class="cellin" style="border-right:none;"><input type="text" class="f-in" value="1234567"></div>
+      </div>
+      <div class="g3">
+        <div class="lbl" style="border-bottom:none;">口座名義</div><div class="cellin" style="border-bottom:none;"><input type="text" class="f-in" value="カ）〇〇ファイナンス"></div>
+        <div class="lbl" style="border-bottom:none;"></div><div class="cellin" style="border-bottom:none;"></div>
+        <div class="lbl" style="border-bottom:none;"></div><div class="cellin" style="border-right:none;border-bottom:none;"></div>
+      </div>
+    </div>
+
+    <!-- 通知先の設定（変更可・非赤） -->
+    <div class="section-title">通知先の設定 <span style="background:#1D6B35;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;">変更可</span></div>
+    <div class="notify-box2">
+      <div style="background:#f5f5f5;padding:10px 16px;border-bottom:1px solid #e0e0e0;font-size:11px;color:#888;">担当査定員を選択してください。選択した査定員のSMS・メールに通知が送られます。</div>
+      <div style="padding:14px 16px;background:white;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;">
+        <div class="notify-col">
+          <div class="ttl">担当査定員 <span style="color:#c0392b;">*必須</span> <span style="font-size:10px;color:#888;font-weight:400;">複数選択可。</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;" id="satei-selected">
+            <div style="display:flex;align-items:center;gap:4px;background:#1a1a1a;color:white;border-radius:3px;padding:4px 10px;font-size:12px;font-weight:700;">田中 一郎 <span style="font-size:10px;color:rgba(255,255,255,0.6);">090-1234-5678 / tanaka@example.com</span><span onclick="this.parentElement.remove()" style="cursor:pointer;margin-left:4px;opacity:0.7;">×</span></div>
+          </div>
+          <div style="position:relative;">
+            <div onclick="toggleNotifyDD('dd-satei')" style="border:1px solid #ccc;border-radius:3px;padding:8px 10px;font-size:12px;color:#999;cursor:pointer;background:white;display:flex;align-items:center;justify-content:space-between;"><span>+ 査定員を追加する</span><span style="font-size:10px;">▼</span></div>
+            <div id="dd-satei" style="display:none;position:absolute;z-index:10;width:100%;background:white;border:1px solid #ccc;border-top:none;border-radius:0 0 3px 3px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+              <div onclick="addSateiTag('佐藤 花子','080-9876-5432 / sato@example.com')" style="padding:9px 12px;font-size:13px;cursor:pointer;border-bottom:1px solid #f0f0f0;"><div style="font-weight:700;">佐藤 花子</div><div style="font-size:11px;color:#888;">080-9876-5432 / sato@example.com</div></div>
+              <div style="padding:8px 12px;font-size:11px;color:#aaa;">各種設定の通知先設定で追加・編集できます</div>
+            </div>
+          </div>
+        </div>
+        <div class="notify-col">
+          <div class="ttl">責任者 <span style="font-size:10px;color:#888;font-weight:400;">任意・複数選択可。</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;" id="sekininsha-selected"></div>
+          <div style="position:relative;">
+            <div onclick="toggleNotifyDD('dd-sekininsha')" style="border:1px solid #ccc;border-radius:3px;padding:8px 10px;font-size:12px;color:#999;cursor:pointer;background:white;display:flex;align-items:center;justify-content:space-between;"><span>+ 責任者を追加する</span><span style="font-size:10px;">▼</span></div>
+            <div id="dd-sekininsha" style="display:none;position:absolute;z-index:10;width:100%;background:white;border:1px solid #ccc;border-top:none;border-radius:0 0 3px 3px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+              <div onclick="addSekininshaTag('山田 太郎（店長）','090-2222-3333 / yamada@example.com')" style="padding:9px 12px;font-size:13px;cursor:pointer;border-bottom:1px solid #f0f0f0;"><div style="font-weight:700;">山田 太郎（店長）</div><div style="font-size:11px;color:#888;">090-2222-3333 / yamada@example.com</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="notify-col">
+          <div class="ttl">経理担当</div>
+          <div style="border:1px solid #e0e0e0;border-radius:3px;padding:9px 12px;background:#f9f9f9;color:#888;font-size:13px;cursor:not-allowed;"><span style="font-weight:700;color:#555;">山田 花子</span><br><span style="font-size:11px;color:#aaa;">keiri@example.com</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ▼ 金額変更（変更可・赤枠・活性入力・全項目必須） -->
+    <div class="section-title" style="color:#c0392b;">金額変更 <span style="background:#1D6B35;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;">変更可</span> <span style="font-size:11px;color:#c0392b;font-weight:400;">※金額変更する場合は、売主の承認後、反映されます。</span></div>
+    <div style="margin-bottom:16px;">
+      <div class="g3" style="border:1px solid #e0e0e0;">
+        <div class="lbl">変更金額 <span style="color:#c0392b;">*必須</span></div><div class="cellin"><input type="number" class="f-in req" placeholder="例：1300000"></div>
+        <div class="lbl">契約書 <span style="color:#c0392b;">*必須</span></div><div class="cellin"><button style="font-size:11px;font-weight:700;color:#c0392b;background:#fff;border:1px solid #c0392b;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:inherit;">📎 ファイルを選択</button></div>
+        <div class="lbl" style="border-right:none;">ローン残債証明書 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-right:none;"><button style="font-size:11px;font-weight:700;color:#c0392b;background:#fff;border:1px solid #c0392b;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:inherit;">📎 ファイルを選択</button></div>
+      </div>
+      <div class="g3" style="border:1px solid #e0e0e0;border-top:none;">
+        <div class="lbl" style="border-bottom:none;">ローン残債金額 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-bottom:none;"><input type="number" class="f-in req" placeholder="¥"></div>
+        <div class="lbl" style="border-bottom:none;">ローン残債 再確認日 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-bottom:none;"><input type="date" class="f-in req"></div>
+        <div class="lbl" style="border-bottom:none;">ローン残債 有効期限 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-right:none;border-bottom:none;"><input type="date" class="f-in req"></div>
+      </div>
+    </div>
+
+    <!-- 金額サマリ（わかる値のみ記入） -->
+    <div class="section-title" style="display:flex;align-items:center;justify-content:space-between;">
+      <span>金額サマリ</span>
+      <button onclick="showScreen('payment-mgmt',null)" style="font-size:11px;font-weight:400;color:#1E56A0;background:transparent;border:none;cursor:pointer;padding:0;font-family:inherit;">▶ 入金／送金の詳細履歴を見る</button>
+    </div>
+    <div style="border:1px solid #e0e0e0;border-radius:6px;background:#fff;padding:18px 24px;margin-bottom:16px;max-width:680px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">買取予定金額</span>
+        <span><span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥1,500,000</span><span style="font-size:12px;color:#888;margin-left:14px;">入金日：—</span></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">ローン残債</span>
+        <span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥2,516,500</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">ローン残債不足分</span>
+        <span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥1,016,500</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">買取店返金額</span>
+        <span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:13px 0 3px;">
+        <span style="font-size:15px;color:#1a1a1a;font-weight:700;">買主入金予定金額</span>
+        <span><span style="font-size:28px;font-weight:900;color:#c0392b;">¥—</span><span style="font-size:12px;color:#888;margin-left:14px;">入金日：—</span></span>
+      </div>
+    </div>
+
+    <!-- 変更履歴 -->
+    <div class="section-title">変更履歴 <span class="ro-tag">変更不可</span></div>
+    <div style="margin-bottom:16px;border:1px solid #e0e0e0;overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead><tr style="background:#f7f7f7;">
+          <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;border-right:1px solid #e0e0e0;white-space:nowrap;">日時</th>
+          <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;border-right:1px solid #e0e0e0;white-space:nowrap;">操作者</th>
+          <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;border-right:1px solid #e0e0e0;">変更項目</th>
+          <th style="padding:9px 12px;text-align:left;font-weight:700;color:#555;border-bottom:2px solid #e0e0e0;">変更内容</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-03-11 09:05</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">株式会社One For All<br><span style="font-size:10px;color:#888;">CL（買取店）</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;">ステップ変更</span></td>
+            <td style="padding:9px 12px;">① 成約情報登録（新規作成）</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-03-12 10:20</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">スガワラ アヤカ<br><span style="font-size:10px;color:#888;">CS（売主）</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;"><span style="background:#1E56A0;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;">確認済み</span></td>
+            <td style="padding:9px 12px;">契約情報合意</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-03-15 14:05</td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">株式会社One For All<br><span style="font-size:10px;color:#888;">CL（買取店）</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;">入金</span></td>
+            <td style="padding:9px 12px;">ペイジーで入金</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="btn-row" style="margin-top:20px;">
+      <button class="btn-secondary">一時保存</button>
+      <button class="btn-primary" onclick="if(confirm('金額変更を登録します。\n\n登録すると売主へ金額変更の確認案内がSMS・メールで送信されます。\n\nよろしいですか？'))alert('金額変更を登録しました。売主へ確認依頼を送信します。')">金額変更を登録して売主確認に進む</button>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div class="links"><span>会社概要</span><span>利用規約</span></div>
+    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  </div>
+</div>
+<script src="../assets/common.js"></script>
+</body>
+</html>
