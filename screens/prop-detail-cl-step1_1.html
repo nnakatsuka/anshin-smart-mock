@@ -106,17 +106,21 @@
     <!-- ▼ STEP① 入力：成約情報の登録（赤太枠） -->
     <div class="section-title" style="color:#c0392b;">成約情報の登録 <span class="edit-tag">STEP① 入力</span> <span class="tag tag-red" style="font-size:10px;">必須</span></div>
     <div class="edit-sec">
-      <div class="info-grid"><div class="ig-label">買取予定金額 <span style="color:#c0392b;">*</span></div><div class="ig-val">
+      <div class="info-grid"><div class="ig-label">買取予定金額 <span style="color:#c0392b;">*必須</span></div><div class="ig-val">
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
           <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:15px;font-weight:700;">¥</span><input type="number" class="f-in req" placeholder="例：1500000" style="max-width:220px;"></div>
           <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:#555;font-weight:700;">入庫予定日</span><input type="date" class="f-in" style="max-width:180px;"></div>
         </div>
       </div></div>
-      <div class="info-grid"><div class="ig-label">書類アップロード <span style="color:#c0392b;">*</span></div><div class="ig-val">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-          <div><div style="font-size:11px;font-weight:700;color:#555;margin-bottom:4px;">① 売買契約書</div><div class="drop-req">📎 ファイルを選択<div style="font-size:10px;margin-top:3px;">PDF / 画像</div></div></div>
-          <div><div style="font-size:11px;font-weight:700;color:#555;margin-bottom:4px;">② 車検証</div><div class="drop-req">📎 ファイルを選択<div style="font-size:10px;margin-top:3px;">PDF / 画像</div></div></div>
-          <div><div style="font-size:11px;font-weight:700;color:#555;margin-bottom:4px;">③ 譲渡証明書</div><div class="drop-req">📎 ファイルを選択<div style="font-size:10px;margin-top:3px;">PDF / 画像</div></div></div>
+      <div class="info-grid"><div class="ig-label">書類アップロード</div><div class="ig-val">
+        <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7;">該当する書類がある場合は、対応する項目にアップロードしてください。各項目に必要なファイルが含まれていれば、形式・枚数は問いません（PDF / 画像）。</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;">
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fafafa;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">① 売買契約書 <span style="color:#c0392b;font-size:10px;">*必須</span></span><button style="font-size:11px;font-weight:700;color:#c0392b;background:#fff;border:1px solid #c0392b;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;">📎 選択</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fafafa;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">② 車検証 <span style="color:#c0392b;font-size:10px;">*必須</span></span><button style="font-size:11px;font-weight:700;color:#c0392b;background:#fff;border:1px solid #c0392b;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;">📎 選択</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fafafa;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">③ ローン残債証明書</span><button style="font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;">📎 選択</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fafafa;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">④ その他</span><button style="font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;">📎 選択</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fafafa;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">⑤ その他</span><button style="font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;">📎 選択</button></div>
+          <div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;background:#fafafa;"><span style="font-size:12px;font-weight:700;color:#555;flex:1;">⑥ その他</span><button style="font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:4px 12px;cursor:pointer;font-family:inherit;white-space:nowrap;">📎 選択</button></div>
         </div>
       </div></div>
     </div>
@@ -220,7 +224,7 @@
       </div>
       <div style="display:flex;justify-content:space-between;align-items:baseline;padding:13px 0 3px;">
         <span style="font-size:15px;color:#1a1a1a;font-weight:700;">買主入金予定金額</span>
-        <span style="font-size:28px;font-weight:900;color:#c0392b;">¥—</span>
+        <span><span style="font-size:28px;font-weight:900;color:#c0392b;">¥—</span><span style="font-size:12px;color:#888;margin-left:14px;">入金日：—</span></span>
       </div>
     </div>
 
@@ -248,14 +252,6 @@
     <div class="btn-row" style="margin-top:20px;">
       <button class="btn-secondary">一時保存</button>
       <button class="btn-primary" onclick="if(confirm('成約情報を登録します。\n\n登録すると売主へSTEP②（成約情報確認）の案内がSMS・メールで送信されます。\n\nよろしいですか？'))alert('成約情報を登録しました。売主へ確認依頼を送信します。')">登録して売主確認に進む</button>
-    </div>
-
-    <div class="design-note">
-      <strong>📌 設計メモ（物件詳細 STEP①状態）</strong>
-      ・赤太枠＝STEP①で買取店が入力（買取予定金額／書類アップロード／通知先設定）。ローン会社情報は3列レイアウトで入力（ある場合のみ）<br>
-      ・物件基本情報・買取店情報・入金/送金履歴・金額変更・変更履歴は変更不可。後続STEPで埋まる項目は空欄表示。金額サマリは大きめフォントで集計表示<br>
-      ・「あんしん決済対象有無チェック」ブロックは削除済み<br>
-      ・通知先は 担当査定員／責任者／経理担当 を横並び。減額内容・ローン残債は3列で高さを抑えた表示
     </div>
   </div>
 
