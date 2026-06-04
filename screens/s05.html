@@ -49,7 +49,10 @@
 
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e0e0e0;">
         <div style="font-size:18px;font-weight:700;">入金</div>
-        <button onclick="showScreen('prop-detail-cl',null)" style="background:white;color:#1E56A0;border:1px solid #1E56A0;border-radius:3px;padding:7px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">📄 物件詳細を見る</button>
+        <div style="display:flex;gap:8px;">
+          <button onclick="showScreen('prop-list-new',null)" style="background:white;color:#1E56A0;border:1px solid #1E56A0;border-radius:3px;padding:7px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">📋 物件一覧を見る</button>
+          <button onclick="showScreen('prop-detail-cl',null)" style="background:white;color:#1E56A0;border:1px solid #1E56A0;border-radius:3px;padding:7px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">📄 物件詳細を見る</button>
+        </div>
       </div>
 
       <!-- 共通情報カード -->
@@ -74,19 +77,19 @@
       </div>
 
       <!-- 入金方法 左右2分割 -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;align-items:stretch;">
 
-        <!-- 左: ペイジー決済（デフォルト活性） -->
-        <div id="panel-paygov" style="border:2px solid #1E56A0;border-radius:6px;overflow:hidden;background:white;">
-          <div style="background:#1E56A0;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;" onclick="switchPayMethod('paygov')">
+        <!-- 左: ペイジー決済 -->
+        <div id="panel-paygov" style="border:2px solid #1E56A0;border-radius:6px;overflow:hidden;background:white;display:flex;flex-direction:column;">
+          <div style="background:#1E56A0;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;">
             <div style="display:flex;align-items:center;gap:8px;">
               <input type="radio" name="pay-method" id="radio-paygov" checked style="accent-color:white;width:15px;height:15px;">
               <span style="color:white;font-size:13px;font-weight:700;">🏧 ペイジー決済</span>
             </div>
             <span style="color:rgba(255,255,255,0.8);font-size:10px;">デフォルト</span>
           </div>
-          <div id="body-paygov" style="padding:18px 18px 16px;">
-            <div style="font-size:12px;color:#555;margin-bottom:14px;line-height:1.7;">
+          <div id="body-paygov" style="padding:18px 18px 16px;flex:1;display:flex;flex-direction:column;">
+            <div style="font-size:12px;color:#555;margin-bottom:14px;line-height:1.7;flex:1;">
               ネットバンキングから即時振込が可能です。<br>
               <span style="color:#888;font-size:11px;">対応銀行：みずほ・三菱UFJ・三井住友・ゆうちょ 他</span>
             </div>
@@ -95,37 +98,26 @@
           </div>
         </div>
 
-        <!-- 右: 銀行振込（非活性） -->
-        <div id="panel-bank" style="border:2px solid #e0e0e0;border-radius:6px;overflow:hidden;background:#f9f9f9;opacity:0.6;">
-          <div style="background:#e0e0e0;padding:10px 16px;display:flex;align-items:center;gap:8px;cursor:pointer;" onclick="switchPayMethod('bank')">
-            <input type="radio" name="pay-method" id="radio-bank" style="accent-color:#555;width:15px;height:15px;">
-            <span style="color:#555;font-size:13px;font-weight:700;">🏦 銀行振込</span>
+        <!-- 右: 銀行振込 -->
+        <div id="panel-bank" style="border:2px solid #1E56A0;border-radius:6px;overflow:hidden;background:white;display:flex;flex-direction:column;">
+          <div style="background:#1E56A0;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+            <input type="radio" name="pay-method" id="radio-bank" style="accent-color:white;width:15px;height:15px;">
+            <span style="color:white;font-size:13px;font-weight:700;">🏦 銀行振込</span>
           </div>
-          <div id="body-bank" style="padding:14px 16px;">
+          <div id="body-bank" style="padding:18px 18px 16px;flex:1;display:flex;flex-direction:column;">
             <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px;">
               <tr><td style="padding:7px 10px;background:#e8e8e8;width:100px;border:1px solid #d0d0d0;">金融機関名</td><td style="padding:7px 10px;border:1px solid #d0d0d0;border-right:none;">三菱UFJ銀行</td><td style="padding:7px 10px;background:#e8e8e8;border:1px solid #d0d0d0;">コード</td><td style="padding:7px 10px;border:1px solid #d0d0d0;">0005</td></tr>
               <tr><td style="padding:7px 10px;background:#e8e8e8;border:1px solid #d0d0d0;">支店名</td><td style="padding:7px 10px;border:1px solid #d0d0d0;border-right:none;">なつくも支店</td><td style="padding:7px 10px;background:#e8e8e8;border:1px solid #d0d0d0;">支店コード</td><td style="padding:7px 10px;border:1px solid #d0d0d0;">869</td></tr>
               <tr><td style="padding:7px 10px;background:#e8e8e8;border:1px solid #d0d0d0;">預金種目</td><td style="padding:7px 10px;border:1px solid #d0d0d0;border-right:none;">普通預金</td><td style="padding:7px 10px;background:#e8e8e8;border:1px solid #d0d0d0;">口座番号</td><td style="padding:7px 10px;border:1px solid #d0d0d0;">4850980</td></tr>
               <tr><td style="padding:7px 10px;background:#e8e8e8;border:1px solid #d0d0d0;">口座名義</td><td colspan="3" style="padding:7px 10px;border:1px solid #d0d0d0;">MOTA</td></tr>
             </table>
-            <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:3px;padding:7px 10px;font-size:11px;color:#856404;">⚠️ 本案件専用口座です。必ずお振込みください。</div>
+            <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:3px;padding:7px 10px;font-size:11px;color:#856404;margin-bottom:14px;flex:1;">⚠️ 本案件専用口座です。必ずお振込みください。</div>
+            <button onclick="if(confirm('振込完了をMOTAへ報告します。よろしいですか？'))alert('振込完了を報告しました。MOTAが入金確認を行います。')" style="width:100%;background:#1D6B35;color:white;border:none;border-radius:4px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 振込完了</button>
+            <div style="font-size:10px;color:#888;margin-top:8px;text-align:center;">振込完了後に押下 → MOTAが入金確認（STEP④）を行います</div>
           </div>
         </div>
       </div>
 
-      <!-- 【v61追加】振込完了ボタン -->
-      <div style="background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 22px;margin-bottom:16px;">
-        <div style="font-size:13px;font-weight:700;color:#1D6B35;margin-bottom:6px;">✅ 振込が完了したら、下記ボタンを押下してください</div>
-        <div style="font-size:11px;color:#666;line-height:1.7;margin-bottom:12px;">押下後、MOTAが入金確認（STEP④）を行い、確認完了次第STEP⑤受領連絡に進みます。</div>
-        <button onclick="if(confirm('振込完了をMOTAへ報告します。よろしいですか？'))alert('振込完了を報告しました。MOTAが入金確認を行います。')" style="background:#1D6B35;color:white;border:none;border-radius:4px;padding:12px 36px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">振込完了</button>
-      </div>
-
-    </div>
-    <div class="design-note" style="max-width:980px;margin:24px auto 0;padding:0 20px;">
-      <strong>📌 設計メモ</strong>
-      ・<strong>左右2分割：ペイジー（デフォルト活性・青枠）/ 銀行振込（非活性・グレー）。選択するとアクティブ化</strong><br>
-      ・ペイジー非対応口座登録のCL：銀行振込のみ選択可能（ペイジー側をdisabled/グレーアウト）<br>
-      ・<strong>【v61】「振込完了」ボタンを追加</strong>：振込後にCLが押下→MOTAへ完了報告→STEP④入金確認へ
     </div>
   </div>
 
