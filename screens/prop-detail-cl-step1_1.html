@@ -122,9 +122,9 @@
       </div></div>
     </div>
 
-    <!-- ローン会社情報（3列レイアウト・ある場合のみ入力） -->
-    <div class="section-title">ローン会社情報 <span style="font-size:11px;color:#888;font-weight:400;">（ある場合のみ）</span></div>
-    <div class="tbl">
+    <!-- ローン会社情報（3列・赤枠・ある場合のみ入力） -->
+    <div class="section-title" style="color:#c0392b;">ローン会社情報 <span class="edit-tag">STEP① 入力</span> <span style="font-size:11px;color:#888;font-weight:400;">（ある場合のみ）</span></div>
+    <div class="tbl" style="border:3px solid #c0392b;border-radius:6px;">
       <div class="g3">
         <div class="lbl">ローン会社名</div><div class="cellin"><input type="text" class="f-in"></div>
         <div class="lbl">ローン残債</div><div class="cellin"><input type="number" class="f-in" placeholder="¥0"></div>
@@ -187,8 +187,8 @@
     <div class="tbl">
       <div class="g3">
         <div class="lbl">店舗名</div><div class="val">株式会社One For All</div>
-        <div class="lbl">店舗ID</div><div class="val">C001234</div>
-        <div class="lbl">入金予定日</div><div class="val empty" style="border-right:none;">—</div>
+        <div class="lbl">店舗ID</div><div class="val" style="border-right:none;">C001234</div>
+        <div class="lbl" style="border-right:none;background:#fff;"></div><div class="val" style="border-right:none;"></div>
       </div>
     </div>
 
@@ -206,29 +206,45 @@
       </div>
     </div>
 
-    <!-- 減額内容の入力（3列・今は空） -->
-    <div class="section-title">減額内容の入力 <span class="ro-tag">変更不可</span> <span style="font-size:11px;color:#888;font-weight:400;">※減額発生時に値が入ります</span></div>
+    <!-- 金額変更（減額内容＋ローン残債を統合・3列） -->
+    <div class="section-title">金額変更 <span class="ro-tag">変更不可</span> <span style="font-size:11px;color:#888;font-weight:400;">※金額変更時に値が入ります</span></div>
     <div class="tbl">
       <div class="g3">
-        <div class="lbl">減額前の金額</div><div class="val empty">—</div>
-        <div class="lbl">減額後の金額</div><div class="val empty">—</div>
-        <div class="lbl">減額後の契約書</div><div class="val empty" style="border-right:none;">—</div>
+        <div class="lbl">変更金額</div><div class="val empty">—</div>
+        <div class="lbl">契約書</div><div class="val empty">—</div>
+        <div class="lbl" style="border-right:none;"></div><div class="val empty" style="border-right:none;"></div>
+      </div>
+      <div class="g3">
+        <div class="lbl" style="border-bottom:none;">ローン残債金額</div><div class="val empty" style="border-bottom:none;">—</div>
+        <div class="lbl" style="border-bottom:none;">ローン残債 再確認日</div><div class="val empty" style="border-bottom:none;">—</div>
+        <div class="lbl" style="border-bottom:none;">ローン残債 有効期限</div><div class="val empty" style="border-right:none;border-bottom:none;">—</div>
       </div>
     </div>
 
-    <!-- ローン残債の確認（3列・今は空） -->
-    <div class="section-title">ローン残債の確認 <span class="ro-tag">変更不可</span> <span style="font-size:11px;color:#888;font-weight:400;">※残債変更時に値が入ります</span></div>
-    <div class="tbl">
-      <div class="g3">
-        <div class="lbl">ローン残債 再確認日</div><div class="val empty">—</div>
-        <div class="lbl">ローン残債 有効期限</div><div class="val empty">—</div>
-        <div class="lbl">ローン残債金額</div><div class="val empty" style="border-right:none;">—</div>
+    <!-- 金額サマリ（大きめフォント） -->
+    <div class="section-title">金額サマリ</div>
+    <div style="border:1px solid #e0e0e0;border-radius:6px;background:#fff;padding:18px 24px;margin-bottom:16px;max-width:680px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">買取予定金額</span>
+        <span><span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥—</span><span style="font-size:12px;color:#888;margin-left:14px;">入金日：—</span></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">ローン残債</span>
+        <span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">買主負担金額</span>
+        <span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #f0f0f0;">
+        <span style="font-size:14px;color:#555;">買取店返金額</span>
+        <span style="font-size:22px;font-weight:700;color:#1a1a1a;">¥—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:13px 0 3px;">
+        <span style="font-size:15px;color:#1a1a1a;font-weight:700;">買主入金予定金額</span>
+        <span style="font-size:28px;font-weight:900;color:#c0392b;">¥—</span>
       </div>
     </div>
-
-    <!-- 返金情報 -->
-    <div class="section-title">返金情報 <span class="ro-tag">変更不可</span></div>
-    <div class="info-grid" style="max-width:400px;"><div class="ig-label">返金額</div><div class="ig-val">¥0</div></div>
 
     <!-- 変更履歴 -->
     <div class="section-title">変更履歴 <span class="ro-tag">変更不可</span></div>
@@ -259,7 +275,7 @@
     <div class="design-note">
       <strong>📌 設計メモ（物件詳細 STEP①状態）</strong>
       ・赤太枠＝STEP①で買取店が入力（買取予定金額／書類アップロード／通知先設定）。ローン会社情報は3列レイアウトで入力（ある場合のみ）<br>
-      ・物件基本情報・買取店情報・入金/送金履歴・減額内容・ローン残債の確認・返金情報・変更履歴は変更不可。後続STEPで埋まる項目は空欄表示<br>
+      ・物件基本情報・買取店情報・入金/送金履歴・金額変更・変更履歴は変更不可。後続STEPで埋まる項目は空欄表示。金額サマリは大きめフォントで集計表示<br>
       ・「あんしん決済対象有無チェック」ブロックは削除済み<br>
       ・通知先は 担当査定員／責任者／経理担当 を横並び。減額内容・ローン残債は3列で高さを抑えた表示
     </div>
