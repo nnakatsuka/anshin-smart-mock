@@ -190,17 +190,17 @@
     </div>
 
     <!-- ▼ 金額変更（変更可・赤枠・活性入力・全項目必須） -->
-    <div class="section-title" style="color:#c0392b;">金額変更 <span style="background:#1D6B35;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;">変更可</span> <span style="font-size:11px;color:#c0392b;font-weight:400;">※金額変更する場合は、売主の承認後、反映されます。</span></div>
+    <div class="section-title">金額変更 <span style="background:#1D6B35;color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;margin-left:8px;">変更可</span> <span style="font-size:11px;color:#888;font-weight:400;">※金額変更する場合は、売主の承認後、反映されます。</span></div>
     <div style="margin-bottom:16px;">
       <div class="g3" style="border:1px solid #e0e0e0;">
-        <div class="lbl">変更金額 <span style="color:#c0392b;">*必須</span></div><div class="cellin"><input type="number" class="f-in req" placeholder="例：1300000"></div>
-        <div class="lbl">契約書 <span style="color:#c0392b;">*必須</span></div><div class="cellin"><button style="font-size:11px;font-weight:700;color:#c0392b;background:#fff;border:1px solid #c0392b;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:inherit;">📎 ファイルを選択</button></div>
-        <div class="lbl" style="border-right:none;">ローン残債証明書 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-right:none;"><button style="font-size:11px;font-weight:700;color:#c0392b;background:#fff;border:1px solid #c0392b;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:inherit;">📎 ファイルを選択</button></div>
+        <div class="lbl">変更金額 <span style="color:#c0392b;">*必須</span></div><div class="cellin"><input type="number" class="f-in" placeholder="例：1300000"></div>
+        <div class="lbl">契約書 <span style="color:#c0392b;">*必須</span></div><div class="cellin"><button style="font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:inherit;">📎 ファイルを選択</button></div>
+        <div class="lbl" style="border-right:none;">ローン残債証明書 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-right:none;"><button style="font-size:11px;font-weight:700;color:#1E56A0;background:#fff;border:1px solid #1E56A0;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:inherit;">📎 ファイルを選択</button></div>
       </div>
       <div class="g3" style="border:1px solid #e0e0e0;border-top:none;">
-        <div class="lbl" style="border-bottom:none;">ローン残債金額 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-bottom:none;"><input type="number" class="f-in req" placeholder="¥"></div>
-        <div class="lbl" style="border-bottom:none;">ローン残債 再確認日 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-bottom:none;"><input type="date" class="f-in req"></div>
-        <div class="lbl" style="border-bottom:none;">ローン残債 有効期限 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-right:none;border-bottom:none;"><input type="date" class="f-in req"></div>
+        <div class="lbl" style="border-bottom:none;">ローン残債金額 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-bottom:none;"><input type="number" class="f-in" placeholder="¥"></div>
+        <div class="lbl" style="border-bottom:none;">ローン残債 再確認日 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-bottom:none;"><input type="date" class="f-in"></div>
+        <div class="lbl" style="border-bottom:none;">ローン残債 有効期限 <span style="color:#c0392b;">*必須</span></div><div class="cellin" style="border-right:none;border-bottom:none;"><input type="date" class="f-in"></div>
       </div>
     </div>
 
@@ -267,7 +267,7 @@
 
     <div class="btn-row" style="margin-top:20px;">
       <button class="btn-secondary">一時保存</button>
-      <button class="btn-primary" onclick="if(confirm('金額変更を登録します。\n\n登録すると売主へ金額変更の確認案内がSMS・メールで送信されます。\n\nよろしいですか？'))alert('金額変更を登録しました。売主へ確認依頼を送信します。')">金額変更を登録して売主確認に進む</button>
+      <button class="btn-primary" onclick="if(confirm('金額変更を登録します。\n\n登録すると売主へ金額変更の確認案内がSMS・メールで送信されます。\n\nよろしいですか？'))alert('金額変更を登録しました。売主へ確認依頼を送信します。')">変更する（金額に関する変更は売主確認に進む）</button>
     </div>
   </div>
 
