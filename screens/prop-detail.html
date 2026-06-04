@@ -55,16 +55,15 @@
         <div class="sb-box" style="flex:1;"><span class="sb-num">⑥</span>【MOTA】送金<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月29日</span></div>
         <div class="sb-box" style="flex:1;"><span class="sb-num">⑦</span>完了<br><span style="font-size:9px;font-weight:400;opacity:0.7;">2026年04月30日</span></div>
       </div>
-      <!-- 【v55追加】STEP④ 業務責任ハンドオフ可視化チップ -->
+      <!-- STEP④ 業務責任ハンドオフ可視化チップ -->
       <div style="margin-top:12px;padding:10px 14px;background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-        <span style="background:#e67e22;color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;">v55 NEW</span>
         <span style="background:white;color:#856404;border:1px solid #ffd54f;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">⏳ STEP④ 入金確認 待機中</span>
         <span style="font-size:11px;color:#856404;">買取店からの入金完了待ち（STEP③）。MOTA側で入金確認が完了するとSTEP⑤受領連絡へハンドオフ</span>
       </div>
     </div>
 
-    <!-- 物件情報 — v56でCL版と項目統一・横長フル幅 -->
-    <div class="section-title" style="display:flex;align-items:center;gap:8px;">物件情報 <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">車買取</span> <span style="background:#16a085;color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;">v56 統一</span></div>
+    <!-- 物件情報 -->
+    <div class="section-title" style="display:flex;align-items:center;gap:8px;">物件情報 <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">車買取</span></div>
     <div style="margin-bottom:16px;border:1px solid #e0e0e0;">
       <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
         <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">成約情報受領日</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">2026-04-08</div>
@@ -287,7 +286,7 @@
           </tr>
           <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
             <td style="padding:9px 12px;color:#888;white-space:nowrap;border-right:1px solid #f0f0f0;">2026-04-10 11:22</td>
-            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">内堀 賢治<br><span style="font-size:10px;color:#888;">MOTA</span></td>
+            <td style="padding:9px 12px;border-right:1px solid #f0f0f0;white-space:nowrap;">山田太郎<br><span style="font-size:10px;color:#888;">MOTA</span></td>
             <td style="padding:9px 12px;border-right:1px solid #f0f0f0;">買取予定金額</td>
             <td style="padding:9px 12px;color:#888;">変更</td>
           </tr>
@@ -303,15 +302,6 @@
     </div>
     <div style="width:212px;flex-shrink:0;"></div>
     </div><!-- /log-row -->
-    <div class="design-note" style="margin-top:12px;">
-      <strong>📌 設計メモ（物件詳細 追加項目）</strong>
-      ・「サービス区分」を書類フォルダの直下に追加。「MOTA車買取」または「MOTA車買取サポート」を表示<br>
-      ・色付け不要（他項目と同スタイル）<br>
-      ・「強制OK/NG入力」セクションはMOTAアカウントでのログイン時のみ表示（CLアカウントには非表示）<br>
-      ・表示条件：ステータスが「CS非同意 — MOTA確認中」または「CL非同意 — MOTA確認中」の案件のみ表示<br>
-      ・<strong>【v44更新】</strong>物件情報テーブル下に「入金／送金履歴」ボックスを追加：CL→MOTA（買取店入金）・CS→MOTA（追い金）・MOTA→CS・MOTA→ローン会社の4区分で振込方法種別・金額・状態を表示。詳細リンクで入金/送金管理画面へ遷移<br>      ・グローバルナビの「入金／送金」タブは物件詳細では削除（物件詳細ボックスのリンクから遷移）<br>
-      ・<strong>【v43追加】</strong>売主情報に「売主メールアドレス」を追加
-    </div>
   </div>
 
   <div class="app-footer">
