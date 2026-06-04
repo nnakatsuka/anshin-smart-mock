@@ -54,12 +54,12 @@
         </div>
       </div>
 
-      <!-- 2カラムレイアウト：左=情報確認、右=口座登録 -->
+      <!-- 2カラムレイアウト：左=情報確認、右=判定＋口座登録＋連絡先＋送信 -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
 
-        <!-- 左：成約情報確認 -->
+        <!-- 左：契約情報＋申込者情報＋車検証情報 -->
         <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
-          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">成約情報</div>
+          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">契約情報</div>
 
           <div style="display:grid;grid-template-columns:140px 1fr;gap:10px 14px;font-size:13px;line-height:1.8;">
             <div style="color:#888;font-weight:700;">査定番号</div><div style="font-weight:700;">2119387</div>
@@ -68,8 +68,8 @@
             <div style="color:#888;font-weight:700;">担当者</div><div>内堀 けんじ</div>
             <div style="color:#888;font-weight:700;">買取金額</div><div style="font-weight:700;font-size:16px;">¥1,000,000</div>
             <div style="color:#888;font-weight:700;">ローン残債</div><div>¥0</div>
-            <div style="color:#888;font-weight:700;">追い金（CS入金）</div><div style="color:#888;">なし</div>
-            <div style="color:#888;font-weight:700;">入庫予定日</div><div>2026-04-24</div>
+            <div style="color:#888;font-weight:700;">ローン残債不足分</div><div>なし<br><span style="font-size:11px;color:#888;font-weight:400;">本件に同意いただきましたら、お支払いいただきます。</span></div>
+            <div style="color:#888;font-weight:700;">車両お引渡し予定日</div><div>2026-04-24</div>
           </div>
 
           <!-- 契約書 -->
@@ -77,9 +77,32 @@
             <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">📄 売買契約書</div>
             <a style="color:#1E56A0;text-decoration:underline;font-size:12px;cursor:pointer;">contract_2119387.pdf を表示</a>
           </div>
+
+          <!-- MOTA車買取 申込者情報 -->
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">MOTA車買取 申込者情報</div>
+            <div style="display:grid;grid-template-columns:140px 1fr;gap:8px 14px;font-size:13px;line-height:1.7;">
+              <div style="color:#888;font-weight:700;">申込者（カナ）</div><div>スガワラ アヤカ</div>
+              <div style="color:#888;font-weight:700;">電話番号</div><div>08012345678</div>
+              <div style="color:#888;font-weight:700;">メールアドレス</div><div>sugawara@example.com</div>
+            </div>
+          </div>
+
+          <!-- 車検証 情報（入力済み状態） -->
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">車検証 情報</div>
+            <div style="margin-bottom:10px;">
+              <label style="font-size:11px;color:#888;font-weight:700;display:block;margin-bottom:4px;">所有者名（カナ） <span style="color:#c0392b;">*必須</span></label>
+              <input type="text" value="スガワラ アヤカ" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:8px 10px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+            </div>
+            <div>
+              <label style="font-size:11px;color:#888;font-weight:700;display:block;margin-bottom:4px;">使用者名（カナ）</label>
+              <input type="text" value="スガワラ アヤカ" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:8px 10px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+            </div>
+          </div>
         </div>
 
-        <!-- 右：判定＆口座登録 -->
+        <!-- 右：判定＋口座登録＋連絡先＋送信ボタン -->
         <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
           <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">確認</div>
 
@@ -143,20 +166,34 @@
               <div style="grid-column:1/3;">
                 <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">口座名義（カナ） *</label>
                 <input type="text" placeholder="例：ウチボリ ケンジ" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+                <div style="font-size:10px;color:#c0392b;margin-top:4px;">※ 契約者ご本人名義の口座をご登録ください。</div>
               </div>
             </div>
           </div>
 
-          <button onclick="showScreen('s03c',null)" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で送信する</button>
-        </div>
-      </div>
+          <!-- 連絡先（入力）：右カラム・口座登録の下 -->
+          <div id="cs-renraku-area" style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">連絡先</div>
+            <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7;">MOTA車買取 申込者と違う連絡先をご希望の方は、下記にご記入ください。</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;">
+              <div>
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">電話番号</label>
+                <input type="tel" placeholder="例：09012345678" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+              </div>
+              <div>
+                <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">メールアドレス</label>
+                <input type="email" placeholder="例：example@example.com" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:12px;font-family:inherit;box-sizing:border-box;">
+              </div>
+            </div>
+          </div>
 
-      <div class="design-note">
-        <strong>📌 設計メモ（CS成約情報確認・v60 判定UI改修）</strong>
-        ・<strong>【v60】判定UIを2段階選択に変更</strong>：1段階目「確認OK／差し戻し／対象外」の3択ラジオ→差し戻し選択時のみ2段階目「買取店登録情報の相違／その他＋自由記入」を表示<br>
-        ・対象外は維持（廃止せず）<br>
-        ・OK選択時のみ口座情報入力欄を表示／差し戻し・対象外選択時は口座入力を非表示化（スクロール削減）<br>
-        ・<strong>【v59】SP想定からPC化</strong>：1200px幅・2カラムレイアウト（左=情報確認、右=判定＋口座登録）
+          <!-- 送信ボタン＋結果メッセージ：右カラム最下部 -->
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
+            <button onclick="s03Submit()" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で送信する</button>
+            <div id="s03-result" style="display:none;margin-top:14px;border-radius:6px;padding:16px 18px;font-size:13px;line-height:1.9;"></div>
+          </div>
+
+        </div>
       </div>
 
 <script>
@@ -193,6 +230,25 @@ function csNgReasonChange(value) {
     textarea.style.color = '#999';
     textarea.value = '';
   }
+}
+function s03Submit(){
+  var judge = document.querySelector('input[name="cs-judge"]:checked');
+  var v = judge ? judge.value : 'ok';
+  var box = document.getElementById('s03-result');
+  if(!box) return;
+  if(v === 'ok'){
+    box.style.background = '#f0f8f3';
+    box.style.border = '1px solid #1D6B35';
+    box.style.color = '#1D6B35';
+    box.innerHTML = '<strong>確認OKを受け付けました。</strong><br>買取店からのご入金が確認でき次第、車両のお引渡しについて改めてご連絡いたします。<br><span style="color:#7a4a00;">※ ローン残債不足分のお支払いがある場合は、この後のお手続きでご入金へお進みいただきます。</span>';
+  } else {
+    box.style.background = '#fef5e7';
+    box.style.border = '1px solid #f39c12';
+    box.style.color = '#7a4a00';
+    box.innerHTML = '<strong>差し戻しを受け付けました。</strong><br>買取店が内容を確認のうえ、改めてご連絡いたします。今しばらくご連絡をお待ちください。';
+  }
+  box.style.display = '';
+  box.scrollIntoView({behavior:'smooth', block:'center'});
 }
 </script>
     </div>
