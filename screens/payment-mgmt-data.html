@@ -22,11 +22,7 @@
     <div style="display:flex;align-items:center;gap:24px;height:100%;">
       <span class="logo" onclick="showScreen('prop-list-new',null)">MöTA <span style="font-size:13px;font-weight:400;color:#bbb;">あんしん決済 管理画面</span></span>
     </div>
-    <div class="menu">
-      <div class="menu-item" onclick="showScreen('prop-list-new',null)">成約</div>
-      <div class="menu-item">オペレータ</div>
-      <div class="menu-item active" onclick="showScreen('payment-mgmt',null)">入金/送金</div>
-    </div>
+    <div class="menu"></div>
     <div class="right-tools">
       <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
       <button class="logout-btn">ログアウト</button>
@@ -34,21 +30,6 @@
   </div>
 
   <div style="background:#f0f0ee;padding:18px 28px;min-height:100vh;">
-    <div style="font-size:20px;font-weight:700;margin-bottom:14px;">データ発行</div>
-
-    <!-- タブ：入金履歴／送金履歴（→ payment-mgmt へ遷移）／データ発行（現在地） -->
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-      <button onclick="jumpToPaymentMgmt('nyukin')" style="background:white;color:#1a1a1a;border:1px solid #ccc;border-radius:4px;padding:9px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">入金履歴</button>
-      <button onclick="jumpToPaymentMgmt('sokin')" style="background:white;color:#1a1a1a;border:1px solid #ccc;border-radius:4px;padding:9px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">送金履歴</button>
-      <div style="width:1px;height:28px;background:#bbb;margin:0 6px;"></div>
-      <button style="background:#1E56A0;color:white;border:1.5px solid #1E56A0;border-radius:4px;padding:9px 18px;font-size:13px;font-weight:700;cursor:default;font-family:inherit;display:flex;align-items:center;gap:6px;">📤 データ発行</button>
-      <span style="font-size:10px;color:#888;">※別画面として独立</span>
-    </div>
-
-    <div style="background:#e3f2fd;border-left:4px solid #1E56A0;padding:12px 18px;margin-bottom:18px;font-size:12px;color:#0d47a1;line-height:1.7;">
-      <strong>📤 データ発行</strong><br>
-      経理用データの発行はこのページで一元管理します。
-    </div>
 
     <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:20px 24px;margin-bottom:18px;">
       <div style="font-size:15px;font-weight:700;margin-bottom:6px;">■ 前月分預り金データ</div>
@@ -78,14 +59,6 @@
     <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
   </div>
 </div><!-- /screen-payment-mgmt-data -->
-
-<script>
-// 入金/送金履歴タブクリック時：payment-mgmt.htmlへ遷移し、初期タブをsessionStorageで指定
-function jumpToPaymentMgmt(tab) {
-  try { sessionStorage.setItem('pm-tab', tab); } catch(e) {}
-  showScreen('payment-mgmt', null);
-}
-</script>
 
 <script src="../assets/common.js"></script>
 </body>
