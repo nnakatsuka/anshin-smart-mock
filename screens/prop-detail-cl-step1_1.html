@@ -71,9 +71,15 @@
       </div>
     </div>
 
-    <!-- 物件基本情報（売主情報を統合・変更不可） -->
+    <!-- 物件基本情報（サービス区分を最上段／以前の項目も表示・変更不可） -->
     <div class="section-title">物件基本情報 <span class="ro-tag">変更不可</span></div>
     <div style="margin-bottom:16px;border:1px solid #e0e0e0;">
+      <!-- サービス区分（最上段） -->
+      <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">サービス区分</div>
+        <div style="padding:10px 12px;font-size:13px;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">車買取</span></div>
+      </div>
+      <!-- 査定番号以降 -->
       <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
         <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">査定番号</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">2119387</div>
         <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">車名</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">トヨタ ヴォクシー ZS</div>
@@ -85,11 +91,21 @@
         <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主メールアドレス</div><div style="padding:10px 12px;font-size:13px;">sugawara@example.com</div>
       </div>
       <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
-        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">サービス区分</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"><span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;">車買取</span></div>
-        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;"></div>
-        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;"></div><div style="padding:10px 12px;font-size:13px;"></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">ローン残債</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥0</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">書類フォルダ</div><div style="padding:10px 12px;font-size:13px;color:#aaa;border-right:1px solid #e0e0e0;">—</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">担当者メールアドレス</div><div style="padding:10px 12px;font-size:13px;color:#aaa;">—</div>
       </div>
-      <div style="padding:9px 14px;font-size:11px;color:#888;background:#fafafa;">※ 売主の振込口座情報は、STEP②（売主の成約情報確認）で売主自身が登録・確認します。</div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">買取金額 ※減額後含む</div><div style="padding:10px 12px;font-size:13px;color:#aaa;border-right:1px solid #e0e0e0;">—</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">減額</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥0</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主送金額</div><div style="padding:10px 12px;font-size:13px;color:#aaa;">—</div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr 160px 1fr 160px 1fr;border-bottom:1px solid #e0e0e0;">
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">売主あんしん決済利用手数料（税込）</div><div style="padding:10px 12px;font-size:13px;border-right:1px solid #e0e0e0;">¥0 <span style="font-size:10px;color:#888;">※v56：手数料制度廃止</span></div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">入庫予定日</div><div style="padding:10px 12px;font-size:13px;color:#aaa;border-right:1px solid #e0e0e0;">—</div>
+        <div style="padding:10px 12px;background:#f7f7f7;font-size:12px;color:#555;border-right:1px solid #e0e0e0;">振込依頼実行日時</div><div style="padding:10px 12px;font-size:13px;color:#aaa;">—</div>
+      </div>
+      <div style="padding:9px 14px;font-size:11px;color:#888;background:#fafafa;">※ 売主の振込口座情報は、STEP②（売主の成約情報確認）で売主自身が登録・確認します。空欄項目は後続STEPで自動的に値が入ります。</div>
     </div>
 
     <!-- ▼ STEP① 入力：成約情報の登録（赤太枠） -->
