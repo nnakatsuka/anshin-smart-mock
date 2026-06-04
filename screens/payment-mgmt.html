@@ -15,7 +15,7 @@
   <div class="step-desc-bar">
     <span class="step-desc-num">入送金</span>
     <span class="step-desc-title">入金／送金 — 入金・送金統合一覧</span>
-    <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面（MOTA）</span>
+    <span style="background:#c0392b;color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:2px;margin-left:12px;">❤️ あんしん決済管理画面(MOTA)</span>
   </div>
 
   <div class="app-header mota">
@@ -24,20 +24,20 @@
     </div>
     <div class="menu"></div>
     <div class="right-tools">
-      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
+      <button class="hamburger-btn" onclick="alert('メニュー(実装予定)')" title="メニュー"><span></span><span></span><span></span></button>
       <button class="logout-btn">ログアウト</button>
     </div>
   </div>
 
   <div style="background:#f0f0ee;padding:18px 28px;min-height:100vh;">
 
-    <!-- 絞り込み（区分/振込先/振込方法/判定/査定番号/期日） -->
+    <!-- 絞り込み(区分/振込先/振込方法/判定/査定番号/振込日) -->
     <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:14px 16px;margin-bottom:14px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
         <span style="font-size:13px;font-weight:700;color:#1a1a1a;">🔎 絞り込み</span>
       </div>
 
-      <!-- ピル型選択（区分/振込先/振込方法/判定） -->
+      <!-- ピル型選択(区分/振込先/振込方法/判定) -->
       <div style="display:flex;flex-wrap:wrap;gap:18px;row-gap:10px;align-items:center;margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:6px;">
           <span style="font-size:12px;color:#666;font-weight:700;">区分：</span>
@@ -70,21 +70,21 @@
         </div>
       </div>
 
-      <!-- 入力型（査定番号/期日） -->
+      <!-- 入力型(査定番号/振込日) -->
       <div style="display:flex;flex-wrap:wrap;gap:18px;row-gap:10px;align-items:center;padding-top:10px;border-top:1px dashed #e0e0e0;">
         <div style="display:flex;align-items:center;gap:6px;">
           <span style="font-size:12px;color:#666;font-weight:700;">査定番号：</span>
           <input type="text" placeholder="例：1664376" style="border:1px solid #ccc;border-radius:4px;padding:5px 10px;font-size:13px;font-family:inherit;width:160px;">
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:12px;color:#666;font-weight:700;">期日：</span>
+          <span style="font-size:12px;color:#666;font-weight:700;">振込日：</span>
           <input type="date" style="border:1px solid #ccc;border-radius:4px;padding:5px 8px;font-size:13px;font-family:inherit;width:150px;">
           <span style="font-size:12px;color:#666;">〜</span>
           <input type="date" style="border:1px solid #ccc;border-radius:4px;padding:5px 8px;font-size:13px;font-family:inherit;width:150px;">
         </div>
         <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
-          <button onclick="alert('絞り込み条件をクリアしました（モック）')" style="background:white;color:#666;border:1px solid #ccc;border-radius:4px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">クリア</button>
-          <button onclick="alert('絞り込みを実行しました（モック）')" style="background:#1E56A0;color:white;border:1px solid #1E56A0;border-radius:4px;padding:7px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">🔍 絞り込む</button>
+          <button onclick="alert('絞り込み条件をクリアしました(モック)')" style="background:white;color:#666;border:1px solid #ccc;border-radius:4px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">クリア</button>
+          <button onclick="alert('絞り込みを実行しました(モック)')" style="background:#1E56A0;color:white;border:1px solid #1E56A0;border-radius:4px;padding:7px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">🔍 絞り込む</button>
         </div>
       </div>
     </div>
@@ -111,13 +111,13 @@
           <th style="padding:11px 10px;text-align:left;border-bottom:1px solid #e0e0e0;">振込方法</th>
           <th style="padding:11px 10px;text-align:left;border-bottom:1px solid #e0e0e0;">名義</th>
           <th style="padding:11px 10px;text-align:left;border-bottom:1px solid #e0e0e0;">口座</th>
-          <th style="padding:11px 10px;text-align:center;border-bottom:1px solid #e0e0e0;">期日</th>
+          <th style="padding:11px 10px;text-align:center;border-bottom:1px solid #e0e0e0;">振込日</th>
           <th style="padding:11px 10px;text-align:right;border-bottom:1px solid #e0e0e0;">金額</th>
           <th style="padding:11px 10px;text-align:center;border-bottom:1px solid #e0e0e0;">判定</th>
           <th style="padding:11px 10px;text-align:center;border-bottom:1px solid #e0e0e0;">物件</th>
         </tr></thead>
         <tbody>
-          <!-- 1664376（入金） -->
+          <!-- 1664376(入金) -->
           <tr style="font-size:13px;border-top:2px solid #999;">
             <td style="padding:10px;font-weight:700;">1664376</td>
             <td style="padding:10px;text-align:center;"><span style="background:#c0392b;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">入金</span></td>
@@ -130,7 +130,7 @@
             <td style="padding:10px;text-align:center;color:#1D6B35;font-weight:700;">OK</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
-          <!-- 1664376（追い金1回目） -->
+          <!-- 1664376(追い金1回目) -->
           <tr style="font-size:13px;border-top:1px solid #f0f0f0;">
             <td style="padding:10px;font-weight:700;">1664376</td>
             <td style="padding:10px;text-align:center;"><span style="background:#e67e22;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">追い金</span></td>
@@ -143,7 +143,7 @@
             <td style="padding:10px;text-align:center;color:#1D6B35;font-weight:700;">OK</td>
             <td style="padding:10px;text-align:center;color:#aaa;">—</td>
           </tr>
-          <!-- 1664376（追い金2回目） -->
+          <!-- 1664376(追い金2回目) -->
           <tr style="font-size:13px;border-top:1px solid #f0f0f0;">
             <td style="padding:10px;font-weight:700;">1664376</td>
             <td style="padding:10px;text-align:center;"><span style="background:#e67e22;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">追い金</span></td>
@@ -157,7 +157,7 @@
             <td style="padding:10px;text-align:center;color:#aaa;">—</td>
           </tr>
 
-          <!-- 1606027（入金・NG） -->
+          <!-- 1606027(入金・NG) -->
           <tr style="font-size:13px;border-top:2px solid #999;">
             <td style="padding:10px;font-weight:700;">1606027</td>
             <td style="padding:10px;text-align:center;"><span style="background:#c0392b;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">入金</span></td>
@@ -165,12 +165,12 @@
             <td style="padding:10px;">ペイジー</td>
             <td style="padding:10px;">ｳｨｰｶｰｽﾞ</td>
             <td style="padding:10px;">4850084</td>
-            <td style="padding:10px;text-align:center;color:#aaa;">—</td>
+            <td style="padding:10px;text-align:center;">2025/02/15</td>
             <td style="padding:10px;text-align:right;">¥1,500,000</td>
             <td style="padding:10px;text-align:center;color:#c0392b;font-weight:700;">NG</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
-          <!-- 1606027（追い金・NG） -->
+          <!-- 1606027(追い金・NG) -->
           <tr style="font-size:13px;border-top:1px solid #f0f0f0;">
             <td style="padding:10px;font-weight:700;">1606027</td>
             <td style="padding:10px;text-align:center;"><span style="background:#e67e22;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">追い金</span></td>
@@ -178,13 +178,13 @@
             <td style="padding:10px;">ペイジー</td>
             <td style="padding:10px;">ｶ)ﾓｰﾀ</td>
             <td style="padding:10px;">4849496</td>
-            <td style="padding:10px;text-align:center;color:#aaa;">—</td>
+            <td style="padding:10px;text-align:center;">2025/02/15</td>
             <td style="padding:10px;text-align:right;">¥1,016,500</td>
             <td style="padding:10px;text-align:center;color:#c0392b;font-weight:700;">NG</td>
             <td style="padding:10px;text-align:center;color:#aaa;">—</td>
           </tr>
 
-          <!-- 1664099（入金・NG） -->
+          <!-- 1664099(入金・NG) -->
           <tr style="font-size:13px;border-top:2px solid #999;">
             <td style="padding:10px;font-weight:700;">1664099</td>
             <td style="padding:10px;text-align:center;"><span style="background:#c0392b;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">入金</span></td>
@@ -192,64 +192,64 @@
             <td style="padding:10px;">ペイジー</td>
             <td style="padding:10px;">ﾜﾝﾌｫｰｵｰﾙ</td>
             <td style="padding:10px;">4849235</td>
-            <td style="padding:10px;text-align:center;color:#aaa;">—</td>
+            <td style="padding:10px;text-align:center;">2025/02/20</td>
             <td style="padding:10px;text-align:right;">¥1,500,000</td>
             <td style="padding:10px;text-align:center;color:#c0392b;font-weight:700;">NG</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
 
-          <!-- X938102（送金・OK） -->
+          <!-- X938102(送金・OK) -->
           <tr style="font-size:13px;border-top:2px solid #999;">
             <td style="padding:10px;font-weight:700;">X938102</td>
             <td style="padding:10px;text-align:center;"><span style="background:#555;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">送金</span></td>
             <td style="padding:10px;text-align:center;"><span style="background:#e8f4ea;color:#1D6B35;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">CS</span></td>
             <td style="padding:10px;">銀行振込</td>
-            <td style="padding:10px;">菅原 綾香</td>
-            <td style="padding:10px;">○○銀行</td>
+            <td style="padding:10px;">ｽｶﾞﾜﾗ ｱﾔｶ</td>
+            <td style="padding:10px;">1234567</td>
             <td style="padding:10px;text-align:center;">2026/03/30</td>
             <td style="padding:10px;text-align:right;">¥1,500,000</td>
             <td style="padding:10px;text-align:center;color:#1D6B35;font-weight:700;">OK</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
 
-          <!-- X949207（送金・NG） -->
+          <!-- X949207(送金・NG) -->
           <tr style="font-size:13px;border-top:2px solid #999;background:#fff5f5;">
             <td style="padding:10px;font-weight:700;">X949207</td>
             <td style="padding:10px;text-align:center;"><span style="background:#555;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">送金</span></td>
             <td style="padding:10px;text-align:center;"><span style="background:#e8f4ea;color:#1D6B35;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">CS</span></td>
             <td style="padding:10px;">銀行振込</td>
-            <td style="padding:10px;color:#c0392b;font-weight:700;">⚠️ 誤り</td>
-            <td style="padding:10px;color:#c0392b;font-weight:700;">⚠️ 誤り</td>
-            <td style="padding:10px;text-align:center;color:#aaa;">—</td>
+            <td style="padding:10px;">ﾀﾅｶ ﾀﾛｳ</td>
+            <td style="padding:10px;">9876543</td>
+            <td style="padding:10px;text-align:center;">2026/03/25</td>
             <td style="padding:10px;text-align:right;">¥800,000</td>
             <td style="padding:10px;text-align:center;color:#c0392b;font-weight:700;">NG</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
 
-          <!-- 2119320（送金・CL返金・OK） -->
+          <!-- 2119320(送金・CL返金・OK) -->
           <tr style="font-size:13px;border-top:2px solid #999;background:#fffbeb;">
             <td style="padding:10px;font-weight:700;">2119320</td>
             <td style="padding:10px;text-align:center;"><span style="background:#555;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">送金</span></td>
             <td style="padding:10px;text-align:center;"><span style="background:#fef3c7;color:#856404;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">CL</span></td>
             <td style="padding:10px;">銀行振込</td>
             <td style="padding:10px;">ｶ)ﾓｰﾀ</td>
-            <td style="padding:10px;">○○銀行</td>
+            <td style="padding:10px;">2345678</td>
             <td style="padding:10px;text-align:center;">2026/03/28</td>
             <td style="padding:10px;text-align:right;color:#856404;font-weight:700;">¥150,000</td>
             <td style="padding:10px;text-align:center;color:#1D6B35;font-weight:700;">OK</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
 
-          <!-- X998896（送金・NG） -->
+          <!-- X998896(送金・NG) -->
           <tr style="font-size:13px;border-top:2px solid #999;">
             <td style="padding:10px;font-weight:700;">X998896</td>
             <td style="padding:10px;text-align:center;"><span style="background:#555;color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">送金</span></td>
             <td style="padding:10px;text-align:center;"><span style="background:#e8f4ea;color:#1D6B35;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;">CS</span></td>
             <td style="padding:10px;">銀行振込</td>
-            <td style="padding:10px;color:#aaa;">—</td>
-            <td style="padding:10px;color:#aaa;">—</td>
-            <td style="padding:10px;text-align:center;color:#aaa;">—</td>
-            <td style="padding:10px;text-align:right;color:#aaa;">—</td>
+            <td style="padding:10px;">ｻﾄｳ ﾊﾅｺ</td>
+            <td style="padding:10px;">5432109</td>
+            <td style="padding:10px;text-align:center;">2026/04/05</td>
+            <td style="padding:10px;text-align:right;">¥1,200,000</td>
             <td style="padding:10px;text-align:center;color:#c0392b;font-weight:700;">NG</td>
             <td style="padding:10px;text-align:center;"><a onclick="showScreen('prop-detail',null)" style="font-size:18px;color:#1E56A0;cursor:pointer;font-weight:700;text-decoration:none;">›</a></td>
           </tr>
