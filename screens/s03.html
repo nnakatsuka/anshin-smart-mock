@@ -235,20 +235,31 @@
 
 <script>
 function csJudgeChange(value) {
-  var ids = {
-    'cs-koza-area':     (value === 'ok'),
-    'cs-ng-reason-area':(value === 'ng'),
-    'cs-renraku-area':  (value === 'ok' || value === 'ng'),
-    'cs-submit-area':   (value === 'ok' || value === 'ng')
+  // 各エリアの本来のstyle（display除く）と、可視/不可視判定をペアで定義
+  var areas = {
+    'cs-koza-area': {
+      base: 'border-top:1px solid #f0f0f0;padding-top:14px;',
+      show: (value === 'ok')
+    },
+    'cs-ng-reason-area': {
+      base: 'margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;',
+      show: (value === 'ng')
+    },
+    'cs-renraku-area': {
+      base: 'margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;',
+      show: (value === 'ok' || value === 'ng')
+    },
+    'cs-submit-area': {
+      base: 'margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;',
+      show: (value === 'ok' || value === 'ng')
+    }
   };
-  Object.keys(ids).forEach(function(id) {
+  Object.keys(areas).forEach(function(id) {
     var el = document.getElementById(id);
     if (!el) return;
-    if (ids[id]) {
-      el.style.setProperty('display', 'block', 'important');
-    } else {
-      el.style.setProperty('display', 'none', 'important');
-    }
+    var a = areas[id];
+    // style属性を完全に書き換え（外部CSSの干渉を防ぐ）
+    el.setAttribute('style', (a.show ? 'display:block !important;' : 'display:none !important;') + a.base);
   });
   document.querySelectorAll('input[name="cs-judge"]').forEach(function(r) {
     var lbl = r.closest('label');
