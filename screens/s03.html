@@ -241,12 +241,12 @@ function csJudgeChange(value) {
   var ngArea = document.getElementById('cs-ng-reason-area');
   var selected = (value === 'ok' || value === 'ng');
   // 口座はOK時のみ
-  if (koza) koza.style.display = (value === 'ok') ? '' : 'none';
+  if (koza) koza.style.display = (value === 'ok') ? 'block' : 'none';
   // 差し戻し理由はNG時のみ
-  if (ngArea) ngArea.style.display = (value === 'ng') ? '' : 'none';
+  if (ngArea) ngArea.style.display = (value === 'ng') ? 'block' : 'none';
   // 連絡先・送信ボタンはどちらかを選んだら表示
-  if (renraku) renraku.style.display = selected ? '' : 'none';
-  if (submitArea) submitArea.style.display = selected ? '' : 'none';
+  if (renraku) renraku.style.display = selected ? 'block' : 'none';
+  if (submitArea) submitArea.style.display = selected ? 'block' : 'none';
   document.querySelectorAll('input[name="cs-judge"]').forEach(function(r) {
     var lbl = r.closest('label');
     if (!lbl) return;
