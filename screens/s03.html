@@ -25,44 +25,43 @@
     <div class="pc-container">
       <div style="font-size:22px;font-weight:700;margin-bottom:20px;">契約情報 確認</div>
 
-      <!-- フローチャート：タスク（■）と状況（点線ピル）を区別 -->
+      <!-- フローチャート：囲みは統一、テキスト装飾で差分表現 -->
       <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:18px 20px;margin-bottom:18px;overflow-x:auto;">
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;min-width:780px;">
+        <div style="display:flex;align-items:stretch;justify-content:center;gap:0;min-width:820px;">
 
-          <!-- タスク① 契約内容承認（current） -->
-          <div class="sb-box current" style="flex:0 0 auto;min-width:150px;text-align:center;">
-            <span class="sb-num">①</span>契約内容承認
+          <!-- タスク① 契約内容承認（current・先頭） -->
+          <div style="flex:1 1 0;min-width:140px;padding:14px 28px 14px 16px;background:#eef4fb;border:2px solid #1E56A0;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);">
+            <div style="font-size:11px;font-weight:700;color:#1E56A0;margin-bottom:2px;">①</div>
+            <div style="font-size:15px;font-weight:700;color:#1E56A0;">契約内容承認</div>
           </div>
 
-          <!-- 状況：買取店入金中 -->
-          <div style="flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 4px;color:#888;font-size:11px;font-style:italic;white-space:nowrap;">
-            <span style="color:#bbb;font-style:normal;">→</span>
-            <span>買取店入金中</span>
-            <span style="color:#bbb;font-style:normal;">→</span>
+          <!-- 状況：買取店入金中（中間） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 28px;background:#fafafa;border:1px solid #e0e0e0;text-align:center;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:12px;font-weight:400;font-style:italic;color:#888;">買取店入金中</div>
           </div>
 
-          <!-- タスク② 現車引き渡し -->
-          <div class="sb-box" style="flex:0 0 auto;min-width:150px;text-align:center;">
-            <span class="sb-num">②</span>現車引き渡し
+          <!-- タスク② 現車引き渡し（中間） -->
+          <div style="flex:1 1 0;min-width:140px;margin-left:-10px;padding:14px 28px;background:white;border:1px solid #ccc;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:2px;">②</div>
+            <div style="font-size:15px;font-weight:700;color:#333;">現車引き渡し</div>
           </div>
 
-          <!-- 状況：お客様へ送金中 -->
-          <div style="flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 4px;color:#888;font-size:11px;font-style:italic;white-space:nowrap;">
-            <span style="color:#bbb;font-style:normal;">→</span>
-            <span>お客様へ送金中</span>
-            <span style="color:#bbb;font-style:normal;">→</span>
+          <!-- 状況：お客様へ送金中（中間） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 28px;background:#fafafa;border:1px solid #e0e0e0;text-align:center;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:12px;font-weight:400;font-style:italic;color:#888;">お客様へ送金中</div>
           </div>
 
-          <!-- タスク③ 完了 -->
-          <div class="sb-box" style="flex:0 0 auto;min-width:120px;text-align:center;">
-            <span class="sb-num">③</span>完了
+          <!-- タスク③ 完了（末尾） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 16px 14px 28px;background:white;border:1px solid #ccc;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 50%);">
+            <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:2px;">③</div>
+            <div style="font-size:15px;font-weight:700;color:#333;">完了</div>
           </div>
 
         </div>
       </div>
 
       <!-- 案内ブロック：手続き説明（①承認/差し戻し → ②登録情報 → 次の案内） -->
-      <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:20px 24px;margin-bottom:18px;font-size:13px;line-height:1.9;">
+      <div style="background:white;border:1px solid #a52a2a;border-left:5px solid #a52a2a;border-radius:4px;padding:20px 24px;margin-bottom:18px;font-size:13px;line-height:1.9;">
 
         <!-- ① 承認 or 差し戻し -->
         <div style="font-weight:700;color:#c0392b;font-size:14px;margin-bottom:8px;">① 契約情報をご確認のうえ、「承認する」または「差し戻しする」を押してください。</div>
@@ -151,13 +150,13 @@
 
           <!-- 2択ラジオ -->
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:2px solid #1D6B35;border-radius:6px;background:#f0f8f3;cursor:pointer;">
-              <input type="radio" name="cs-judge" value="ok" checked onchange="csJudgeChange('ok')" style="width:18px;height:18px;">
-              <span style="font-size:13px;font-weight:700;color:#1D6B35;">✓ 確認OK（買取に同意）</span>
+            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
+              <input type="radio" name="cs-judge" value="ok" onchange="csJudgeChange('ok')" style="width:18px;height:18px;">
+              <span style="font-size:13px;color:#555;">承認する</span>
             </label>
             <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
               <input type="radio" name="cs-judge" value="ng" onchange="csJudgeChange('ng')" style="width:18px;height:18px;">
-              <span style="font-size:13px;color:#555;">⚠ 差し戻し（内容に相違あり）</span>
+              <span style="font-size:13px;color:#555;">差し戻しする</span>
             </label>
           </div>
 
@@ -180,7 +179,7 @@
           </div>
 
           <!-- 口座情報入力（OK選択時のみ） -->
-          <div id="cs-koza-area" style="border-top:1px solid #f0f0f0;padding-top:14px;">
+          <div id="cs-koza-area" style="display:none;border-top:1px solid #f0f0f0;padding-top:14px;">
             <div style="font-size:13px;font-weight:700;margin-bottom:10px;">送金先口座を登録（OK選択時必須）</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-bottom:14px;">
               <div>
@@ -210,7 +209,7 @@
           </div>
 
           <!-- 連絡先（入力）：右カラム・口座登録の下 -->
-          <div id="cs-renraku-area" style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+          <div id="cs-renraku-area" style="display:none;margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
             <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">連絡先</div>
             <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7;">MOTA車買取 申込者と違う連絡先をご希望の方は、下記にご記入ください。</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;">
@@ -226,7 +225,7 @@
           </div>
 
           <!-- 送信ボタン＋結果メッセージ：右カラム最下部 -->
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
+          <div id="cs-submit-area" style="display:none;margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
             <button onclick="s03Submit()" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で送信する</button>
             <div id="s03-result" style="display:none;margin-top:14px;border-radius:6px;padding:16px 18px;font-size:13px;line-height:1.9;"></div>
           </div>
@@ -237,9 +236,17 @@
 <script>
 function csJudgeChange(value) {
   var koza = document.getElementById('cs-koza-area');
+  var renraku = document.getElementById('cs-renraku-area');
+  var submitArea = document.getElementById('cs-submit-area');
   var ngArea = document.getElementById('cs-ng-reason-area');
+  var selected = (value === 'ok' || value === 'ng');
+  // 口座はOK時のみ
   if (koza) koza.style.display = (value === 'ok') ? '' : 'none';
+  // 差し戻し理由はNG時のみ
   if (ngArea) ngArea.style.display = (value === 'ng') ? '' : 'none';
+  // 連絡先・送信ボタンはどちらかを選んだら表示
+  if (renraku) renraku.style.display = selected ? '' : 'none';
+  if (submitArea) submitArea.style.display = selected ? '' : 'none';
   document.querySelectorAll('input[name="cs-judge"]').forEach(function(r) {
     var lbl = r.closest('label');
     if (!lbl) return;
@@ -277,7 +284,7 @@ function s03Submit(){
     box.style.background = '#f0f8f3';
     box.style.border = '1px solid #1D6B35';
     box.style.color = '#1D6B35';
-    box.innerHTML = '<strong>確認OKを受け付けました。</strong><br>買取店からのご入金が確認でき次第、車両のお引渡しについて改めてご連絡いたします。<br><span style="color:#7a4a00;">※ ローン残債不足分のお支払いがある場合は、この後のお手続きでご入金へお進みいただきます。</span>';
+    box.innerHTML = '<strong>承認を受け付けました。</strong><br>買取店からのご入金が確認でき次第、車両のお引渡しについて改めてご連絡いたします。<br><span style="color:#7a4a00;">※ ローン残債不足分のお支払いがある場合は、この後のお手続きでご入金へお進みいただきます。</span>';
   } else {
     box.style.background = '#fef5e7';
     box.style.border = '1px solid #f39c12';
