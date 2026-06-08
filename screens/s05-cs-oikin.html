@@ -12,125 +12,145 @@
   <span class="sid">s05-cs-oikin</span><span class="nm">追い金入金</span>
 </div>
 <div class="screen active" id="screen-s05-cs-oikin">
-  <div class="step-desc-bar" style="background:#1E56A0;">
-    <span class="step-desc-num" style="background:#fff;color:#1E56A0;">STEP ③ 追</span>
-    <span class="step-desc-title">追い金入金 — 売主がローン残債超過分をMOTAへ入金</span>
-    <span class="step-desc-actor">アクター：売主（CS）</span>
-  </div>
 
+  <!-- ヘッダー：サービス名だけ -->
   <div class="app-header cs">
     <div style="display:flex;align-items:center;gap:24px;height:100%;">
-      <span class="logo" onclick="showScreen('no-action-cs',null)">MöTA</span>
+      <span class="logo">MöTA</span>
       <span style="color:rgba(255,255,255,0.85);font-size:12px;">あんしん決済 — 売主専用</span>
     </div>
-    <div class="menu"><div class="menu-item active">各種設定</div><div class="menu-item " onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div></div>
-    <div class="right-tools">
-      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
-      <button class="logout-btn">ログアウト</button>
-    </div>
   </div>
-
 
   <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
     <div class="pc-container">
-      <div style="font-size:11px;color:#888;margin-bottom:6px;">あんしん決済 > 追い金入金</div>
-      <div style="font-size:22px;font-weight:700;margin-bottom:6px;">追い金のお支払い</div>
-      <div style="font-size:12px;color:#888;margin-bottom:20px;">ローン残債が買取金額を上回るため、差額分のお支払いをお願いします。</div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:20px;">ローン残債不足分のお支払い</div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+      <!-- フローチャート（s03と同じ内容・シェブロン型） -->
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:18px 20px;margin-bottom:18px;overflow-x:auto;">
+        <div style="display:flex;align-items:stretch;justify-content:center;gap:0;min-width:820px;">
 
-        <!-- 左：金額内訳 -->
-        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
-          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">お支払い内訳</div>
-
-          <div style="display:grid;grid-template-columns:1fr auto;gap:10px 14px;font-size:13px;line-height:1.8;">
-            <div style="color:#888;font-weight:700;">買取金額</div><div style="font-weight:700;">¥1,500,000</div>
-            <div style="color:#888;font-weight:700;">ローン残債</div><div style="color:#c0392b;font-weight:700;">−¥2,516,500</div>
-            <div style="border-top:1px solid #f0f0f0;padding-top:10px;font-weight:700;color:#1a1a1a;">お支払い額（追い金）</div><div style="border-top:1px solid #f0f0f0;padding-top:10px;font-size:20px;font-weight:700;color:#c0392b;">¥1,016,500</div>
+          <!-- タスク① 契約内容承認（先頭） -->
+          <div style="flex:1 1 0;min-width:140px;padding:14px 28px 14px 16px;background:#eef4fb;border:2px solid #1E56A0;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);">
+            <div style="font-size:11px;font-weight:700;color:#1E56A0;margin-bottom:2px;">①</div>
+            <div style="font-size:15px;font-weight:700;color:#1E56A0;">契約内容承認</div>
           </div>
 
-          <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
-            <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:6px;">📅 振込期日</div>
-            <div style="font-size:14px;font-weight:700;color:#c0392b;">2026年04月21日（金）まで</div>
+          <!-- 状況：買取店入金中（中間） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 28px;background:#fafafa;border:1px solid #e0e0e0;text-align:center;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:12px;font-weight:400;font-style:italic;color:#888;">買取店入金中</div>
           </div>
 
-          <div style="margin-top:14px;padding:10px 12px;background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;font-size:11px;color:#856404;line-height:1.7;">
-            ⚠️ 期日までにご入金がない場合、取引が成立しない場合があります。
+          <!-- タスク② 現車引き渡し（中間） -->
+          <div style="flex:1 1 0;min-width:140px;margin-left:-10px;padding:14px 28px;background:white;border:1px solid #ccc;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:2px;">②</div>
+            <div style="font-size:15px;font-weight:700;color:#333;">現車引き渡し</div>
           </div>
+
+          <!-- 状況：お客様へ送金中（中間） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 28px;background:#fafafa;border:1px solid #e0e0e0;text-align:center;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:12px;font-weight:400;font-style:italic;color:#888;">お客様へ送金中</div>
+          </div>
+
+          <!-- タスク③ 完了（末尾） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 16px 14px 28px;background:white;border:1px solid #ccc;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 50%);">
+            <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:2px;">③</div>
+            <div style="font-size:15px;font-weight:700;color:#333;">完了</div>
+          </div>
+
         </div>
+      </div>
 
-        <!-- 右：支払方法選択 -->
-        <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:24px 28px;">
-          <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">お支払い方法</div>
+      <!-- 案内ブロック（エンジ色枠） -->
+      <div style="background:white;border:1px solid #a52a2a;border-left:5px solid #a52a2a;border-radius:4px;padding:20px 24px;margin-bottom:18px;font-size:13px;line-height:1.9;">
+        <div style="font-weight:700;color:#c0392b;font-size:14px;margin-bottom:14px;">入金方法に従って進めてください。確実なお手続きのため「ペイジー決済」をおすすめしております。</div>
 
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-            <label style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:2px solid #1E56A0;border-radius:6px;background:#f5fbff;cursor:pointer;">
-              <input type="radio" name="cs-oikin-pay" value="paygee" checked onchange="setOikinPay('paygee')" style="margin-top:3px;">
-              <div>
-                <div style="font-size:13px;font-weight:700;color:#1E56A0;">🏧 ペイジー決済（推奨）</div>
-                <div style="font-size:11px;color:#666;margin-top:3px;line-height:1.6;">登録口座から即時送金可能。ATM・ネットバンキング対応。</div>
-              </div>
-            </label>
-            <label style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
-              <input type="radio" name="cs-oikin-pay" value="bank" onchange="setOikinPay('bank')" style="margin-top:3px;">
-              <div>
-                <div style="font-size:13px;font-weight:700;color:#555;">🏦 銀行振込</div>
-                <div style="font-size:11px;color:#666;margin-top:3px;line-height:1.6;">指定口座へお振込み。手数料はお客様負担です。</div>
-              </div>
-            </label>
-          </div>
+        <div style="margin-bottom:8px;color:#333;">【おすすめ】ペイジー決済の場合「ペイジーで入金する」より進めてください</div>
+        <div style="color:#c0392b;font-size:12px;margin-bottom:14px;">※ペイジー決済は入金金額が自動で設定されるため、金額の入力ミスを防げます。</div>
 
-          <!-- 振込先（バーチャル口座）：銀行振込選択時のみ表示 -->
-          <div id="oikin-bank-info" style="display:none;background:#fafafa;border:1px dashed #aaa;border-radius:6px;padding:14px;font-size:12px;line-height:1.8;color:#555;margin-bottom:18px;">
-            <div style="font-weight:700;color:#1a1a1a;margin-bottom:6px;">振込先（バーチャル口座）</div>
-            <div>みずほ銀行 〇〇支店</div>
-            <div>普通預金 1234567</div>
-            <div>カ）モータ</div>
-          </div>
+        <div style="margin-bottom:14px;color:#333;">銀行振込の場合、振込完了後「振り込みました」ボタンを押してください</div>
 
-          <!-- ペイジーで支払う：ペイジー選択時のみ表示 -->
-          <button id="oikin-btn-paygee" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">ペイジーで支払う</button>
-          <!-- 振込完了：銀行振込選択時のみ表示 -->
-          <button id="oikin-btn-bank" onclick="if(confirm('振込完了をMOTAへ報告します。よろしいですか？'))alert('振込完了を報告しました。MOTAが入金確認を行います。')" style="display:none;width:100%;background:#1D6B35;color:white;border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 振込完了</button>
+        <div style="color:#333;">➡ 完了しましたら、次にMOTAで入金確認を行い、その後、買取店に車両の受領依頼が通知されます。</div>
+      </div>
+
+      <!-- 金額サマリ -->
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:18px 22px;margin-bottom:18px;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <tr>
+            <td style="padding:8px 0;color:#888;font-weight:700;width:24%;">買取金額</td>
+            <td style="padding:8px 0;width:26%;">¥1,500,000</td>
+            <td style="padding:8px 0;color:#888;font-weight:700;width:24%;">ローン残債</td>
+            <td style="padding:8px 0;width:26%;color:#c0392b;">−¥2,516,500</td>
+          </tr>
+          <tr style="border-top:1px solid #f0f0f0;">
+            <td style="padding:8px 0;color:#888;font-weight:700;">お支払い額<br><span style="font-size:11px;font-weight:400;">（ローン残債不足分）</span></td>
+            <td style="padding:8px 0;font-weight:700;font-size:16px;">¥1,016,500</td>
+            <td style="padding:8px 0;color:#888;font-weight:700;">📅 振込期日</td>
+            <td style="padding:8px 0;font-weight:700;">2026年04月21日（金）まで</td>
+          </tr>
+        </table>
+        <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:8px 12px;font-size:11px;color:#856404;margin-top:12px;">
+          ⚠️ 期日までにご入金がない場合、取引が成立しない場合があります。
         </div>
+      </div>
+
+      <!-- 入金方法選択（2カラム） -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+
+        <!-- ペイジー決済（デフォルト選択） -->
+        <label id="pm-payeasy" style="display:flex;flex-direction:column;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <input type="radio" name="payment-method" value="payeasy" checked onchange="pmChange('payeasy')" onclick="pmChange('payeasy')" style="width:18px;height:18px;">
+            <span style="font-size:15px;font-weight:700;color:#1D6B35;">🏧 ペイジー決済</span>
+            <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;">推奨</span>
+          </div>
+          <div style="font-size:11px;color:#666;line-height:1.7;margin-bottom:14px;">
+            登録口座から即時送金が可能です。<br>ATM・ネットバンキング対応
+          </div>
+          <button onclick="alert('ペイジー決済画面へ遷移（モック）')" style="width:100%;margin-top:auto;background:#1D6B35;color:white;border:none;border-radius:4px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">💳 ペイジーで入金する</button>
+        </label>
+
+        <!-- 銀行振込（デフォルト非選択・控えめ表示） -->
+        <label id="pm-bank" style="display:flex;flex-direction:column;background:#fafafa;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:pointer;opacity:0.7;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <input type="radio" name="payment-method" value="bank" onchange="pmChange('bank')" onclick="pmChange('bank')" style="width:18px;height:18px;">
+            <span style="font-size:15px;font-weight:700;color:#555;">🏦 銀行振込</span>
+          </div>
+          <div style="font-size:10px;color:#888;margin-bottom:10px;">※手数料はお客様負担でお願いいたします</div>
+          <table style="width:100%;border-collapse:collapse;font-size:11px;color:#888;margin-bottom:12px;">
+            <tr><td style="padding:4px 0;font-weight:700;width:30%;">金融機関名</td><td style="padding:4px 0;">みずほ銀行</td></tr>
+            <tr><td style="padding:4px 0;font-weight:700;">支店名</td><td style="padding:4px 0;">〇〇支店</td></tr>
+            <tr><td style="padding:4px 0;font-weight:700;">預金種目</td><td style="padding:4px 0;">普通預金</td></tr>
+            <tr><td style="padding:4px 0;font-weight:700;">口座番号</td><td style="padding:4px 0;">1234567</td></tr>
+            <tr><td style="padding:4px 0;font-weight:700;">口座名義</td><td style="padding:4px 0;">カ）モータ</td></tr>
+          </table>
+          <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:8px 10px;font-size:10px;color:#856404;margin-bottom:10px;">
+            ⚠️ 本案件専用口座です。必ずお振込みください。
+          </div>
+          <button onclick="alert('入金完了を記録しました（モック）')" style="width:100%;margin-top:auto;background:#555;color:white;border:none;border-radius:4px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 振り込みました</button>
+        </label>
+
       </div>
 
     </div>
   </div>
 
-<script>
-function setOikinPay(method) {
-  var info = document.getElementById('oikin-bank-info');
-  var btnPaygee = document.getElementById('oikin-btn-paygee');
-  var btnBank = document.getElementById('oikin-btn-bank');
-  if (info) info.style.display = (method === 'bank') ? '' : 'none';
-  if (btnPaygee) btnPaygee.style.display = (method === 'paygee') ? '' : 'none';
-  if (btnBank) btnBank.style.display = (method === 'bank') ? '' : 'none';
-  // 選択ラベルの枠線・背景も切替
-  document.querySelectorAll('input[name="cs-oikin-pay"]').forEach(function(r) {
-    var lbl = r.closest('label');
-    if (!lbl) return;
-    if (r.checked) {
-      lbl.style.border = '2px solid #1E56A0';
-      lbl.style.background = '#f5fbff';
-      var head = lbl.querySelector('div > div:first-child');
-      if (head) head.style.color = '#1E56A0';
-    } else {
-      lbl.style.border = '1px solid #e0e0e0';
-      lbl.style.background = 'white';
-      var head = lbl.querySelector('div > div:first-child');
-      if (head) head.style.color = '#555';
-    }
-  });
-}
-</script>
-
-  <div class="app-footer">
-    <div class="links"><span>会社概要</span><span>利用規約</span></div>
-    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
-  </div>
+  <!-- フッター：枠だけ -->
+  <div class="app-footer"></div>
 
 </div><!-- /screen-s05-cs-oikin -->
+<script>
+function pmChange(value) {
+  var payeasy = document.getElementById('pm-payeasy');
+  var bank = document.getElementById('pm-bank');
+  if (value === 'payeasy') {
+    payeasy.setAttribute('style', 'display:flex;flex-direction:column;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;');
+    bank.setAttribute('style', 'display:flex;flex-direction:column;background:#fafafa;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:pointer;opacity:0.7;');
+  } else {
+    payeasy.setAttribute('style', 'display:flex;flex-direction:column;background:#fafafa;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:pointer;opacity:0.7;');
+    bank.setAttribute('style', 'display:flex;flex-direction:column;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;');
+  }
+}
+</script>
 <script src="../assets/common.js"></script>
 </body>
 </html>
