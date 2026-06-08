@@ -23,7 +23,10 @@
 
   <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
     <div class="pc-container">
-      <div style="font-size:22px;font-weight:700;margin-bottom:20px;">入金</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <div style="font-size:22px;font-weight:700;">入金</div>
+        <a onclick="showScreen('prop-detail',null)" style="display:inline-block;background:white;color:#1E56A0;border:1px solid #1E56A0;border-radius:4px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;">📄 物件詳細を見る</a>
+      </div>
 
       <!-- フローチャート（s03同様のシェブロン型） -->
       <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:18px 20px;margin-bottom:18px;overflow-x:auto;">
@@ -82,11 +85,6 @@
         <div style="color:#333;">➡ 完了しましたら、次にMOTAで入金確認を行い、その後、売主に車両引き渡し依頼が通知されます。</div>
       </div>
 
-      <!-- 物件詳細ボタン -->
-      <div style="margin-bottom:14px;">
-        <a onclick="showScreen('prop-detail',null)" style="display:inline-block;background:white;color:#1E56A0;border:1px solid #1E56A0;border-radius:4px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;">📄 物件詳細を見る</a>
-      </div>
-
       <!-- 物件情報サマリ -->
       <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:18px 22px;margin-bottom:18px;">
         <table style="width:100%;border-collapse:collapse;font-size:13px;">
@@ -112,23 +110,23 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
 
         <!-- ペイジー決済（デフォルト選択） -->
-        <label style="display:block;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;">
+        <label id="pm-payeasy" style="display:flex;flex-direction:column;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <input type="radio" name="payment-method" value="payeasy" checked style="width:18px;height:18px;">
+            <input type="radio" name="payment-method" value="payeasy" checked onchange="pmChange('payeasy')" onclick="pmChange('payeasy')" style="width:18px;height:18px;">
             <span style="font-size:15px;font-weight:700;color:#1D6B35;">🏧 ペイジー決済</span>
             <span style="background:#1D6B35;color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;">デフォルト</span>
           </div>
           <div style="font-size:11px;color:#666;line-height:1.7;margin-bottom:14px;">
             ネットバンキングから即時振込が可能です。<br>対応銀行：みずほ・三菱UFJ・三井住友・ゆうちょ 他
           </div>
-          <button onclick="alert('ペイジー決済画面へ遷移（モック）')" style="width:100%;background:#1D6B35;color:white;border:none;border-radius:4px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">💳 ペイジーで入金する</button>
+          <button onclick="alert('ペイジー決済画面へ遷移（モック）')" style="width:100%;margin-top:auto;background:#1D6B35;color:white;border:none;border-radius:4px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">💳 ペイジーで入金する</button>
         </label>
 
-        <!-- 銀行振込（非活性） -->
-        <label style="display:block;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:not-allowed;opacity:0.55;">
+        <!-- 銀行振込（デフォルト非選択・控えめ表示） -->
+        <label id="pm-bank" style="display:flex;flex-direction:column;background:#fafafa;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:pointer;opacity:0.7;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <input type="radio" name="payment-method" value="bank" disabled style="width:18px;height:18px;">
-            <span style="font-size:15px;font-weight:700;color:#888;">🏦 銀行振込</span>
+            <input type="radio" name="payment-method" value="bank" onchange="pmChange('bank')" onclick="pmChange('bank')" style="width:18px;height:18px;">
+            <span style="font-size:15px;font-weight:700;color:#555;">🏦 銀行振込</span>
           </div>
           <table style="width:100%;border-collapse:collapse;font-size:11px;color:#888;margin-bottom:12px;">
             <tr>
@@ -155,7 +153,7 @@
           <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:4px;padding:8px 10px;font-size:10px;color:#856404;margin-bottom:10px;">
             ⚠️ 本案件専用口座です。必ずお振込みください。
           </div>
-          <button disabled style="width:100%;background:#ccc;color:white;border:none;border-radius:4px;padding:11px;font-size:13px;font-weight:700;cursor:not-allowed;font-family:inherit;">✅ 振り込みました</button>
+          <button onclick="alert('入金完了を記録しました（モック）')" style="width:100%;margin-top:auto;background:#555;color:white;border:none;border-radius:4px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 振り込みました</button>
         </label>
 
       </div>
@@ -167,6 +165,19 @@
   <div class="app-footer"></div>
 
 </div><!-- /screen-s05 -->
+<script>
+function pmChange(value) {
+  var payeasy = document.getElementById('pm-payeasy');
+  var bank = document.getElementById('pm-bank');
+  if (value === 'payeasy') {
+    payeasy.setAttribute('style', 'display:flex;flex-direction:column;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;');
+    bank.setAttribute('style', 'display:flex;flex-direction:column;background:#fafafa;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:pointer;opacity:0.7;');
+  } else {
+    payeasy.setAttribute('style', 'display:flex;flex-direction:column;background:#fafafa;border:1px solid #ddd;border-radius:6px;padding:18px 20px;cursor:pointer;opacity:0.7;');
+    bank.setAttribute('style', 'display:flex;flex-direction:column;background:white;border:2px solid #1D6B35;border-radius:6px;padding:18px 20px;cursor:pointer;');
+  }
+}
+</script>
 <script src="../assets/common.js"></script>
 </body>
 </html>
