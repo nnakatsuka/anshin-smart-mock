@@ -161,7 +161,7 @@
           </div>
 
           <!-- 【v60追加】2段階目：差し戻し理由（差し戻し選択時のみ表示） -->
-          <div id="cs-ng-reason-area" style="display:none;margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;">
+          <div id="cs-ng-reason-area" hidden style="margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;">
             <div style="font-size:11px;font-weight:700;color:#7a4a00;margin-bottom:10px;letter-spacing:0.5px;">▼ 2段階目：差し戻し理由を選択 <span style="background:#1D6B35;color:white;font-size:9px;font-weight:700;padding:1px 6px;border-radius:2px;margin-left:4px;">v60 NEW</span></div>
             <div style="display:flex;flex-direction:column;gap:6px;">
               <label style="display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid #f0c987;border-radius:5px;background:white;cursor:pointer;">
@@ -179,7 +179,7 @@
           </div>
 
           <!-- 口座情報入力（OK選択時のみ） -->
-          <div id="cs-koza-area" style="display:none;border-top:1px solid #f0f0f0;padding-top:14px;">
+          <div id="cs-koza-area" hidden style="border-top:1px solid #f0f0f0;padding-top:14px;">
             <div style="font-size:13px;font-weight:700;margin-bottom:10px;">送金先口座を登録（OK選択時必須）</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-bottom:14px;">
               <div>
@@ -209,7 +209,7 @@
           </div>
 
           <!-- 連絡先（入力）：右カラム・口座登録の下 -->
-          <div id="cs-renraku-area" style="display:none;margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+          <div id="cs-renraku-area" hidden style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
             <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">連絡先</div>
             <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7;">MOTA車買取 申込者と違う連絡先をご希望の方は、下記にご記入ください。</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;">
@@ -225,7 +225,7 @@
           </div>
 
           <!-- 送信ボタン＋結果メッセージ：右カラム最下部 -->
-          <div id="cs-submit-area" style="display:none;margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
+          <div id="cs-submit-area" hidden style="margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
             <button onclick="s03Submit()" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で送信する</button>
             <div id="s03-result" style="display:none;margin-top:14px;border-radius:6px;padding:16px 18px;font-size:13px;line-height:1.9;"></div>
           </div>
@@ -240,13 +240,21 @@ function csJudgeChange(value) {
   var submitArea = document.getElementById('cs-submit-area');
   var ngArea = document.getElementById('cs-ng-reason-area');
   var selected = (value === 'ok' || value === 'ng');
-  // 口座はOK時のみ
-  if (koza) koza.style.display = (value === 'ok') ? 'block' : 'none';
-  // 差し戻し理由はNG時のみ
-  if (ngArea) ngArea.style.display = (value === 'ng') ? 'block' : 'none';
-  // 連絡先・送信ボタンはどちらかを選んだら表示
-  if (renraku) renraku.style.display = selected ? 'block' : 'none';
-  if (submitArea) submitArea.style.display = selected ? 'block' : 'none';
+  // 表示/非表示を hidden属性 と style.display 両方で制御（CSS競合対策）
+  function setVisible(el, visible) {
+    if (!el) return;
+    if (visible) {
+      el.hidden = false;
+      el.style.setProperty('display', 'block', 'important');
+    } else {
+      el.hidden = true;
+      el.style.setProperty('display', 'none', 'important');
+    }
+  }
+  setVisible(koza, value === 'ok');
+  setVisible(ngArea, value === 'ng');
+  setVisible(renraku, selected);
+  setVisible(submitArea, selected);
   document.querySelectorAll('input[name="cs-judge"]').forEach(function(r) {
     var lbl = r.closest('label');
     if (!lbl) return;
