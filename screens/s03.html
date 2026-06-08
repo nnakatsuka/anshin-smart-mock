@@ -35,7 +35,7 @@
           </div>
 
           <!-- 状況：買取店入金中 -->
-          <div style="flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 14px;background:#f7f7f5;border:1px dashed #c5c5c0;border-radius:20px;color:#888;font-size:11px;font-style:italic;white-space:nowrap;">
+          <div style="flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 4px;color:#888;font-size:11px;font-style:italic;white-space:nowrap;">
             <span style="color:#bbb;font-style:normal;">→</span>
             <span>買取店入金中</span>
             <span style="color:#bbb;font-style:normal;">→</span>
@@ -47,7 +47,7 @@
           </div>
 
           <!-- 状況：お客様へ送金中 -->
-          <div style="flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 14px;background:#f7f7f5;border:1px dashed #c5c5c0;border-radius:20px;color:#888;font-size:11px;font-style:italic;white-space:nowrap;">
+          <div style="flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 4px;color:#888;font-size:11px;font-style:italic;white-space:nowrap;">
             <span style="color:#bbb;font-style:normal;">→</span>
             <span>お客様へ送金中</span>
             <span style="color:#bbb;font-style:normal;">→</span>
@@ -58,6 +58,36 @@
             <span class="sb-num">③</span>完了
           </div>
 
+        </div>
+      </div>
+
+      <!-- 案内ブロック：手続き説明（①承認/差し戻し → ②登録情報 → 次の案内） -->
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:20px 24px;margin-bottom:18px;font-size:13px;line-height:1.9;">
+
+        <!-- ① 承認 or 差し戻し -->
+        <div style="font-weight:700;color:#c0392b;font-size:14px;margin-bottom:8px;">① 契約情報をご確認のうえ、「承認する」または「差し戻しする」を押してください。</div>
+        <div style="color:#888;font-size:11px;margin-bottom:10px;">※「差し戻しする」を選択した場合、買取店へ修正依頼を通知します。内容修正後、改めてご連絡をいたします。</div>
+
+        <div style="margin-bottom:18px;">
+          <div style="font-weight:700;color:#333;margin-bottom:4px;">【確認事項】</div>
+          <ul style="margin:0;padding-left:1.4em;color:#333;">
+            <li>契約書の内容に誤りはありませんか</li>
+            <li>契約金額に誤りはありませんか</li>
+            <li>ローン会社名とローン会社口座名義は一致していますか</li>
+          </ul>
+        </div>
+
+        <!-- ② 登録項目 -->
+        <div style="font-weight:700;color:#c0392b;font-size:14px;margin-bottom:8px;">② 「承認する」を選択した場合は、以下の情報をご登録ください。</div>
+        <ul style="margin:0 0 18px 0;padding-left:1.4em;color:#333;">
+          <li>車検証情報</li>
+          <li>連絡先情報</li>
+          <li>入金口座情報（売却代金の振込先）</li>
+        </ul>
+
+        <!-- 次の案内 -->
+        <div style="color:#333;">
+          ➡ 上記のお手続きが完了しましたら、次にMOTAで買取店（ローン残債不足分がある場合は売主）へ、MOTAへのご入金方法をご案内いたします。
         </div>
       </div>
 
