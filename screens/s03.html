@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>成約情報確認 | あんしん決済 Smart版</title>
 <link rel="stylesheet" href="../assets/common.css">
+<style>
+/* 判定ラジオは隠す（label[for]で操作） */
+.cs-judge-radio { position:absolute; left:-9999px; opacity:0; }
+/* トグル対象はデフォルト非表示 */
+.cs-toggle { display:none; }
+/* 承認(ok)選択時：口座・連絡先・送信を表示 */
+#cs-judge-ok:checked ~ #cs-koza-area,
+#cs-judge-ok:checked ~ #cs-renraku-area,
+#cs-judge-ok:checked ~ #cs-submit-area { display:block; }
+/* 差し戻し(ng)選択時：差し戻し理由・連絡先・送信を表示 */
+#cs-judge-ng:checked ~ #cs-ng-reason-area,
+#cs-judge-ng:checked ~ #cs-renraku-area,
+#cs-judge-ng:checked ~ #cs-submit-area { display:block; }
+/* ラベルの選択スタイル */
+#cs-judge-ok:checked ~ .cs-judge-labels label[data-judge="ok"] { border:2px solid #1D6B35 !important; background:#f0f8f3 !important; color:#1D6B35 !important; font-weight:700; }
+#cs-judge-ng:checked ~ .cs-judge-labels label[data-judge="ng"] { border:2px solid #f39c12 !important; background:#fef5e7 !important; }
+</style>
 </head>
 <body>
 <div class="mock-backbar">
@@ -158,39 +175,36 @@
             ⚠️ 内容に相違がないかご確認のうえ、いずれかをお選びください。
           </div>
 
-          <!-- 2択ラジオ -->
-          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
-              <input type="radio" name="cs-judge" value="ok" onchange="csJudgeChange('ok')" onclick="csJudgeChange('ok')" style="width:18px;height:18px;">
-              <span style="font-size:13px;color:#555;">承認する</span>
-            </label>
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;">
-              <input type="radio" name="cs-judge" value="ng" onchange="csJudgeChange('ng')" onclick="csJudgeChange('ng')" style="width:18px;height:18px;">
-              <span style="font-size:13px;color:#555;">差し戻しする</span>
-            </label>
+          <!-- 2択ラジオ（CSSで隠し、label[for]で操作） -->
+          <input type="radio" name="cs-judge" id="cs-judge-ok" value="ok" class="cs-judge-radio">
+          <input type="radio" name="cs-judge" id="cs-judge-ng" value="ng" class="cs-judge-radio">
+
+          <div class="cs-judge-labels" style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+            <label for="cs-judge-ok" class="cs-judge-label" data-judge="ok" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;font-size:13px;color:#555;">承認する</label>
+            <label for="cs-judge-ng" class="cs-judge-label" data-judge="ng" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e0e0e0;border-radius:6px;background:white;cursor:pointer;font-size:13px;color:#555;">差し戻しする</label>
           </div>
 
-          <!-- 【v60追加】2段階目：差し戻し理由（差し戻し選択時のみ表示） -->
-          <div id="cs-ng-reason-area" style="display:none;margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;">
+          <!-- 2段階目：差し戻し理由（差し戻し選択時のみ表示） -->
+          <div id="cs-ng-reason-area" class="cs-toggle" style="margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;">
             <div style="font-size:11px;font-weight:700;color:#7a4a00;margin-bottom:10px;letter-spacing:0.5px;">▼ 2段階目：差し戻し理由を選択</div>
             <div style="display:flex;flex-direction:column;gap:6px;">
               <label style="display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid #f0c987;border-radius:5px;background:white;cursor:pointer;">
-                <input type="radio" name="cs-ng-reason" value="info_diff" onchange="csNgReasonChange('info_diff')" style="width:16px;height:16px;">
+                <input type="radio" name="cs-ng-reason" value="info_diff" style="width:16px;height:16px;">
                 <span style="font-size:12px;color:#333;">買取店が登録した情報が相違している</span>
               </label>
               <label style="display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border:1px solid #f0c987;border-radius:5px;background:white;cursor:pointer;">
-                <input type="radio" name="cs-ng-reason" value="other" onchange="csNgReasonChange('other')" style="width:16px;height:16px;margin-top:2px;">
+                <input type="radio" name="cs-ng-reason" value="other" style="width:16px;height:16px;margin-top:2px;">
                 <div style="flex:1;">
                   <div style="font-size:12px;color:#333;margin-bottom:6px;">その他</div>
-                  <textarea id="cs-ng-reason-other-text" disabled rows="3" placeholder="その他選択時、こちらに理由をご記入ください" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:11px;font-family:inherit;resize:vertical;box-sizing:border-box;background:#fafafa;color:#999;"></textarea>
+                  <textarea rows="3" placeholder="その他選択時、こちらに理由をご記入ください" style="width:100%;border:1px solid #ddd;border-radius:3px;padding:7px 9px;font-size:11px;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- 口座情報入力（OK選択時のみ） -->
-          <div id="cs-koza-area" style="display:none;border-top:1px solid #f0f0f0;padding-top:14px;">
-            <div style="font-size:13px;font-weight:700;margin-bottom:10px;">送金先口座を登録（OK選択時必須）</div>
+          <!-- 口座情報入力（承認選択時のみ表示） -->
+          <div id="cs-koza-area" class="cs-toggle" style="border-top:1px solid #f0f0f0;padding-top:14px;">
+            <div style="font-size:13px;font-weight:700;margin-bottom:10px;">送金先口座を登録（承認時必須）</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-bottom:14px;">
               <div>
                 <label style="font-size:10px;color:#888;font-weight:700;display:block;margin-bottom:3px;">金融機関名 *</label>
@@ -218,8 +232,8 @@
             </div>
           </div>
 
-          <!-- 連絡先（入力）：右カラム・口座登録の下 -->
-          <div id="cs-renraku-area" style="display:none;margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
+          <!-- 連絡先（承認・差し戻しどちらでも表示） -->
+          <div id="cs-renraku-area" class="cs-toggle" style="margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;">
             <div style="font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #1E56A0;color:#1E56A0;">連絡先</div>
             <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7;">MOTA車買取 申込者と違う連絡先をご希望の方は、下記にご記入ください。</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;">
@@ -234,8 +248,8 @@
             </div>
           </div>
 
-          <!-- 送信ボタン＋結果メッセージ：右カラム最下部 -->
-          <div id="cs-submit-area" style="display:none;margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
+          <!-- 送信ボタン＋結果メッセージ（承認・差し戻しどちらでも表示） -->
+          <div id="cs-submit-area" class="cs-toggle" style="margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;">
             <button onclick="s03Submit()" style="width:100%;background:#1E56A0;color:white;border:none;border-radius:6px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">この内容で送信する</button>
             <div id="s03-result" style="display:none;margin-top:14px;border-radius:6px;padding:16px 18px;font-size:13px;line-height:1.9;"></div>
           </div>
@@ -244,61 +258,6 @@
       </div>
 
 <script>
-function csJudgeChange(value) {
-  // 各エリアの本来のstyle（display除く）と、可視/不可視判定をペアで定義
-  var areas = {
-    'cs-koza-area': {
-      base: 'border-top:1px solid #f0f0f0;padding-top:14px;',
-      show: (value === 'ok')
-    },
-    'cs-ng-reason-area': {
-      base: 'margin-bottom:18px;padding:14px 16px;background:#fef5e7;border:1.5px solid #f39c12;border-radius:6px;',
-      show: (value === 'ng')
-    },
-    'cs-renraku-area': {
-      base: 'margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f0;',
-      show: (value === 'ok' || value === 'ng')
-    },
-    'cs-submit-area': {
-      base: 'margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;',
-      show: (value === 'ok' || value === 'ng')
-    }
-  };
-  Object.keys(areas).forEach(function(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var a = areas[id];
-    // style属性を完全に書き換え（外部CSSの干渉を防ぐ）
-    el.setAttribute('style', (a.show ? 'display:block !important;' : 'display:none !important;') + a.base);
-  });
-  document.querySelectorAll('input[name="cs-judge"]').forEach(function(r) {
-    var lbl = r.closest('label');
-    if (!lbl) return;
-    if (r.checked) {
-      if (r.value === 'ok') { lbl.style.border = '2px solid #1D6B35'; lbl.style.background = '#f0f8f3'; }
-      else if (r.value === 'ng') { lbl.style.border = '2px solid #f39c12'; lbl.style.background = '#fef5e7'; }
-      else { lbl.style.border = '2px solid #c0392b'; lbl.style.background = '#fdf2f0'; }
-    } else {
-      lbl.style.border = '1px solid #e0e0e0';
-      lbl.style.background = 'white';
-    }
-  });
-}
-function csNgReasonChange(value) {
-  var textarea = document.getElementById('cs-ng-reason-other-text');
-  if (!textarea) return;
-  if (value === 'other') {
-    textarea.disabled = false;
-    textarea.style.background = 'white';
-    textarea.style.color = '#333';
-    textarea.focus();
-  } else {
-    textarea.disabled = true;
-    textarea.style.background = '#fafafa';
-    textarea.style.color = '#999';
-    textarea.value = '';
-  }
-}
 function s03Submit(){
   var judge = document.querySelector('input[name="cs-judge"]:checked');
   var v = judge ? judge.value : 'ok';
