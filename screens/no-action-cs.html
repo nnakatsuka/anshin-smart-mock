@@ -12,134 +12,113 @@
   <span class="sid">no-action-cs</span><span class="nm">待機画面 CS</span>
 </div>
 <div class="screen active" id="screen-no-action-cs">
-  <div class="step-desc-bar" style="background:#1E56A0;">
-    <span class="step-desc-num" style="background:#fff;color:#1E56A0;">待機 CS</span>
-    <span class="step-desc-title">対応アクションなし時の表示（CS向け）— 現在のSTEP状況をお知らせ</span>
-    <span class="step-desc-actor">アクター：売主（CS）</span>
-  </div>
-  <div style="background:#fff8e1;border-bottom:1px solid #ffd54f;padding:10px 28px;font-size:12px;color:#856404;line-height:1.7;">
-    <strong>📌 本画面の見方：</strong>本画面はCSがアクションを行う必要がないSTEPでアクセスした際に表示されます。実装時は1ブロックのみが表示されますが、モック上はSTEPごとの可変メッセージを並列表示しています（STEP②はCS自身がアクター・STEP⑦は完了画面のため除外）。
-  </div>
-  <div style="background:#e3f2fd;border-bottom:1px solid #90caf9;padding:6px 28px;font-size:11px;color:#0d47a1;">
-    <strong>【v59 PC化】</strong>1200px統一・共通ヘッダー適用
-  </div>
-
   <div class="app-header cs">
     <div style="display:flex;align-items:center;gap:24px;height:100%;">
-      <span class="logo" onclick="showScreen('no-action-cs',null)">MöTA</span>
+      <span class="logo">MöTA</span>
       <span style="color:rgba(255,255,255,0.85);font-size:12px;">あんしん決済 — 売主専用</span>
-    </div>
-    <div class="menu"><div class="menu-item active">各種設定</div><div class="menu-item " onclick="alert('外部の問い合わせフォームへ遷移します')">問い合わせ</div></div>
-    <div class="right-tools">
-      <button class="hamburger-btn" onclick="alert('メニュー（実装予定）')" title="メニュー"><span></span><span></span><span></span></button>
-      <button class="logout-btn">ログアウト</button>
     </div>
   </div>
 
 
   <div style="background:#f0f0ee;padding:28px;min-height:80vh;">
     <div class="pc-container">
-      <div style="background:white;border-radius:8px;padding:20px 24px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-        <div style="font-size:18px;font-weight:700;margin-bottom:6px;">あんしん決済 — 取引の現在状況</div>
-        <div style="font-size:12px;color:#888;line-height:1.7;">査定番号：2119387 ／ トヨタ ヴォクシー ZS ／ 取扱店：○○モータース</div>
-      </div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:20px;">取引の現在状況</div>
 
-      <div style="background:#fafafa;padding:18px 22px;border-radius:8px;margin-bottom:18px;">
-        <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:14px;">下記は STEP別の可変メッセージ（実装時は1つだけ表示）</div>
+      <!-- フローチャート：①完了 → 買取店入金中(current) → ②③ -->
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:6px;padding:18px 20px;margin-bottom:18px;overflow-x:auto;">
+        <div style="display:flex;align-items:stretch;justify-content:center;gap:0;min-width:820px;">
 
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+          <!-- タスク① 契約内容承認（完了・先頭） -->
+          <div style="flex:1 1 0;min-width:140px;padding:14px 28px 14px 16px;background:#f3f6fa;border:1px solid #c8d3e0;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);">
+            <div style="font-size:11px;font-weight:700;color:#7a8aa0;margin-bottom:2px;">① <span style="font-size:10px;">✓ 完了</span></div>
+            <div style="font-size:15px;font-weight:700;color:#7a8aa0;">契約内容承認</div>
+          </div>
 
-          <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
-              <span style="background:#1a1a1a;color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;">可変</span>
-              <span style="background:#1E56A0;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">STEP ①</span>
-              <span style="font-size:14px;font-weight:700;color:#1a1a1a;">【買取店】成約情報登録中</span>
-            </div>
-            <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
-              <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
-              <div style="font-size:12px;color:#333;line-height:1.7;">買取店が成約情報を登録中です。お客様の対応は不要です。</div>
-            </div>
-            <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
-              <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
-              <div style="font-size:11px;color:#555;line-height:1.7;">登録完了後、SMSで成約情報の確認URLが届きます。届きましたら、口座情報の確認・選択にお進みください。</div>
-            </div>
+          <!-- 状況：買取店入金中（current・強調） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 28px;background:#eef4fb;border:2px solid #1E56A0;text-align:center;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:13px;font-weight:700;color:#1E56A0;">買取店入金中</div>
           </div>
-          <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
-              <span style="background:#1a1a1a;color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;">可変</span>
-              <span style="background:#1E56A0;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">STEP ③</span>
-              <span style="font-size:14px;font-weight:700;color:#1a1a1a;">【買取店】入金中</span>
-            </div>
-            <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
-              <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
-              <div style="font-size:12px;color:#333;line-height:1.7;">買取店からMOTAへの入金をお待ちしています。お客様の対応は不要です。</div>
-            </div>
-            <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
-              <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
-              <div style="font-size:11px;color:#555;line-height:1.7;">入金が完了するとマイページに反映されます。</div>
-            </div>
+
+          <!-- タスク② 現車引き渡し（未着手） -->
+          <div style="flex:1 1 0;min-width:140px;margin-left:-10px;padding:14px 28px;background:white;border:1px solid #ccc;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:2px;">②</div>
+            <div style="font-size:15px;font-weight:700;color:#333;">現車引き渡し</div>
           </div>
-          <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
-              <span style="background:#1a1a1a;color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;">可変</span>
-              <span style="background:#1E56A0;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">STEP ④</span>
-              <span style="font-size:14px;font-weight:700;color:#1a1a1a;">【MOTA】入金確認中</span>
-            </div>
-            <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
-              <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
-              <div style="font-size:12px;color:#333;line-height:1.7;">MOTAが入金内容を確認中です。お客様の対応は不要です。</div>
-            </div>
-            <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
-              <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
-              <div style="font-size:11px;color:#555;line-height:1.7;">確認完了後、買取店が車両検査・受領連絡（STEP⑤）に進みます。</div>
-            </div>
+
+          <!-- 状況：お客様へ送金中（未着手） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 28px;background:#fafafa;border:1px solid #e0e0e0;text-align:center;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);">
+            <div style="font-size:12px;font-weight:400;font-style:italic;color:#888;">お客様へ送金中</div>
           </div>
-          <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
-              <span style="background:#1a1a1a;color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;">可変</span>
-              <span style="background:#1E56A0;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">STEP ⑤</span>
-              <span style="font-size:14px;font-weight:700;color:#1a1a1a;">【買取店】受領連絡中</span>
-            </div>
-            <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
-              <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
-              <div style="font-size:12px;color:#333;line-height:1.7;">買取店が車両の検査・受領連絡を行っています。お客様の対応は不要です。</div>
-            </div>
-            <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
-              <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
-              <div style="font-size:11px;color:#555;line-height:1.7;">受領連絡完了後、MOTAからお客様への送金処理（STEP⑥）が始まります。</div>
-            </div>
+
+          <!-- タスク③ 完了（末尾） -->
+          <div style="flex:1 1 0;min-width:120px;margin-left:-10px;padding:14px 16px 14px 28px;background:white;border:1px solid #ccc;text-align:center;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 50%);">
+            <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:2px;">③</div>
+            <div style="font-size:15px;font-weight:700;color:#333;">完了</div>
           </div>
-          <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
-              <span style="background:#1a1a1a;color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;">可変</span>
-              <span style="background:#1E56A0;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px;">STEP ⑥</span>
-              <span style="font-size:14px;font-weight:700;color:#1a1a1a;">【MOTA】送金中</span>
-            </div>
-            <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
-              <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
-              <div style="font-size:12px;color:#333;line-height:1.7;">MOTAからお客様への送金処理を実行中です。お客様の対応は不要です。</div>
-            </div>
-            <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
-              <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
-              <div style="font-size:11px;color:#555;line-height:1.7;">送金完了後、登録口座への入金をご確認ください。完了通知のSMSもお送りします。</div>
-            </div>
-          </div>
+
         </div>
       </div>
 
-      <div class="design-note">
-        <strong>📌 設計メモ（CS待機画面・v59 PC化）</strong>
-        ・<strong>【v59】PC化</strong>：1200px幅、可変ブロックを2カラムグリッドで並列表示<br>
-        ・対象STEP：①③④⑤⑥（STEP②はCS自身がアクター、STEP⑦は完了画面のため除外）<br>
-        ・実装時は currentSTEP に応じて1ブロックだけ表示。本モックは全バリエーションを並列展示<br>
-        ・メイン要素外にキャンセル依頼ボタン配置（STEP②〜⑤期間中のみ活性）
+      <div style="background:white;border-radius:8px;padding:20px 24px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <div style="font-size:14px;color:#888;line-height:1.7;">査定番号：2119387 ／ トヨタ ヴォクシー ZS ／ 取扱店：○○モータース</div>
+      </div>
+
+      <!-- 現在STEPの案内（STEP③ 買取店入金中） -->
+      <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:22px 26px;margin-bottom:18px;">
+        <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:14px 18px;margin-bottom:12px;">
+          <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
+          <div style="font-size:13px;color:#333;line-height:1.7;">買取店からMOTAへの入金をお待ちしています。お客様の対応は不要です。</div>
+        </div>
+        <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:14px 18px;">
+          <div style="font-size:12px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
+          <div style="font-size:12px;color:#555;line-height:1.7;">入金が完了するとマイページに反映されます。</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="app-footer">
-    <div class="links"><span>会社概要</span><span>利用規約</span></div>
-    <div class="copyright">© MOTA, Inc. ─ あんしん決済 Smart版</div>
+  <div class="app-footer"></div>
+
+  <!-- モック用：他STEPパターン参考表示（実装時は出さない） -->
+  <div style="background:#fafafa;border-top:2px dashed #c0c0c0;padding:24px 28px;margin-top:24px;">
+    <div class="pc-container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
+          <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
+            <div style="font-size:12px;color:#333;line-height:1.7;">MOTAが入金内容を確認中です。お客様の対応は不要です。</div>
+          </div>
+          <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
+            <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
+            <div style="font-size:11px;color:#555;line-height:1.7;">確認完了後、買取店が車両検査・受領連絡（STEP⑤）に進みます。</div>
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
+          <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
+            <div style="font-size:12px;color:#333;line-height:1.7;">買取店が車両の検査・受領連絡を行っています。お客様の対応は不要です。</div>
+          </div>
+          <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
+            <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
+            <div style="font-size:11px;color:#555;line-height:1.7;">受領連絡完了後、MOTAからお客様への送金処理（STEP⑥）が始まります。</div>
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid #e0e0e0;border-radius:8px;padding:18px 22px;">
+          <div style="background:#f7faff;border-left:4px solid #1E56A0;padding:12px 16px;margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">📍 現在の状況</div>
+            <div style="font-size:12px;color:#333;line-height:1.7;">MOTAからお客様への送金処理を実行中です。お客様の対応は不要です。</div>
+          </div>
+          <div style="background:#fafafa;border:1px dashed #d0d0d0;padding:12px 16px;">
+            <div style="font-size:11px;font-weight:700;color:#666;margin-bottom:4px;">🔜 次に起きること</div>
+            <div style="font-size:11px;color:#555;line-height:1.7;">送金完了後、登録口座への入金をご確認ください。完了通知のSMSもお送りします。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
 </div><!-- /screen-no-action-cs -->
